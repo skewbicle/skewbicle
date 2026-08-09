@@ -681,7 +681,7 @@ width: 100%;
 @media (max-width: 768px) {
 
     body {
-   background-attachment: local;
+  background-attachment: local;
         background-position: 60% top;
     }
 
