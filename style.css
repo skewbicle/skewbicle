@@ -217,7 +217,7 @@ footer{
     padding: 10px 0;
     bottom: 0;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 0px;
     font-family:'Times New Roman', Times, serif;
     font-size: 17px;
 }
@@ -679,23 +679,6 @@ width: 100%;
 }
 
 @media (max-width: 768px) {
-
-    body {
-        background: #15171c;
-        background-image: none;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-
-        background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
-        background-size: cover;
-        background-position: 60% top;
-        background-repeat: no-repeat;
-    }
 
   h1 {
     font-size: 42px;
