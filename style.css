@@ -681,8 +681,20 @@ width: 100%;
 @media (max-width: 768px) {
 
     body {
-  background-attachment: local;
+        background: #15171c;
+        background-image: none;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+
+        background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
+        background-size: cover;
         background-position: 60% top;
+        background-repeat: no-repeat;
     }
 
   h1 {
