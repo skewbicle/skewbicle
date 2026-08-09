@@ -682,7 +682,7 @@ width: 100%;
 
     body {
         
-        background-attachment: scroll;
+        background-attachment: local;
     }
 
   h1 {
