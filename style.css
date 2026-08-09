@@ -4,12 +4,19 @@
     box-sizing: border-box;
 }
 
+html{
+    min-height: 100%;
+    background: #15171c;
+}
+
 body{
     background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
+    min-height: 100vh;
+    margin: 0;
     background-size: cover;
-     background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   font-family: 'Times New Roman', Times, serif;
 }
 
