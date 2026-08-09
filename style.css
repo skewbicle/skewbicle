@@ -681,7 +681,7 @@ width: 100%;
 @media (max-width: 768px) {
 
     body {
-        background-size: auto 100%;
+        
         background-attachment: scroll;
     }
 
