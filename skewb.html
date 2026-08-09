@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skewb Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/skewb/70736056-08a7-40ab-b1bd-f5ef5f3229af.png" alt="Step 1"></span><span class="labels">White Side</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/skewb/a9aa10ae-b159-4529-baf6-5d0ca1f0a634.png" alt="Step 2"></span><span class="labels">Yellow Corners</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/skewb/671105e3-80dc-47e1-ae7c-e41afe02a182.png" alt="Step 3"></span><span class="labels">Yellow center</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/skewb/57e09360-722e-4b47-9a97-dc32ab4d8fdf.png" alt="Step 4"></span><span class="labels">Remaining Side Centers</span></a>
+</div>
+
+ 
+<header>
+
+  <h1>Skewb</h1>
+
+  <p>A corner-turning puzzle where each cut slices through the center of the cube at an angle.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+  <p>The Sledgehammer  (R' L R L'):</p>
+
+  <img src="tutorials/skewb/f2217ab4-cc27-42ba-8efd-c8fc826e7ce5.png" alt="">
+
+  <p>Right Down → Left Down → Right Up → Left Up</p>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — White Side</h2>
+    <p>Locate the White center piece and bring the 4 white corner pieces up around it so their side colors match each other (forming a complete colored outer layer intuitively):</p>
+
+    <ul>
+
+      <li>Easy insertion</li>
+
+      <p>If a white corner is on the bottom layer, rotate it into the top slot.</p>
+
+      <li>Flipped corner</li>
+
+      <p>If a corner piece isn't oriented correctly, rotate it out of place on the bottom layer to change its orientation, then bring it up.</p>
+
+      <li>Facing down</li>
+
+      <p>If white is on the bottom facing straight down, move it to the side first before bringing it up.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Corners</h2>
+
+    <p>Turn the cube upside down so the completed White layer is on the bottom. Look at the 4 yellow corner pieces on top.</p>
+
+    <ul>
+
+      <li>Case A (2 corners facing up, 2 facing out)</li>
+
+      <img src="tutorials/skewb/4139177b-329c-44a3-af32-b8b349499265.png" alt="">
+
+      <p>Hold the cube so one unsolved yellow corner faces Front and the other faces Left. Do the Sledgehammer once. This brings you to Case B.</p>
+
+      <li>Case B (0 yellow corners facing up - "Headlights" case)</li>
+
+      <img src="tutorials/skewb/e30d7eb6-07a6-4f32-8bd8-09280aac59ee.png" alt="">
+
+      <p>Hold the cube so the two matching yellow corner stickers are on the Right. Do the Sledgehammer once. All 4 yellow corners will now point up!</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Yellow Center</h2>
+
+    <p>With White on the bottom and all 4 Yellow corners pointing up:</p>
+
+    <ul>
+
+      <li>Hold the Yellow center so it is facing the Back.</li>
+      <li>Do the Sledgehammer once.</li>
+      <li>Rotate the whole cube 180° horizontally.</li>
+      <li>Do the Sledgehammer once more.</li>
+      
+      <p>The Yellow center is now fully solved on top!</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Remaining Side Centers</h2>
+
+    <p>With White on the left and Yellow on the right, only 3 or 4 centers are left to solve.</p>
+    <p></p>
+
+    <ul>
+
+      <li>3 Unsolved Centers</li>
+
+      <p>Hold the cube so the face with opposite colors (e.g., Red center on Orange face / Green center on Blue face) is in the Front.</p>
+      <p>Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once.</p>
+
+      <li>4 Unsolved Centers</li>
+
+      <p>Hold any unsolved center in front. Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once. This will reduce it to the 3-center case above!</p>
+
+    </ul>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+    </footer>    
+
+        <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

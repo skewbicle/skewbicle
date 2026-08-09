@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6x6 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/6X6/download (2).png" alt="Step 1"></span><span class="labels">White Center</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/6X6/download (1).png" alt="Step 2"></span><span class="labels">Yellow Center</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/6X6/download (3).png" alt="Step 3"></span><span class="labels">Side Centers</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/6X6/download (4).png" alt="Step 4"></span><span class="labels">Edge Pairing</span></a>
+  <a href="#s5"><span class="thumb"><img src="tutorials/6X6/download (7).png" alt="Step 5"></span><span class="labels">Parity</span></a>
+  <a href="#s6"><span class="thumb"><img src="tutorials/6X6/download.png" alt="Step 5"></span><span class="labels">Solve Like a 3x3</span></a>
+    <a href="#s7"><span class="thumb"><img src="tutorials/6X6/download (5).png" alt="Step 5"></span><span class="labels">Parities</span></a>
+</div>
+
+
+<header>
+
+  <h1>6x6</h1>
+
+  <p>A larger even-layered cube requiring multi-edge pairing, large center management, and 4x4-style parities.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, get familiar with 6x6 <span><a href="algorithms.html">move notation</a></span>:</p>
+
+  <ul>
+
+    <li>Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise</li>
+
+    <li>Uw / Uw': Move the two top layers together clockwise / counter-clockwise</li>
+
+    <li>Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise</li>
+
+    <li>3Rw: Move the outer 3 layers on the right side together</li>
+
+    <li>4Rw: Move the outer 4 layers on the right side together</li>
+
+    <li>3Lw: Move the outer 3 layers on the left side together</li>
+
+    <li>x: tilt the cube forward (the bottom face moves to face front)</li>
+
+  </ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — White Center</h2>
+
+    <p>Build the white 4x4 center grid by making four 1x4 bars.</p>
+
+    <ul>
+
+      <li>Build 1x4 Bars</li>
+
+      <p>Create white 1x4 bars one by one on your starting face. Find two pieces, join them together, and add the remaining two white pieces until you have a straight 4-piece bar.</p>
+
+      <img src="tutorials/6X6/download (10).png" alt="">
+      <img src="tutorials/6X6/download (9).png" alt="">
+
+      <li>Hold Bars Vertical</li>
+
+      <p>Once a bar is made, hold it vertically on the white face so moving new layers around won't accidentally break it.</p>
+
+      <img src="tutorials/6X6/download (8).png" alt="">
+
+      <li>Assemble the Center</li>
+
+      <p>Build four 1x4 bars in total and line them up side-by-side to complete the 4x4 white center block.</p>
+      <img src="tutorials/6X6/download (2).png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Center</h2>
+
+    <p>Flip the cube so White is on the bottom.</p>
+
+    <ul>
+
+      <li>Build Yellow Bars</li>
+
+      <p>Create a 1x4 yellow bar on an unsolved face.</p>
+
+      <img src="tutorials/6X6/download (11).png" alt="">
+
+      <li>Insert and Restore</li>
+
+      <p>move it to the top face while preserving the white center using: Rw U2 Rw'</p>
+
+      <img src="tutorials/6X6/download (12).png" alt="">
+
+      <li>Final Bars</li>
+
+      <p>When inserting the last yellow bars, line up the incoming yellow bar in the exact same column as a yellow bar already on top. Pushing it up, turning U2, and bringing it back down will swap them and leave all yellow bars on top while keeping white intact.</p>
+
+      <img src="tutorials/6X6/download (13).png" alt="">
+      <img src="tutorials/6X6/download (1).png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Side Centers</h2>
+
+    <p>With White on the left and Yellow on the right, solve the 4 middle centers around the sides.</p>
+    <p>Color Scheme Order (BOGR):<br>Hold the white center on the left. Going clockwise around the sides, the colors must follow:<br>Blue → Orange → Green → Red.</p>
+
+    <ul>
+
+      <li>First 2 Centers</li>
+
+      <p>Solve the first two centers using the Rw U2 Rw' bar-insertion logic.</p>
+
+      <li>Last 2 centers</li>
+
+      <p>If you get stuck with 1 or 2 isolated center pieces, use a simple commutator:</p>
+
+      <p>Put the target unsolved spot and the source piece in the same relative position (e.g., bottom-left).</p>
+
+      <img src="tutorials/6X6/download (14).png" alt="">
+
+      <p>Push the piece in → move to a new layer → push second layer down → move back to old layer → bring first layer back up → move back to new layer → bring second layer back up.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Edge Pairing</h2>
+
+    <ul>
+
+      <li>Free Pairing (First 8-9 Edges)</li>
+
+      <p>Find two matching edge pieces and place them on the front-left and front-right edges.</p>
+
+      <p>Flip if needed: Use the edge flipping algorithm (R U R' F R' F' R) on the right edge so the pieces are positioned diagonally from each other:</p>
+
+      <img src="tutorials/6X6/download (15).png" alt="">
+      <img src="tutorials/6X6/download (16).png" alt="">
+
+      <p>Slice the inner layers horizontally to pair the matching edge pieces together.</p>
+
+      <img src="tutorials/6X6/download (17).png" alt="">
+      <img src="tutorials/6X6/download (18).png" alt="">
+      <p>Move the newly completed edge up into the top layer (U), swap it with an unsolved edge, and bring it back down (U').</p>
+      <p>Slice the inner layers back to restore all 6 center grids.</p>
+
+      <li>Last 3-4 Edges</li>
+
+      <p>When no unsolved top/bottom edges remain, place matching pieces on the same horizontal row and use slicing and flipping turns to join them directly without breaking centers.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s5">
+
+    <h2>Step 5 — Fix The Parity (If Needed)</h2>
+
+    <p>There's a 50% chance one single edge piece remains flipped or mismatched.</p>
+
+    <img src="tutorials/6X6/download (7).png" alt="">
+
+    <p>Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 4Rw' U2 Rw U2 Rw' U2 Rw'</p>
+
+  </section>
+
+  <section id="s6">
+
+    <h2>Step 6 — Solve Like a 3x3</h2>
+
+    <p>Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!</p>
+
+  </section>
+
+  <section id="s7">
+
+    <h2>Step 7 — Fix 6x6 Parities (If Needed)</h2>
+
+    <li>OLL Parity</li>
+
+    <img src="tutorials/6X6/download (6).png" alt="">
+
+    <p>3Rw U2 x 3Rw U2 3Rw U2 3Rw' U2 3Lw U2 3Rw' U2 3Rw U2 3Rw' U2 3Rw'</p>
+
+    <li>PLL Parity</li>
+
+    <img src="tutorials/6X6/download (5).png" alt="">
+
+    <p>3Rw2 F2 U2 3Rw2 R2 U2 F2 3Rw2</p>
+
+  </section>
+
+</main>
+ 
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>
+
+  <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

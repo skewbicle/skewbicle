@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator - Skewbicle</title>
+        <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background: var(--bg); color: var(--text);
+    font-family:'Times New Roman', Times, serif;
+     background-size: cover;
+     background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  }
+  .mono{font-family:'Times New Roman', Times, serif;}
+
+  #section{flex:1; display:flex; justify-content:center; }
+  .panel{ width:100%; max-width:860px; display:none; }
+  .panel.active{ display:block; animation:fade .25s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+  .stage-wrap{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:18px; margin-bottom:18px;
+  }
+  .stage{
+    height:300px; display:flex; align-items:center; justify-content:center;
+    perspective:900px; touch-action:none; cursor:grab; user-select:none;
+    position:relative;
+  }
+  .stage:active{cursor:grabbing;}
+  .cube{
+    position:relative; width:1px; height:1px; transform-style:preserve-3d;
+    transform: rotateX(-25deg) rotateY(-60deg);
+  }
+  .cubie{
+    position:absolute; top:0; left:0; width:52px; height:52px;
+    margin:-26px 0 0 -26px; transform-style:preserve-3d;
+  }
+  .face{
+    position:absolute; width:52px; height:52px; border-radius:6px;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.55);
+  }
+  .face.hidden{ background:#0c0d10; }
+  .f-white{background:var(--white);} .f-yellow{background:var(--yellow);}
+  .f-red{background:var(--red);} .f-orange{background:var(--orange);}
+  .f-green{background:var(--green);} .f-blue{background:var(--blue);}
+
+  .stage-controls{ display:flex; align-items:center; justify-content:space-between; margin-top:10px; gap:10px; flex-wrap:wrap;}
+  .hint{ font-size:11.5px; color:var(--ink-dim); }
+  .row-btns{ display:flex; gap:8px; }
+
+  button.pill{
+    appearance:none; cursor:pointer; border-radius:9px; border:1px solid var(--line);
+    background:var(--panel-2); color:var(--ink); font:inherit; font-size:12.5px; font-weight:600;
+    padding:9px 14px; letter-spacing:.2px; transition:border-color .15s, color .15s, transform .1s;
+  }
+  button.pill:hover{ border-color:var(--accent-dim); color:var(--accent); }
+  button.pill:active{ transform:scale(.96); }
+  button.pill.primary{ background:var(--accent); color:#0b1210; border-color:var(--accent); }
+  button.pill.primary:hover{ color:#0b1210; filter:brightness(1.08); }
+  button.pill:disabled{ opacity:.4; cursor:not-allowed; }
+
+  .movepad{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:18px;
+  }
+  .movepad button{
+    appearance:none; cursor:pointer; border-radius:9px; border:1px solid var(--line);
+    background:var(--panel); color:var(--ink); padding:12px 0; font-size:14px;
+  }
+  .movepad button:hover{ border-color:var(--accent-dim); color:var(--accent); }
+  .movepad button:active{ transform:scale(.94); }
+
+  .log{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; font-size:13px; color:var(--accent); min-height:20px;
+    letter-spacing:2px; overflow-x:auto; white-space:nowrap;
+  }
+  .log .dim{color:var(--ink-dim);}
+  .meta{ display:flex; justify-content:space-between; margin-top:8px; font-size:11.5px; color:var(--ink-dim); }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px;
+  }
+  .card + .card{margin-top:16px;}
+  .status{ display:flex; align-items:center; gap:10px; margin-top:16px; font-size:13.5px; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--ink-dim); flex:none; }
+  .dot.solved{ background:var(--green); box-shadow:0 0 8px var(--green); }
+  .dot.scrambled{ background:var(--accent); box-shadow:0 0 8px var(--accent); }
+  @media (max-width:520px){
+    .movepad{grid-template-columns:repeat(4,1fr);}
+    .stage{height:240px;}
+
+    #section{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+    
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<section id="section">
+
+  <!-- PLAY -->
+  <section id="play" class="panel active">
+
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+        <div class="cube" id="cube"></div>
+      </div>
+      <div class="stage-controls">
+        <span class="hint">Drag to rotate the view · tap a move below to turn a face</span>
+        <div class="row-btns">
+          <button class="pill" id="scrambleBtn">Scramble</button>
+          <button class="pill" id="resetBtn">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="movepad mono" id="movepad"></div>
+
+    <div class="log mono" id="log"><span class="dim">Move log will appear here…</span></div>
+    <div class="meta">
+      <span id="moveCount">0 moves</span>
+      <span id="stateTag">Solved</span>
+    </div>
+  </section>
+
+
+</section>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- geometry / math ---------- */
+  const UNIT = 52; // px per layer, matches .cubie size
+
+  function dot(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+  function cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+  function add(a,b){ return [a[0]+b[0],a[1]+b[1],a[2]+b[2]]; }
+  function scale(a,s){ return [a[0]*s,a[1]*s,a[2]*s]; }
+  function rnd(v){ return v.map(n=>Math.round(n)); }
+
+  // Rodrigues' rotation formula: rotate vector v around unit axis by angleRad
+  function rotateVec(v, axis, angleRad){
+    const c = Math.cos(angleRad), s = Math.sin(angleRad);
+    const t1 = scale(v, c);
+    const t2 = scale(cross(axis, v), s);
+    const t3 = scale(axis, dot(axis, v) * (1 - c));
+    return add(add(t1, t2), t3);
+  }
+
+  const AXIS = { x:[1,0,0], y:[0,1,0], z:[0,0,1] };
+
+  // Move table derived for a CSS-space cube (x right+, y down+, z toward viewer+).
+  const MOVES = {
+    R:  { axis:AXIS.x, angle: 90, layer:c=>c.pos[0]===1  },
+    "R'":{ axis:AXIS.x, angle:-90, layer:c=>c.pos[0]===1  },
+    L:  { axis:AXIS.x, angle:-90, layer:c=>c.pos[0]===-1 },
+    "L'":{ axis:AXIS.x, angle: 90, layer:c=>c.pos[0]===-1 },
+    U:  { axis:AXIS.y, angle:-90, layer:c=>c.pos[1]===-1 },
+    "U'":{ axis:AXIS.y, angle: 90, layer:c=>c.pos[1]===-1 },
+    D:  { axis:AXIS.y, angle: 90, layer:c=>c.pos[1]===1  },
+    "D'":{ axis:AXIS.y, angle:-90, layer:c=>c.pos[1]===1  },
+    F:  { axis:AXIS.z, angle: 90, layer:c=>c.pos[2]===1  },
+    "F'":{ axis:AXIS.z, angle:-90, layer:c=>c.pos[2]===1  },
+    B:  { axis:AXIS.z, angle:-90, layer:c=>c.pos[2]===-1 },
+    "B'":{ axis:AXIS.z, angle: 90, layer:c=>c.pos[2]===-1 },
+  };
+  const MOVE_NAMES = Object.keys(MOVES);
+
+  // Fixed world-space outward direction of each face, and — since these are the
+  // same directions the viewer sees when the camera is at its identity angle —
+  // also what each button visually means on screen (F = toward viewer, U = up, etc).
+  const NORMALS = { R:[1,0,0], L:[-1,0,0], U:[0,-1,0], D:[0,1,0], F:[0,0,1], B:[0,0,-1] };
+
+  /* ---------- quaternion camera ---------- */
+  // Replaces the old two-Euler-angle (camRotX/camRotY) approach, which caused
+  // horizontal drag to visually reverse once the cube was tipped past a pole
+  // (e.g. white face up). Quaternions + screen-space (pre-multiplied) deltas
+  // avoid that gimbal-style flip entirely.
+  let camQuat;
+
+  function axisAngleQuat(axis, angleRad){
+    const s = Math.sin(angleRad/2);
+    return [axis[0]*s, axis[1]*s, axis[2]*s, Math.cos(angleRad/2)];
+  }
+  function quatMultiply(a,b){
+    const [ax,ay,az,aw]=a, [bx,by,bz,bw]=b;
+    return [
+      aw*bx + ax*bw + ay*bz - az*by,
+      aw*by - ax*bz + ay*bw + az*bx,
+      aw*bz + ax*by - ay*bx + az*bw,
+      aw*bw - ax*bx - ay*by - az*bz
+    ];
+  }
+  function quatNormalize(q){
+    const len = Math.hypot(q[0],q[1],q[2],q[3]) || 1;
+    return [q[0]/len,q[1]/len,q[2]/len,q[3]/len];
+  }
+  function quatRotateVec(q, v){
+    const [qx,qy,qz,qw] = q;
+    const uvx=qy*v[2]-qz*v[1], uvy=qz*v[0]-qx*v[2], uvz=qx*v[1]-qy*v[0];
+    const uuvx=qy*uvz-qz*uvy, uuvy=qz*uvx-qx*uvz, uuvz=qx*uvy-qy*uvx;
+    return [ v[0]+2*(qw*uvx+uuvx), v[1]+2*(qw*uvy+uuvy), v[2]+2*(qw*uvz+uuvz) ];
+  }
+  function quatToMatrix3d(q){
+    const c1 = quatRotateVec(q,[1,0,0]);
+    const c2 = quatRotateVec(q,[0,1,0]);
+    const c3 = quatRotateVec(q,[0,0,1]);
+    return [c1[0],c1[1],c1[2],0, c2[0],c2[1],c2[2],0, c3[0],c3[1],c3[2],0, 0,0,0,1];
+  }
+
+  // initial view: matches the old rotateX(-25deg) rotateY(-60deg) starting pose
+  camQuat = quatNormalize(quatMultiply(
+    axisAngleQuat(AXIS.x, -25*Math.PI/180),
+    axisAngleQuat(AXIS.y, -60*Math.PI/180)
+  ));
+
+  function viewVector(v){
+    return quatRotateVec(camQuat, v);
+  }
+
+  // Turns a screen-relative label (e.g. "F") into whichever absolute move
+  // currently faces that way, so notation always follows what you're looking at.
+  function resolveMove(label){
+    const isPrime = label.endsWith("'");
+    const base = isPrime ? label.slice(0,-1) : label;
+    const target = NORMALS[base];
+    let best = base, bestDot = -Infinity;
+    for(const key in NORMALS){
+      const screenNormal = viewVector(NORMALS[key]);
+      const d = dot(screenNormal, target);
+      if(d > bestDot){ bestDot = d; best = key; }
+    }
+    return best + (isPrime ? "'" : '');
+  }
+
+  /* ---------- cube state ---------- */
+  let cubies = [];
+
+  function buildCubies(){
+    cubies = [];
+    for(let x=-1;x<=1;x++)
+    for(let y=-1;y<=1;y++)
+    for(let z=-1;z<=1;z++){
+      cubies.push({
+        pos:[x,y,z],
+        o:{ ex:[1,0,0], ey:[0,1,0], ez:[0,0,1] } // local axes expressed in world space
+      });
+    }
+  }
+
+  const cubeEl = document.getElementById('cube');
+
+  function stickerClass(axisSign, present){
+    if(!present) return 'hidden';
+    return {white:'f-white',yellow:'f-yellow',red:'f-red',orange:'f-orange',green:'f-green',blue:'f-blue'}[axisSign];
+  }
+
+  function buildDom(){
+    cubeEl.innerHTML = '';
+    cubies.forEach((c, i)=>{
+      const [x,y,z] = c.pos;
+      const el = document.createElement('div');
+      el.className = 'cubie';
+      el.dataset.i = i;
+
+      const faces = [
+        { cls: stickerClass('green', z=== 1), tf:`translateZ(${UNIT/2}px)` },                                   // front (+z)
+        { cls: stickerClass('blue',  z===-1), tf:`rotateY(180deg) translateZ(${UNIT/2}px)` },                    // back  (-z)
+        { cls: stickerClass('red',   x=== 1), tf:`rotateY(90deg) translateZ(${UNIT/2}px)` },                     // right (+x)
+        { cls: stickerClass('orange',x===-1), tf:`rotateY(-90deg) translateZ(${UNIT/2}px)` },                    // left  (-x)
+        { cls: stickerClass('yellow',y===-1), tf:`rotateX(90deg) translateZ(${UNIT/2}px)` },                     // top   (-y)
+        { cls: stickerClass('white', y=== 1), tf:`rotateX(-90deg) translateZ(${UNIT/2}px)` },                    // bottom(+y)
+      ];
+      faces.forEach(f=>{
+        const d = document.createElement('div');
+        d.className = 'face ' + f.cls;
+        d.style.transform = f.tf;
+        el.appendChild(d);
+      });
+      cubeEl.appendChild(el);
+    });
+    renderAll();
+  }
+
+  function transformFor(c){
+    const [px,py,pz] = c.pos.map(n=>n*UNIT);
+    const {ex,ey,ez} = c.o;
+    const m = [
+      ex[0],ex[1],ex[2],0,
+      ey[0],ey[1],ey[2],0,
+      ez[0],ez[1],ez[2],0,
+      0,0,0,1
+    ];
+    return `translate3d(${px}px,${py}px,${pz}px) matrix3d(${m.join(',')})`;
+  }
+
+  function renderAll(){
+    const els = cubeEl.children;
+    for(let i=0;i<cubies.length;i++){
+      els[i].style.transform = transformFor(cubies[i]);
+    }
+  }
+
+  /* ---------- move execution + animation ---------- */
+  let history = [];
+  let queue = [];
+  let running = false;
+
+  function updateMeta(){
+    document.getElementById('moveCount').textContent = history.length + (history.length===1?' move':' moves');
+    const solved = history.length===0;
+    document.getElementById('stateTag').textContent = solved ? 'Solved' : 'Scrambled';
+
+    const logEl = document.getElementById('log');
+    logEl.innerHTML = history.length ? history.map(m=>`<span>${m}</span>`).join(' ') : '<span class="dim">Move log will appear here…</span>';
+    logEl.scrollLeft = logEl.scrollWidth;
+  }
+
+  function applyDiscrete(sel, move){
+    const rad = move.angle * Math.PI/180;
+    sel.forEach(c=>{
+      c.pos = rnd(rotateVec(c.pos, move.axis, rad));
+      c.o.ex = rnd(rotateVec(c.o.ex, move.axis, rad));
+      c.o.ey = rnd(rotateVec(c.o.ey, move.axis, rad));
+      c.o.ez = rnd(rotateVec(c.o.ez, move.axis, rad));
+    });
+  }
+
+  function animateMove(name, opts){
+    return new Promise(resolve=>{
+      const move = MOVES[name];
+      const sel = cubies.filter(move.layer);
+      const els = sel.map(c=> cubeEl.children[cubies.indexOf(c)]);
+      const basePos = sel.map(c=>c.pos.slice());
+      const baseO = sel.map(c=>({ex:c.o.ex.slice(),ey:c.o.ey.slice(),ez:c.o.ez.slice()}));
+      const duration = (opts && opts.fast) ? 110 : 200;
+      const targetRad = move.angle * Math.PI/180;
+      const t0 = performance.now();
+
+      function frame(t){
+        let p = Math.min(1, (t - t0)/duration);
+        const eased = 1 - Math.pow(1-p, 3);
+        const rad = targetRad * eased;
+        sel.forEach((c,idx)=>{
+          const pos = rotateVec(basePos[idx], move.axis, rad);
+          const o = {
+            ex: rotateVec(baseO[idx].ex, move.axis, rad),
+            ey: rotateVec(baseO[idx].ey, move.axis, rad),
+            ez: rotateVec(baseO[idx].ez, move.axis, rad),
+          };
+          const [px,py,pz] = pos.map(n=>n*UNIT);
+          const m = [o.ex[0],o.ex[1],o.ex[2],0, o.ey[0],o.ey[1],o.ey[2],0, o.ez[0],o.ez[1],o.ez[2],0, 0,0,0,1];
+          els[idx].style.transform = `translate3d(${px}px,${py}px,${pz}px) matrix3d(${m.join(',')})`;
+        });
+        if(p<1){ requestAnimationFrame(frame); }
+        else{
+          applyDiscrete(sel, move);
+          renderAll();
+          resolve();
+        }
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  async function processQueue(){
+    if(running) return;
+    running = true;
+    setControlsDisabled(true);
+    while(queue.length){
+      const job = queue.shift();
+      await animateMove(job.name, job.opts);
+      if(job.record) history.push(job.label || job.name);
+      if(job.unrecord) history.pop();
+      updateMeta();
+    }
+    running = false;
+    setControlsDisabled(false);
+  }
+
+  function setControlsDisabled(disabled){
+    document.querySelectorAll('.movepad button, #scrambleBtn, #resetBtn')
+      .forEach(b=>b.disabled = disabled);
+  }
+
+  function queueMove(name, opts, label){
+    queue.push({ name, opts, record:true, label: label || name });
+    processQueue();
+  }
+
+  function handleMoveButton(label){
+    queueMove(resolveMove(label), null, label);
+  }
+
+  function scramble(){
+    const seq = [];
+    let lastAxis = null;
+    for(let i=0;i<20;i++){
+      let name;
+      do{
+        name = MOVE_NAMES[Math.floor(Math.random()*MOVE_NAMES.length)];
+      } while(name[0]===lastAxisLetter(lastAxis));
+      lastAxis = name;
+      seq.push(name);
+    }
+    seq.forEach(name=> queue.push({ name, opts:{fast:true}, record:true }));
+    processQueue();
+  }
+  function lastAxisLetter(name){ return name ? name[0] : null; }
+
+  function reset(){
+    queue = [];
+    buildCubies();
+    buildDom();
+    history = [];
+    updateMeta();
+  }
+
+  /* ---------- UI wiring ---------- */
+  function buildMovepad(){
+    const pad = document.getElementById('movepad');
+    ['U',"U'",'D',"D'",'L',"L'",'R',"R'",'F',"F'",'B',"B'"].forEach(name=>{
+      const b = document.createElement('button');
+      b.textContent = name;
+      b.addEventListener('click', ()=> handleMoveButton(name));
+      pad.appendChild(b);
+    });
+  }
+
+  function wireTabs(){
+    document.querySelectorAll('nav.tabs button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        document.getElementById(tab).classList.add('active');
+      });
+    });
+  }
+
+  function wireDrag(){
+    const stage = document.getElementById('stage');
+    const cube = document.getElementById('cube');
+    let dragging = false, lastX=0, lastY=0;
+
+    function apply(){
+      cube.style.transform = `matrix3d(${quatToMatrix3d(camQuat).join(',')})`;
+    }
+    apply();
+
+    function down(x,y){ dragging = true; lastX=x; lastY=y; }
+    function move(x,y){
+      if(!dragging) return;
+      const dx = x-lastX, dy = y-lastY;
+      const SENS = 0.007; // roughly matches the old 0.4deg/px feel, in radians
+      const rotY = axisAngleQuat(AXIS.y, dx*SENS);
+      const rotX = axisAngleQuat(AXIS.x, -dy*SENS);
+      const delta = quatMultiply(rotY, rotX);
+      // pre-multiply => rotate in screen space, not object space.
+      // this is what prevents the sideways-drag flip once the cube is tipped past a pole.
+      camQuat = quatNormalize(quatMultiply(delta, camQuat));
+      lastX = x; lastY = y;
+      apply();
+    }
+    function up(){ dragging = false; }
+
+    stage.addEventListener('mousedown', e=>down(e.clientX,e.clientY));
+    window.addEventListener('mousemove', e=>move(e.clientX,e.clientY));
+    window.addEventListener('mouseup', up);
+
+    stage.addEventListener('touchstart', e=>{ const t=e.touches[0]; down(t.clientX,t.clientY); }, {passive:true});
+    stage.addEventListener('touchmove', e=>{ const t=e.touches[0]; move(t.clientX,t.clientY); }, {passive:true});
+    stage.addEventListener('touchend', up);
+  }
+
+  document.getElementById('scrambleBtn').addEventListener('click', scramble);
+  document.getElementById('resetBtn').addEventListener('click', reset);
+
+  buildCubies();
+  buildMovepad();
+  buildDom();
+  wireTabs();
+  wireDrag();
+  updateMeta();
+
+})();
+</script>
+
+</body>
+</html>

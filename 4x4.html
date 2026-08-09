@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4x4 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+ 
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/4X4/download (39).png" alt="Step 1"></span><span class="labels">White Center</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/4X4/download.png" alt="Step 2"></span><span class="labels">Yellow Center</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/4X4/download (1).png" alt="Step 2"></span><span class="labels">Partial White Cross</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/4X4/download (2).png" alt="Step 3"></span><span class="labels">Side Centers</span></a>
+  <a href="#s5"><span class="thumb"><img src="tutorials/4X4/download (3).png" alt="Step 4"></span><span class="labels">Edge Pairing</span></a>
+  <a href="#s6"><span class="thumb"><img src="tutorials/4X4/download (4).png" alt="Step 5"></span><span class="labels">Solve Like a 3x3</span></a>
+  <a href="#s7"><span class="thumb"><img src="tutorials/4X4/download (23).png" alt="Step 5"></span><span class="labels">Parities</span></a>
+</div>
+
+<header>
+  <h1>4x4 (Rubik's Revenge)</h1>
+  <p> The smallest "even" layered cube. Because it lacks fixed center pieces, it introduces parity errors requiring specific algorithms to fix.</p>
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, get familiar with 4x4 wide <span><a href="algorithms.html">move notation</a></span>:</p>
+
+  <ul>
+
+    <li>Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise</li>
+
+    <li>Uw / Uw': Move the two top layers together clockwise / counter-clockwise</li>
+
+    <li>Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise</li>
+
+    <li>2R: Move ONLY the inner-right slice</li>
+
+    <li>2U: Move ONLY the inner-top slice</li>
+
+    <li>x: tilt the cube forward</li>
+
+  </ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — White Center</h2>
+
+    <ul>
+
+      <li>Build White Center</li>
+
+    </ul>
+
+    <p>Pair up two white center pieces to form a 1x2 bar.</p>
+
+    <img src="tutorials/4X4/download (5).png" alt="">
+    <img src="tutorials/4X4/download (6).png" alt="">
+
+    <p>Make another white bar somewhere else, then join the two bars together to form the 2x2 white center.</p>
+    
+    <img src="tutorials/4X4/download (7).png" alt="">
+    <img src="tutorials/4X4/download (8).png" alt="">
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Center</h2>
+
+    <ul>
+
+      <li>Build Yellow Center (while preserving the white center)</li>
+
+    </ul>
+
+    <p>Hold white on the bottom. Build a yellow center bar, then send it up using: Rw U2 Rw'</p>
+
+    <img src="tutorials/4X4/download (11).png" alt="">
+    <img src="tutorials/4X4/download (9).png" alt="">
+
+    <p>Make the second yellow bar and align it under the first to finish the 2x2 yellow center by also using: Rw U2 Rw'</p>
+
+    <img src="tutorials/4X4/download (13).png" alt="">
+    <img src="tutorials/4X4/download (10).png" alt="">
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Partial White Cross</h2>
+
+    <p>Build 3 out of the 4 white cross pieces in their correct relative positions.</p>
+    <p>Color Scheme Order (BOGR):<br>Hold the white center on the left. Going clockwise around the sides, the colors must follow:<br>Blue → Orange → Green → Red.</p>
+
+    <ul>
+
+      <li>Pair and position edges</li>
+
+      <p>Locate two matching white edge pieces. Place them in the left and right slice layers, join them into a double edge, and insert them into the cross while keeping your centers safe.</p>
+
+      <img src="tutorials/4X4/download (12).png" alt="">
+      <img src="tutorials/4X4/download (14).png" alt="">
+      <img src="tutorials/4X4/download (15).png" alt="">
+
+      <li>Leave one slot open</li>
+
+      <p>Complete 3 out of 4 cross pieces, leaving one slot unsolved to make pairing easier in later steps.</p>
+
+      <img src="tutorials/4X4/download (1).png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Side Centers</h2>
+
+    <p>With White on the left and Yellow on the right, solve the 4 middle centers around the sides.</p>
+
+    <ul>
+
+      <li>Form 1x2 bars</li>
+
+      <p>Build a 1x2 center bar of any side color and turn it so it sits vertically.</p>
+
+      <img src="tutorials/4X4/download (16).png" alt="">
+      <img src="tutorials/4X4/download (17).png" alt="">
+      <img src="tutorials/4X4/download (18).png" alt="">
+      <img src="tutorials/4X4/download (19).png" alt="">
+      <img src="tutorials/4X4/download (20).png" alt="">
+
+      <li>Complete the side centers</li>
+
+      <p>Build the remaining side centers one by one in the correct color order (BOGR), ensuring you use half-turns (Rw2, Uw2) to restore any centers you temporarily disrupt.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s5">
+
+    <h2>Step 5 — Edge Pairing</h2>
+
+    <p>Hold your partial white cross on the bottom with the unsolved slot facing front, locate the final edge pieces, and place them in the front-left and front-right slots, then execute Pairing Case.</p>
+
+    <ul>
+
+      <li>Different Slices</li>
+
+      <img src="tutorials/4X4/download (21).png" alt="">
+
+      <p>Join pieces, replace with an unsolved edge pair, and fix the centers: 2U' R U' R' 2U</p>
+
+      <li>Same Slice</li>
+
+      <img src="tutorials/4X4/download (22).png" alt="">
+
+      <p>Slice piece 1 towards piece 2, execute the flipping algorithm, then fix the centers: 2U' R U R' F R' F' R 2U</p>
+
+      <li>Complete the cross</li>
+
+      <p>Insert the final solved edge into the bottom layer to finish your 4-piece White Cross.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s6">
+
+    <h2>Step 6 — Solve Like a 3x3</h2>
+
+    <p>Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!</p>
+
+  </section>
+
+  <section id="s7">
+
+    <h2>Step 7 — Fix 4x4 Parities (If Needed)</h2>
+
+    <ul>
+
+      <li>OLL Parity</li>
+
+      <img src="tutorials/4X4/download (24).png" alt="">
+
+      <p>Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'</p>
+
+      <li>PLL Parity</li>
+
+      <img src="tutorials/4X4/download (25).png" alt="">
+
+      <p>2R2 U2 2R2 Uw2 2R2 Uw2</p>
+
+    </ul>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer> 
+    
+    <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

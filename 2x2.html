@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2x2 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+
+<body>
+
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/2X2/download.png" alt="Step 1"></span><span class="labels">White Layer</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/2X2/download (1).png" alt="Step 2"></span><span class="labels">Yellow Corners</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/2X2/download (2).png" alt="Step 3"></span><span class="labels">Orient the Last Layer</span></a>
+</div>
+
+<header>
+  <h1>2x2 (Pocket Cube)</h1>
+<p>A compact puzzle solved by arranging just the corners. It has no fixed centers and is often solved using simplified 3x3 layer methods.</p>
+</header>
+
+<div class="introduction">
+  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+
+<ul>
+  <li>
+    R / R': Right side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    U / U': Top layer clockwise / counter-clockwise
+  </li>
+  
+  <li>
+    L / L': Left side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    D / D': Bottom layer clockwise / counter-clockwise
+  </li>
+  
+</ul>
+
+<p>The Right-Hand Trigger (Sexy Move):</p>
+
+<img src="tutorials/2X2/f13f087b-e096-4232-b290-e9f506d1df3f.png" alt="Sexy Move">
+
+<p>You'll use this short combo for inserting pieces and solving orientations.</p>
+</div>
+
+<main>
+  <section id="s1">
+
+    <h2>Step 1 — White Layer</h2>
+
+    <ul>
+
+      <li>Pick a base piece(Start with White/Red/Blue)</li>
+
+<p>Hold the cube so a corner with White (e.g., White-Red-Blue) is in the bottom-left front position with white facing down.</p>
+
+<img src="tutorials/2X2/download (5).png" alt="White/Red/Blue">
+
+
+      <li>Find the matching corner(Look in the top layer)</li>
+      <p>Look for another white corner that shares a color with your base piece (e.g., White-Red-Green). Rotate the top layer (U) until that piece sits directly above where it needs to go (top-right front).</p>
+<img src="tutorials/2X2/download (6).png" alt="White/Red/Green">
+      <li>Insert the piece</li>
+<p>Hold the destination spot at the bottom-right front, then repeat the trigger:
+
+R U R' U'
+
+Repeat this 1 to 5 times until the white sticker points down and the side colors line up.</p>
+      <li>Complete the remaining two corners</li>
+<p>Repeat the process for the remaining white corners until the entire bottom layer is solved with matching side colors.</p>
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Corners</h2>
+    
+<p>Turn the top layer (U) to see how many corners are in the correct position (matching the colors of the pieces below them, regardless of orientation).</p>
+
+<img src="tutorials/2X2/download(3).png" alt="1corner">
+
+<ul>
+<li>If there are 4 correct corners</li>
+
+  <p>Skip to Step 3!</p>
+
+  <li>If there are 0 correct corners, turn the (U) layer until at least 1 corner matches.</li>
+
+  <li>If there is 1 correct corner, hold the matching corner in the front-right-top position.</li>
+
+  <li>If there are 2 correct corners (next to each other), turn the (U) layer until only 1 corner matches.</li>
+
+  <li>If there are 2 correct corners (across/diagonal from each other), hold any corner in the front-right-top position.</li>
+
+</ul>
+
+<p>Then do the following algorithm:</p>
+
+<img class="YellowCorners" src="tutorials/2X2/9503d278-6fbe-4c23-8f5b-c156c4e29158.png" alt="YellowCorners">
+
+<p>If the remaining corners aren't solved after 1 execution, run it once more with the correct piece still held at front-right-top.</p>
+
+  </section>
+
+  <section id="s3">
+    <h2>Step 3 — Orient the Last Layer</h2>
+<ul>
+
+  <li>Flip the cube upside down</li>
+
+  <p>Flip the cube so your solved white layer is now on top, and the unsolved yellow layer is on the bottom.</p>
+  <img src="tutorials/2X2/download (4).png" alt="BtmUnsolved">
+
+  <li>Target an unsolved corner</li>
+
+  <p>Rotate the bottom layer (D) until an unsolved corner with yellow facing the side sits at the bottom-right.</p>
+
+  <li>Solve the corner orientation</li>
+
+  <p>Execute the trigger until yellow points down: R U R' U'</p>
+  <p>(It usually takes 2 or 4 repeats. Do not forget the final U' move of the trigger!)</p>
+
+  <li>Bring the next unsolved corner over</li>
+
+  <p>DO NOT rotate the whole cube. Turn only the bottom layer (D / D') to move the next unsolved piece into the bottom-right spot. Repeat R U R' U' until solved.</p>
+
+  <li>Finish the solve</li>
+
+  <p>Once all yellow stickers face down, the rest of the cube will automatically fix itself! Just turn the bottom layer to align the colors.</p>
+
+</ul>
+  
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>    
+
+<script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+
+</html>

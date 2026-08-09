@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x3 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+ 
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/3X3/download (8).png" alt="Step 1"></span><span class="labels">White Cross</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/3X3/download (9).png" alt="Step 2"></span><span class="labels">First Layer</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/3X3/download (7).png" alt="Step 3"></span><span class="labels">Second Layer</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/3X3/download (3).png" alt="Step 4"></span><span class="labels">Yellow Cross</span></a>
+  <a href="#s5"><span class="thumb"><img src="tutorials/3X3/download (4).png" alt="Step 5"></span><span class="labels">Yellow Edges</span></a>
+  <a href="#s6"><span class="thumb"><img src="tutorials/3X3/download (5).png" alt="Step 6"></span><span class="labels">Yellow Corners</span></a>
+  <a href="#s7"><span class="thumb"><img src="tutorials/3X3/download (6).png" alt="Step 7"></span><span class="labels">Orient the Last Layer</span></a>
+</div>
+
+<header>
+<h1>3x3 (Rubik's Cube)</h1>
+<p>The iconic original puzzle invented by Ernő Rubik in 1974. It features 6 fixed centers, 12 edges, and 8 corners.</p>
+</header>
+
+<div class="introduction">
+  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+
+<ul>
+  <li>
+    R / R': Right side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    U / U': Top layer clockwise / counter-clockwise
+  </li>
+  
+  <li>
+    L / L': Left side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    F / F': Front layer clockwise / counter-clockwise
+  </li>
+
+  <li>
+    D / D': Bottom layer clockwise / counter-clockwise
+  </li>
+
+</ul>
+
+<p>The Right-Hand Trigger (Sexy Move):</p>
+
+<img src="tutorials/3X3/7a8d43f2-4de8-4c3c-8bd1-f697ff84353a.png" alt="SexyMove">
+
+<p>The Left-Hand Trigger:</p>
+
+<img src="tutorials/3X3/7c3d509b-6978-4b42-83cb-48e9ad3c6d8a.png" alt="LeftSexy">
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — White Cross</h2>
+
+<p>Hold the cube with Yellow on the bottom (and White on top).</p>
+
+<ul>
+
+  <li>Find a white edge</li>
+
+  <p>Look around the cube for an edge piece with white on it.</p>
+
+  <img src="tutorials/3X3/download (1).png" alt="WhiteEdge">
+
+  <li>Match its side color</li>
+
+  <p>Rotate the face containing that edge until its non-white side color matches the center piece next to it.</p>
+
+  <img src="tutorials/3X3/download (2).png" alt="BlueEdge">
+
+  <li>Bring white to the bottom</li>
+
+  <p>Turn that matching side face to bring the white sticker up into the top layer next to the white center.</p>
+
+  <img src="tutorials/3X3/download (10).png" alt="stickerDown">
+
+  <li>Handle flipped edges  </li>
+
+  <img src="tutorials/3X3/download (11).png" alt="flipped">
+
+  <p>If the white sticker ends up pointing sideways on the top face instead of up, turn that front face once (F), bring the top layer over (U'), use the right side to align it (R), and restore your top layer (U).</p>
+
+  <img src="tutorials/3X3/download (12).png" alt="">
+  <img src="tutorials/3X3/download (13).png" alt="">
+  <img src="tutorials/3X3/download (14).png" alt="">
+  <img src="tutorials/3X3/download (15).png" alt="">
+  <img src="tutorials/3X3/download (16).png" alt="">
+
+  <li>Repeat for all 4 edges</li>
+
+  <p>Repeat this for all four white edges until you have a completed white cross on the top with all side colors matching their centers.</p>
+
+</ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — First Layer</h2>
+
+    <p>Put the white cross on the bottom.</p>
+
+    <ul>
+
+      <li>Locate a white corner</li>
+
+      <p>Look in the top layer for a corner piece with white on it.</p>
+
+      <li>Position above target spot</li>
+
+      <p>Turn the U layer to place the corner directly above the spot where it needs to go.</p>
+
+      <img src="tutorials/3X3/download (17).png" alt="">
+
+      <li>Insert using the Right-Hand Trigger</li>
+
+      <p>Hold the destination spot in the front-right-bottom position and repeat: R U R' U' Repeat 1 to 5 times until the corner is inserted with white facing down and side colors matching. Repeat for all 4 corners.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Second Layer</h2>
+
+    <p>With the white layer complete on the bottom, find edges in the top layer that do not have yellow on them.</p>
+
+    <ul>
+
+      <li>Make a 'T' shape</li>
+
+      <p>Pick a non-yellow edge in the top layer. Look at its front color and turn the U layer until it forms a matching T shape with the center piece below it.</p>
+
+      <img src="tutorials/3X3/download (18).png" alt="">
+      <img src="tutorials/3X3/download (22).png" alt="">
+
+      <li>Determine direction</li>
+
+      <p>Look at the top color of the edge. Check if it needs to move into the front-right slot or the front-left slot.</p>
+
+      <img src="tutorials/3X3/download (20).png" alt="">
+      <img src="tutorials/3X3/download (21).png" alt="">
+
+      <li>Insert the edge</li>
+
+      <p>if it needs to move into the front-right slot:</p>
+      <p>Turn top layer away (U).</p>
+
+      <img src="tutorials/3X3/download (19).png" alt="">
+      <img src="tutorials/3X3/download (23).png" alt="">
+
+      <p>Run Right Trigger (R U R' U'), and rotate the whole cube right to face the target slot.</p>
+
+      <img src="tutorials/3X3/download (24).png" alt="">
+      <img src="tutorials/3X3/download (25).png" alt="">
+
+      <p>Run Left Trigger (L' U' L U).</p>
+
+      <img src="tutorials/3X3/download (26).png" alt="">
+
+      <p>if it needs to move into the front-left slot:</p>
+      <p>Turn top layer away (U').</p>
+
+      <img src="tutorials/3X3/download (27).png" alt="">
+      <img src="tutorials/3X3/download (28).png" alt="">
+
+      <p>Run Left Trigger (L' U' L U), and rotate the whole cube right to face the target slot.</p>
+
+      <img src="tutorials/3X3/download (29).png" alt="">
+      <img src="tutorials/3X3/download (30).png" alt="">
+
+      <p>Run Right Trigger (R U R' U').</p>
+
+      <img src="tutorials/3X3/download (31).png" alt="">
+
+      <li>Repeat</li>
+
+      <p>Do this for all 4 middle-layer edges.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Yellow Cross</h2>
+
+    <p>Look at the yellow top face. Ignore the corners for now and match one of these pattern cases:</p>
+
+    <ul>
+
+      <li>Dot</li>
+
+      <img src="tutorials/3X3/download (32).png" alt="">
+
+      <p>Hold anywhere and run: F (R U R' U') F' → gives you the Line.</p>
+
+      <li>"L" Shape</li>
+
+      <img src="tutorials/3X3/download (33).png" alt="">
+
+      <p>Hold the "L" in the top-left (12 o'clock and 9 o'clock) and run: F (R U R' U') F'.</p>
+
+      <li>Line</li>
+
+      <img src="tutorials/3X3/download (34).png" alt="">
+
+      <p>Hold horizontally (3 o'clock and 9 o'clock) and run: F (R U R' U') F'.</p>
+
+      <li>Cross</li>
+
+      <img src="tutorials/3X3/download (3).png" alt="">
+
+      <p>Skip to Step 5!</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s5">
+
+    <h2>Step 5 — Yellow Edges</h2>
+
+    <p>Turn the top layer (U) to see how many yellow edges match the side center colors.</p>
+
+    <ul>
+
+      
+
+      <li>2 Adjacent matches</li>
+
+      <img src="tutorials/3X3/download (35).png" alt="">
+
+      <p>Hold one matching edge at the Back and one on the Right.</p>
+
+      <li>2 Opposite matches</li>
+
+      <img src="tutorials/3X3/download (36).png" alt="">
+
+      <p>Hold from anywhere.</p>
+
+      <p>Then do the following algorithm:</p>
+
+      <img src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png" id="S5">
+
+      <p>(After executing, turn U once to align all 4 edges with their matching centers if you can only align 2 edges, then repeat this step.)</p>
+
+      <li>All 4 match</li>
+
+      <img src="tutorials/3X3/download (4).png" alt="">
+
+      <p>Skip to Step 6!</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s6">
+
+    <h2>Step 6 — Yellow Corners</h2>
+
+    <p>Look at the top corners to see how many are in the correct position (matching the colors of the three surrounding centers, regardless of orientation).</p>
+
+    <img src="tutorials/3X3/download (37).png" alt="">
+
+    <ul>
+
+      <li>If there is 1 correct corner, hold the matching corner in the front-right-top position.</li>
+
+      <li>If there are 0 correct corners, hold from anywhere.</li>
+
+    </ul>
+
+    <p>Then do the following algorithm:</p>
+
+    <img src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png" id="S5">
+
+  </section>
+
+  <section id="s7">
+
+    <h2>Step 7 — Orient the Last Layer</h2>
+
+    <p>Now all corners are in their correct spots, but some yellow stickers point to the sides.</p>
+    <ul>
+
+      <li>Flip the cube upside down</li>
+
+      <p>Flip the cube so the solved white layer is now on top, and the unsolved yellow layer is on the bottom.</p>
+
+      <img src="tutorials/3X3/download (38).png" alt="">
+
+      <li>Target an unsolved corner</li>
+
+      <p>Rotate the bottom layer (D) until an unsolved yellow corner sits in the bottom-right position.</p>
+
+      <li>Orient the corner</li>
+
+      <p>Execute the Right-Hand Trigger until yellow points down: R U R' U'</p>
+      <p>(Takes 2 or 4 repeats. Do not forget the final U' move!)</p>
+
+      <li>Bring the next corner</li>
+
+      <p>DO NOT rotate the whole cube. Turn only the bottom layer (D / D') to move the next unsolved yellow piece to the bottom-right spot. Repeat R U R' U'.</p>
+
+      <li>Finish the solve</li>
+
+      <p>Once all yellow stickers face down, turn the bottom layer to align the final colors!</p>
+
+
+    </ul>
+
+  </section>
+
+</main>
+
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>    
+
+<script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

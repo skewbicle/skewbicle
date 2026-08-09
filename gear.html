@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearCube Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/gear cube/42aa6dad-9157-4fdc-82b9-b38960d0c8d1.png" alt="Step 1"></span><span class="labels">Corners</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/gear cube/7335ab51-6b8a-4e0b-a22d-6aa05fdcbd49.png" alt="Step 2"></span><span class="labels">Edges</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/gear cube/fe4d8b06-2293-4d49-bcbc-ddd4ac6b8294.png" alt="Step 3"></span><span class="labels">Solve the Cube</span></a>  
+</div>
+
+ 
+<header>
+
+  <h1>Gear Cube</h1>
+
+  <p>A puzzle featuring internal gear mechanisms that cause the edge and corner pieces to rotate at different ratios as you turn the faces.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+
+<ul>
+  <li>
+    R / R': Right side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    U / U': Top layer clockwise / counter-clockwise
+  </li>
+  
+  <li>
+    L / L': Left side clockwise / counter-clockwise
+  </li>
+
+  <li>
+    F / F': Front layer clockwise / counter-clockwise
+  </li>
+
+  <li>
+    D / D': Bottom layer clockwise / counter-clockwise
+  </li>
+
+</ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — Corners</h2>
+
+    <ul>
+
+      <li>Match Corner Pairs</li>
+
+      <p>Pick a white corner piece and find another white corner with a matching side color (e.g., Green). Make 180° turns until those two corners sit side-by-side with their side colors matching.</p>
+
+      <li>Automatic Corners</li>
+
+      <p>Because of the Gear Cube's mechanism, solving one pair of corners automatically aligns all 8 corners on the entire cube!</p>
+
+      <li>Center Alignment</li>
+
+      <p>Rotate the middle slice using 180° turns until the center pieces line up with their corresponding corner colors.</p>
+
+      <img src="tutorials/gear cube/42aa6dad-9157-4fdc-82b9-b38960d0c8d1.png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Edges</h2>
+
+    <p>The cube has 3 edge slices. Identify any slice where opposite edges need to swap positions (top two swap with each other, and bottom two swap with each other).</p>
+
+    <li>Hold the cube so the two swapping top edges face you.</li>
+
+    <p>Algorithm 1 (Swap Edges): R2 U R2 U</p>
+
+    <li>Repeat this algorithm on any other ring where edges are in the wrong slots.</li>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Solve the Cube</h2>
+
+    <p>After placing all edge pieces in their correct slots, some edge gears may sit misaligned at an angle (making the puzzle lose its flat, cubic shape).</p>
+
+    <li>Flatten the Cube (Align Gear Teeth)</li>
+
+    <p>Turn a face 4 to 6 times (180° turns) until the gear teeth engage properly and the face becomes flat and smooth.</p>
+    <p>Repeat on the other axes until all faces form a flat cube shape again.</p>
+    <p>All pieces are in their correct locations, but some edge gears may still be flipped/rotated upside down.</p>
+
+    <img src="tutorials/gear cube/7335ab51-6b8a-4e0b-a22d-6aa05fdcbd49.png" alt="">
+
+    <li>Unflip/Rotate the Gear Edges</li>
+
+    <p>Hold the cube facing a side where all 4 edge gears need to be flipped.</p>
+    <p>Algorithm 2 (Unflip Edges): R U R U R U</p>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>
+    
+ <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

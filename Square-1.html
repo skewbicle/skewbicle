@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square-1 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/square-1/0f8f5b5e-b1b3-4c55-989d-4f7b57be3a25.png" alt="Step 1"></span><span class="labels">Cube Shape</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/square-1/a9abb0b8-b4ee-4f28-9bf1-e6f141275aa.b.png" alt="Step 2"></span><span class="labels">Corner Orientation</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/square-1/91d13e1e-7c56-4193-86d0-d02059d7cbe9.png" alt="Step 3"></span><span class="labels">Edge Orientation</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/square-1/eaaad4bc-85ae-4b68-b377-7fdb3753fe82.png" alt="Step 4"></span><span class="labels">Corner Permutation</span></a>
+    <a href="#s5"><span class="thumb"><img src="tutorials/square-1/1f8b1977-5be1-4d3a-8823-146b51fef5d5.png" alt="Step 4"></span><span class="labels">Edge Permutation</span></a>
+  
+</div>
+
+<header>
+
+  <h1>Square-1</h1>
+
+  <p>A three-layer, shapeshifting puzzle solved by returning it to a cube before arranging the pieces.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, make sure you know the Square-1 <span><a href="algorithms.html">move notation</a></span>:</p>
+
+  <img src="tutorials/square-1/2bd51ae9-d8bb-4012-8a3f-1b26bfc2aa62.png" alt="">
+
+  <p>Grip: Always hold the Square-1 with the smaller part of the front middle layer (equator) on the left side.</p>
+
+  <ul>
+
+    <li>Slash (/): A 180° rotation of the right side.</li>
+
+    <p>Bracket Notation (Top, Bottom):</p>
+
+    <li>Positive numbers = clockwise turn; negative numbers = counter-clockwise turn.</li>
+
+    <li>Edges = value of 1 (15° per edge).</li>
+
+    <li>Corners = value of 2 (30° per corner).</li>
+
+    <li>3 = standard 90° layer turn (equivalent to a U or D move on 3x3).</li>
+
+  </ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — Cube Shape</h2>
+
+    <p>The goal is to shape-shift the puzzle back into a square shape by reducing it through key intermediate shapes</p>
+
+    <ul>
+
+      <li>Group Edges</li>
+
+      <p>Group all 8 small edge pieces together into even pairs to reach the Millennium Falcon shape or Scallop-Scallop (2 groups of 4 adjacent edges on top and bottom).</p>
+
+      <li>Scallop → Barrel </li>
+
+      <img src="tutorials/square-1/e87ba3da-bce8-498a-b724-56de211a8830.png" alt="">
+
+      <p>Align both scallops so the edges are on the same side, then slice (/)</p>
+
+      <li>Barrel → Kite</li>
+
+      <img src="tutorials/square-1/ebf2349b-145c-4485-9bc8-229f77952568.png" alt="">
+
+      <p>Orient the top and bottom barrels 90° relative to each other and slice (/)</p>
+
+      <li>Kite → Cube Shape</li>
+
+      <img src="tutorials/square-1/dd9f1c54-d9b0-4363-a9bf-b907981d0431.png" alt="">
+
+      <p>Align the seam through the middle of both kites and slice (/)</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Corner Orientation</h2>
+
+    <li>Orient all top-color (yellow) corners on the top layer and bottom-color (white) corners on the bottom layer intuitively.</li>
+    <p>Crucial Rule: To keep the puzzle in cubic shape while moving pieces around, always misalign top or bottom layer by 1 notch before making vertical slice turns.</p>
+    <p>Pair up yellow corners 2-by-2, move them into position, and bring all 4 to the top layer.</p>
+
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Edge Orientation</h2>
+
+    <p>Orient all top-color edges to the top layer and bottom-color edges to the bottom layer using standard edge swap algorithms.</p>
+
+    <ul>
+
+      <li>Single Edge Swap</li>
+
+      <img src="tutorials/square-1/abc8b103-3147-45e6-8687-d8f014b5d683.png" alt="">
+      
+      <p>(0,-1)/(-3,0)/(4,1)/(-4,-1)/(3,0)/(0,-1)</p>
+
+      <li>Double Edge Swap</li>
+
+      <img src="tutorials/square-1/a9abb0b8-b4ee-4f28-9bf1-e6f141275aab.png" alt="">
+
+      <p>(1,0)/(-3,0)/(-1,-1)/(4,1)/(-1,0)</p>
+
+      <li>M2 Edge Swap</li>
+
+      <img src="tutorials/square-1/b0612e51-52f4-45b3-aacc-3d95c9e4c7dd.png" alt="">
+
+      <p>(0,-1)/(1,1)/(-1,0)</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Corner Permutation</h2>
+
+    <p>Move all top and bottom corners into their correct positions relative to each other.</p>
+
+    <ul>
+
+      <li>Diagonal Swap</li>
+
+      <img src="tutorials/square-1/ded71775-3b59-47c7-bb24-93088c4b80b8.png" alt="">
+
+      <p>/(3,-3)/(3,0)/(-3,0)/(0,3)/(-3,0)/</p>
+
+      <li>Adjacent Swap</li>
+
+      <img src="tutorials/square-1/920a6b0d-736f-4857-8612-8deaab98d741.png" alt="">
+
+      <p>/(3,3)/(-3,0)/(3,3)/(-3,0)/(3,3)/</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s5">
+
+    <h2>Step 5 — Edge Permutation</h2>
+
+    <p>Permute edges on both top and bottom layers simultaneously</p>
+
+    <ul>
+
+      <li>Opposite Swap</li>
+
+      <img src="tutorials/square-1/c9852872-8ac5-4961-a1c2-7e04f6f686b5.png" alt="">
+
+      <p>M2 U2 M2</p>
+
+      <li>Adjacent Swap</li>
+
+      <img src="tutorials/square-1/8b3227d0-2d47-4eef-80ba-3761229086af.png" alt="">
+
+      <p>(1,0)/(3,0)/(-1,-1)/(-2,1)/</p>
+
+      <li>Edge Parity (If 1 odd swap remains)</li>
+
+      <p>/ (-3, 0) / (0, 3) / (0, -3) / (0, 3) / (2, 0) / (2, -2) / (-2, 0) / (4, 0) / (-2, 0) / (2, 0) / (-1, 4) / (0, -3) / (0, 3)</p>
+
+    </ul>
+    
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>
+
+     <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyraminx Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+ 
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png" alt="Step 1"></span><span class="labels">Corners</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/pyraminx/438b67d9-19fc-4c2c-a45d-2ac6bffb524f.png" alt="Step 2"></span><span class="labels">Yellow Side</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/pyraminx/ed167004-b49d-468d-ab36-3c12594c1e1f.png" alt="Step 3"></span><span class="labels">Blue Side</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/pyraminx/34af9d18-5d41-46c5-9120-a42ba5b8c03c.png" alt="Step 4"></span><span class="labels">Remaining Sides</span></a>
+</div>
+
+<header>
+
+  <h1>Pyraminx</h1>
+
+  <p>A tetrahedral puzzle invented by Uwe Meffert.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+
+  <p>Right-hand side move:</p>
+
+  <img src="tutorials/pyraminx/074a16b0-b2bb-4da5-a34e-63d6b78874a3.png" alt="">
+
+  <p>left-hand side move:</p>
+
+  <img src="tutorials/pyraminx/929cd3fc-113e-430f-863b-888f672ecb4a.png" alt="">
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — Corners</h2>
+
+    <ul>
+
+      <li>Turn the Tips</li>
+
+    </ul>
+
+    <p>The 4 small corner tips don't affect any other pieces on the puzzle.</p>
+    <p>Simply twist each of the 4 tips until their colors match the piece directly underneath them.</p>
+
+    <img src="tutorials/pyraminx/a753b686-8d78-4bcc-9ff4-ed7bd6a5997b.png" alt="">
+    <img src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png" alt="">
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Side</h2>
+
+    <ul>
+
+      <li>Solve the Center Pieces (First Layer Centers)</li>
+
+      <img src="tutorials/pyraminx/91659bd0-ce3f-45d9-8920-fe048cb8b0e4.png" alt="">
+
+      <p>Look at the 3 main face centers (the pieces directly under the tips) on a side.</p>
+      <p>Rotate the main corners until all 3 Yellow centers are on the same face.</p>
+      <p>Tip: Look at the tip that doesn't have yellow on it—the face opposite that tip is your Yellow face!</p>
+
+      <li>Insert the Bottom Edges (Solve the Yellow Base)</li>
+
+      <p>Hold the puzzle so the completed Yellow face is on the bottom. Look at the 3 edge slots on the bottom layer.</p>
+      <p>Find a Yellow edge piece on the top layer.</p>
+
+      <li>If the Yellow sticker is on the Right</li>
+
+      <img src="tutorials/pyraminx/a630d0ac-5a14-4d4f-b2f2-edd59b72cb8b.png" alt="">
+
+      <p>Do the Right-hand side move</p>
+
+      <li>If the Yellow sticker is on the Left</li>
+
+      <img src="tutorials/pyraminx/854bff58-c0e0-459d-bcc1-44997e537c8c.png" alt="">
+
+      <p>Do the Left-hand side move</p>
+
+      <p>Repeat this for all 3 bottom edges until the entire Yellow layer and its matching side-strips are complete.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Blue Side</h2>
+
+    <ul>
+
+      <li>Forget and Move On</li>
+
+      <p>Once the first face (Yellow) is solved, completely ignore that Yellow was solved.</p>
+
+      <li>Pick a new color (like Blue)</li>
+      <li>Treat Blue as your new bottom face</li>
+      <li>Repeat the exact same steps to solve the Blue face</li>
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Remaining Sides (If Needed)</h2>
+
+    <p>Once you finish your second face (e.g., Blue) and the Pyraminx still isn't solved:</p>
+
+    <ul>
+      
+      <li>Pick the Next Unsolved Face</li>
+
+      <p>Look around the puzzle and pick a third color (e.g., Red or Green).</p>
+
+      <li>Treat it as your new bottom</li>
+
+      <p>Hold that face on the bottom and forget about Blue and Yellow.</p>
+
+      <li>Repeat the exact same steps</li>
+
+      <p>Best Case: The puzzle solves on the 2nd face (50% of the time).</p>
+      <p>Average Case: The puzzle solves after doing a 3rd face.</p>
+      <p>Worst Case: You might need to cycle through a 4th face, but it will always solve automatically without you ever needing to learn a single last-layer algorithm!</p>
+
+    </ul>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>   
+    
+<script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+    
+</body>
+</html>

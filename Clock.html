@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/clock/0d079a1c-a170-4745-865d-2a2faae00b6f.png" alt="Step 1"></span><span class="labels">Cross #1</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/clock/29eb35be-81df-4c1e-950d-53c1b5d6119f.png" alt="Step 2"></span><span class="labels">Cross #2</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/clock/9f0c3cae-e6f0-4e6d-bfa8-2b48cb297d2b.png" alt="Step 3"></span><span class="labels">Corners</span></a>
+  
+</div>
+
+
+<header>
+
+  <h1>Rubik's Clock</h1>
+
+  <p>A two-sided mechanical puzzle with 9 dual-sided clock faces and 4 corner pins used to sync and set all 18 dials to 12 o'clock.</p>
+
+</header>
+
+<div class="introduction">
+
+    <p>Before starting, get familiar with 6x6 <span><a href="algorithms.html">move notation</a></span>:</p>
+
+    <ul>
+
+      <li>Pins (4): Pushing a pin UP engages the dials around itDials (4): Turning a dial rotates all connected clocks around any active (UP) pins.. Pushing a pin DOWN disengages the clocks around that pin.</li>
+
+      <li>Dials (4): Turning a dial rotates all connected clocks around any active (UP) pins.</li>
+
+    </ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — Solve Cross #1 (First Side)</h2>
+
+    <p>Start on side 1 by matching the center clock to each cross clock one by one:</p>
+
+    <ul>
+
+      <li>Match Center to Edge 1</li>
+
+      <p>Put only 1 pin up (away from the target edge) and turn its dial until the center clock matches the target edge clock.</p>
+
+      <li>Match Block to Edge 2</li>
+
+      <p>Raise the pin for the solved edge and turn the dial to rotate your solved block into alignment with the next edge clock.</p>
+
+      <li>Match Block to Edge 3 & 4</li>
+
+      <p>Repeat this process—adding UP pins to grow your solved block—until all 5 cross clocks match.</p>
+
+      <img src="tutorials/clock/89a691d4-074c-4e10-9b3d-8e13e4bd41cb.png" alt="">
+
+      <li>Point Cross Up</li>
+
+      <p>Push all 4 pins UP and turn any dial until all cross clocks point straight up to 12 o'clock.</p>
+
+    </ul>
+
+    <img src="tutorials/clock/0d079a1c-a170-4745-865d-2a2faae00b6f.png" alt="">
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Solve Cross #2 (Second Side)</h2>
+
+    <p>Flip the puzzle over to the second side.</p>
+    <p>Crucial Rule: Never turn a dial whose adjacent pin is DOWN. Doing so will mess up the clocks on the opposite side!</p>
+
+    <li>epeat the exact same cross-matching process</li>
+
+    <p>Match the center clock to edge 1, then edge 2, 3, and 4.</p>
+    <p>Note: Do not turn all cross clocks to 12 o'clock yet on this side.</p>
+
+    <img src="tutorials/clock/29eb35be-81df-4c1e-950d-53c1b5d6119f.png" alt="">
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Solve All 4 Corners</h2>
+
+    <p>Solving the corners on this side automatically solves the corners on the back side simultaneously:</p>
+
+    <ul>
+
+      <li>Target Corner 1</li>
+
+      <p>Push DOWN only the pin closest to the target corner (keep the other 3 pins UP). Turn any dial near an UP pin until your cross block matches that corner.</p>
+
+      <li>Target Corners 2, 3, & 4</li>
+
+      <p>Repeat this process for each remaining corner by putting its pin DOWN and turning an active dial to match.</p>
+
+      <li>Finish the Solve</li>
+
+      <p>Put all 4 pins UP and turn any dial until all clocks point straight up to 12 o'clock [03:09]. Flip the puzzle over—both sides will now be fully solved!</p>
+
+    </ul>
+
+    <img src="tutorials/clock/9f0c3cae-e6f0-4e6d-bfa8-2b48cb297d2b.png" alt="">
+    <img src="tutorials/clock/e5c86a9e-f597-4aad-b481-a34cd358da85.png" alt="">
+
+  </section>
+
+</main>
+ 
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

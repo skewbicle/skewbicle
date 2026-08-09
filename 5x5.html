@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x5 Tutorial</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+ 
+<div class="timeline-nav" id="timelineNav">
+  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/5X5/download.png" alt="Step 1"></span><span class="labels">White Center</span></a>
+  <a href="#s2"><span class="thumb"><img src="tutorials/5X5/download (26).png" alt="Step 2"></span><span class="labels">Yellow Center</span></a>
+  <a href="#s3"><span class="thumb"><img src="tutorials/5X5/download (1).png" alt="Step 3"></span><span class="labels">Side Centers</span></a>
+  <a href="#s4"><span class="thumb"><img src="tutorials/5X5/download (2).png" alt="Step 4"></span><span class="labels">Edge Pairing</span></a>
+  <a href="#s5"><span class="thumb"><img src="tutorials/5X5/download (3).png" alt="Step 5"></span><span class="labels">Parity</span></a>
+  <a href="#s6"><span class="thumb"><img src="tutorials/5X5/download (4).png" alt="Step 5"></span><span class="labels">Solve Like a 3x3</span></a>
+</div>
+
+<header>
+
+  <h1>5x5 (Professor's Cube)</h1>
+
+  <p>The smallest "odd" layered big cube. It combines fixed centers with edge-pairing techniques from the 4x4, but has no center-edge parities.</p>
+
+</header>
+
+<div class="introduction">
+
+  <p>Before starting, get familiar with 5x5 <span><a href="algorithms.html">move notation</a></span>:</p>
+
+  <ul>
+
+    <li>Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise</li>
+
+    <li>Uw / Uw': Move the two top layers together clockwise / counter-clockwise</li>
+
+    <li>Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise</li>
+
+    <li>3Rw: Move the outer 3 layers on the right side together</li>
+
+    <li>x: tilt the cube forward (the bottom face moves to face front)</li>
+
+  </ul>
+
+</div>
+
+<main>
+
+  <section id="s1">
+
+    <h2>Step 1 — White Center</h2>
+
+    <p>Build the white 3x3 center grid by making three 1x3 bars.</p>
+
+    <ul>
+
+      <li>Middle Bar</li>
+
+      <p>Pair the white center piece with 2 White inner-edges to make a 1x3 line.</p>
+
+      <img src="tutorials/5X5/download (5).png" alt="">
+      <img src="tutorials/5X5/download (6).png" alt="">
+
+      <li>Side Bars</li>
+
+     <p>Make two separate 1x3 bars on adjacent faces (1 corner-center + 1 edge-center + 1 corner-center).</p>
+
+     <img src="tutorials/5X5/download (7).png" alt="">
+
+     <li>Assemble</li>
+
+     <p>Slide the side bars onto the White face to form a complete 3x3 block.</p>
+
+     <img src="tutorials/5X5/download.png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s2">
+
+    <h2>Step 2 — Yellow Center</h2>
+
+    <p>Flip the cube so White is on the bottom.</p>
+
+    <ul>
+
+      <li>Middle Bar</li>
+
+      <p>Build a yellow bar on the top face while preserving the white center using: Rw and U</p>
+
+      <img src="tutorials/5X5/download (8).png" alt="">
+
+      <li>Second Bar</li>
+
+      <p>Build a yellow bar and move it to the top face while preserving the white center using: Rw U2 Rw'</p>
+
+      <img src="tutorials/5X5/download (11).png" alt="">
+      <img src="tutorials/5X5/download (9).png" alt="">
+
+      <li>Last Bar</li>
+
+      <p>Make the last yellow bar and align it under an existing top bar to finish the 3x3 yellow center by also using: Rw U2 Rw'</p>
+
+      <img src="tutorials/5X5/download (10).png" alt="">
+      <img src="tutorials/5X5/download (26).png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s3">
+
+    <h2>Step 3 — Side Centers</h2>
+
+    <p>With White on the left and Yellow on the right, solve the 4 middle centers around the sides.</p>
+
+    <ul>
+
+      <li>First 2 Centers</li>
+
+      <p>Solve the first two centers using the Rw U2 Rw' bar-insertion logic.</p>
+
+      <li>Last 2 centers</li>
+
+      <p>We nee to make only two corner center pieces remain to be swapped by usin: Lw' U2 Lw U Lw' U Lw.</p>
+
+      <img src="tutorials/5X5/download (12).png" alt="">
+      <img src="tutorials/5X5/download (13).png" alt="">
+
+    </ul>
+
+  </section>
+
+  <section id="s4">
+
+    <h2>Step 4 — Edge Pairing</h2>
+
+    
+    <ul>
+
+      <li>Free Pairing (First 8 Edges)</li>
+
+       <p>Place matching edges on the front-left and front-right slots and check if they line up or not.</p>
+
+      <li>If they line up</li>
+
+      <img src="tutorials/5X5/download (14).png" alt="">
+      <img src="tutorials/5X5/download (20).png" alt="">
+
+      <p>Slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.</p>
+
+      <img src="tutorials/5X5/download (24).png" alt="">
+      <img src="tutorials/5X5/download (25).png" alt="">
+
+      <li>If they don't line up</li>
+
+      <img src="tutorials/5X5/download (17).png" alt="">
+      <img src="tutorials/5X5/download (19).png" alt="">
+
+      <p>Apply the Flipping Algorithm: R U R' F R' F' R</p>
+      
+      <img src="tutorials/5X5/download (22).png" alt="">
+      <img src="tutorials/5X5/download (23).png" alt="">
+
+      <p>Then slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.</p>
+
+      <img src="tutorials/5X5/download (24).png" alt="">
+      <img src="tutorials/5X5/download (25).png" alt="">
+
+      <li>Last 4 Edges</li>
+
+      <p>When no unsolved top/bottom edges remain, place matching pieces on the same horizontal row and use slicing and flipping turns to join them directly without breaking centers.</p>
+
+    </ul>
+
+  </section>
+
+  <section id="s5">
+
+    <h2>Step 5 — Fix The Parity (If Needed)</h2>
+    
+    <p>A 5x5 Rubik's cube edge parity happens when pairing the last edges and one single edge piece remains flipped or mismatched.</p>
+
+    <img src="tutorials/5X5/download (3).png" alt="">
+
+    <p>Rw U2 x Rw U2 Rw U2 3Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'</p>
+
+  </section>
+
+  <section id="s6">
+
+    <h2>Step 6 — Solve Like a 3x3</h2>
+
+    <p>Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!</p>
+
+  </section>
+
+
+</main>
+
+
+<footer>
+  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
+  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
+</footer>    
+    
+        <script>
+  const links = document.querySelectorAll('.timeline-nav a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = sections.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        links.forEach((l, i) => l.classList.toggle('active', i === idx));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

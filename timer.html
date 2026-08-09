@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer - Skewbicle</title>
+    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+
+  :root {
+    --bg: #0e0f12;
+    --panel: #17181c;
+    --panel-2: #1e2025;
+    --border: #2a2c32;
+    --text: #e8e9ec;
+    --muted: #8b8d95;
+    --red: #e05a5a;
+    --green: #4fd17a;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%;
+    background: var(--bg); color: var(--text);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    overflow: hidden;
+    -webkit-user-select: none; user-select: none;
+    background-size: cover;
+     background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  }
+  #app {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+
+    
+  }
+  header {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 24px;
+    min-height: 60px;
+    max-height: 180px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  #scramble {
+    font-family: var(--mono);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    text-align: center;
+    color: var(--text);
+    max-width: 900px;
+    white-space: normal;
+  }
+  aside.left {
+    border-right: 1px solid var(--border);
+    background: var(--panel);
+    padding: 18px 14px;
+    overflow-y: auto;
+  }
+  aside.right {
+    border-left: 1px solid var(--border);
+    background: var(--panel);
+    padding: 18px 14px;
+    display: flex; flex-direction: column;
+  }
+  #main {
+    position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px;
+    transition: background 0.15s ease;
+  }
+  main.holding { background: rgba(224,90,90,0.08); }
+  main.ready { background: rgba(79,209,122,0.10); }
+  #timer {
+    font-family: var(--mono);
+    font-size: 108px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: var(--text);
+    transition: color 0.1s ease;
+    font-variant-numeric: tabular-nums;
+  }
+  #timer.holding { color: var(--red); }
+  #timer.ready { color: var(--green); }
+  #hint {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  #hint kbd {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  h3.section {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .stat-box .label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .stat-box .value { font-family: var(--mono); font-size: 16px; font-weight: 600; }
+  #times-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  #times-list::-webkit-scrollbar { width: 6px; }
+  #times-list::-webkit-scrollbar-track { background: var(--panel); }
+  #times-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  #times-list::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  .time-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: var(--mono);
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .time-row:hover { border-color: var(--accent); }
+  .time-row .idx { color: var(--muted); font-size: 11px; margin-right: 8px; }
+  .time-row .val.dnf { color: var(--red); text-decoration: line-through; }
+  .time-row .val.plus2 { color: var(--accent); }
+  
+  #modal-overlay, #confirm-overlay {
+    position: fixed; inset: 0; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.55);
+    z-index: 60;
+  }
+  #detail-modal, #confirm-modal {
+    background: var(--panel-2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px;
+    width: min(90vw, 460px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+  #detail-time {
+    font-family: var(--mono); font-size: 34px; font-weight: 700;
+    text-align: center; margin-bottom: 4px;
+  }
+  #detail-time.dnf { color: var(--red); }
+  #detail-time.plus2 { color: var(--accent); }
+  #detail-puzzle {
+    text-align: center; color: var(--muted); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+  }
+  #detail-scramble-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  #detail-scramble {
+    font-family: var(--mono); font-size: 15px; line-height: 1.6;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px; margin-bottom: 18px;
+    white-space: normal; word-break: break-word;
+  }
+  #detail-actions, #confirm-actions {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  #confirm-actions { grid-template-columns: 1fr 1fr; margin-top: 16px; }
+  
+  #detail-actions button, #confirm-actions button {
+    background: var(--panel); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 8px 4px;
+    font-size: 12px; cursor: pointer; font-family: inherit;
+  }
+  #detail-actions button:hover, #confirm-actions button:hover { border-color: var(--accent); }
+  #detail-actions button.active { border-color: var(--accent); color: var(--accent); }
+  #detail-actions button.danger, #confirm-actions button.danger { color: var(--red); }
+  #detail-actions button.danger:hover, #confirm-actions button.danger:hover { border-color: var(--red); }
+  
+  #confirm-text { font-size: 15px; text-align: center; color: var(--text); }
+
+  select, button.ctrl {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 8px;
+    font-family: inherit;
+  }
+  select:hover, button.ctrl:hover { border-color: var(--accent); }
+  
+  #clear-all { color: var(--red); border-color: var(--red); background: transparent; margin-top: -2px; margin-bottom: 45px; }
+  #empty-msg { color: var(--muted); font-size: 12px; text-align: center; margin-top: 12px; margin-bottom: 8px; }
+
+#times-list{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+  @media (max-width: 1024px) {
+    #app {
+      grid-template-columns: 180px 1fr 220px;
+
+    }
+    #timer {
+      font-size: 84px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    html, body {
+      overflow: auto;
+    }
+    #app {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto;
+      height: auto;
+      min-height: 100vh;
+    }
+    aside.left {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 16px;
+      padding: 12px 14px;
+    }
+    aside.left h3.section {
+      width: 100%;
+      margin: 0 0 6px;
+    }
+    aside.left .stat-grid {
+      flex: 1 1 auto;
+      margin-bottom: 0;
+    }
+    #puzzle-select {
+      width: auto;
+      flex: 1 1 160px;
+      margin-bottom: 0;
+    }
+    #main {
+      padding: 32px 16px;
+    }
+    #timer {
+      font-size: 64px;
+    }
+    aside.right {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      max-height: 320px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #timer {
+      font-size: 48px;
+    }
+    aside.left {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .stat-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    #detail-actions, #confirm-actions {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="simulator.html">Simulator</a></li>
+    <li><a href="algorithms.html">Algorithms</a></li>
+  </ul>
+</nav>
+
+<div id="app">
+
+
+
+  
+  <header><div id="scramble">Loading scramble…</div></header>
+
+  <aside class="left">
+    <h3 class="section">Puzzle</h3>
+    <select id="puzzle-select">
+      <option value="2x2">2x2 Cube</option>
+      <option value="3x3" selected>3x3 Cube</option>
+      <option value="4x4">4x4 Cube</option>
+      <option value="5x5">5x5 Cube</option>
+      <option value="6x6">6x6 Cube</option>
+      <option value="7x7">7x7 Cube</option>
+      <option value="skewb">Skewb</option>
+      <option value="megaminx">Megaminx</option>
+      <option value="pyraminx">Pyraminx</option>
+      <option value="square1">Square-1</option>
+      <option value="clock">Clock</option>
+    </select>
+    <h3 class="section" style="margin-top:22px;">Stats</h3>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="label">Best</div><div class="value" id="stat-best">-</div></div>
+      <div class="stat-box"><div class="label">Solves</div><div class="value" id="stat-count">0</div></div>
+      <div class="stat-box"><div class="label">Ao5</div><div class="value" id="stat-ao5">-</div></div>
+      <div class="stat-box"><div class="label">Ao12</div><div class="value" id="stat-ao12">-</div></div>
+      <div class="stat-box"><div class="label">Ao50</div><div class="value" id="stat-ao50">-</div></div>
+      <div class="stat-box"><div class="label">Ao100</div><div class="value" id="stat-ao100">-</div></div>
+      <div class="stat-box"><div class="label">Mean</div><div class="value" id="stat-mean">-</div></div>
+      <div class="stat-box"><div class="label">Deviation</div><div class="value" id="stat-deviation">-</div></div>
+    </div>
+  </aside>
+
+  <section id="main">
+    <div id="timer" class="idle">0.00</div>
+    <div id="hint">Hold <kbd>Space</kbd> to start &middot; tap and hold on mobile</div>
+  </section>
+
+  <aside class="right">
+    <h3 class="section">Times</h3>
+    <div id="times-list"></div>
+    <div id="empty-msg">No solves yet. Get cubing.</div>
+    <button class="ctrl" id="clear-all">Clear session</button>
+  </aside>
+</div>
+
+<div id="modal-overlay">
+  <div id="detail-modal">
+    <div id="detail-time">0.00</div>
+    <div id="detail-puzzle">3x3 Cube</div>
+    <div id="detail-scramble-label">Scramble</div>
+    <div id="detail-scramble">-</div>
+    <div id="detail-actions">
+      <button data-action="ok">OK</button>
+      <button data-action="plus2">+2</button>
+      <button data-action="dnf">DNF</button>
+      <button data-action="delete" class="danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="confirm-overlay">
+  <div id="confirm-modal">
+    <div id="confirm-text">Clear all solves this session?</div>
+    <div id="confirm-actions">
+      <button id="confirm-cancel">Cancel</button>
+      <button id="confirm-yes" class="danger">Clear</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+
+  // ---------- Scramble generators ----------
+
+  const MODS_STD = ['', "'", '2'];
+  const MODS_NO2 = ['', "'"];
+  const axisOfCube = f => (f==='U'||f==='D') ? 'UD' : (f==='L'||f==='R') ? 'LR' : 'FB';
+
+  function genCubeScramble(n, length, faces){
+    faces = faces || ['U','D','L','R','F','B'];
+    const maxDepth = n <= 3 ? 1 : Math.floor(n/2);
+    const seq = [];
+    let lastFace = null, lastAxis = null, lastAxisCount = 0;
+    while(seq.length < length){
+      const face = faces[Math.floor(Math.random()*faces.length)];
+      if(face === lastFace) continue;
+      const axis = axisOfCube(face);
+      if(axis === lastAxis){
+        if(lastAxisCount >= 2) continue;
+        lastAxisCount++;
+      } else {
+        lastAxisCount = 1;
+      }
+      lastAxis = axis;
+      lastFace = face;
+      const mod = MODS_STD[Math.floor(Math.random()*3)];
+      let depth = 1;
+      if(maxDepth > 1) depth = 1 + Math.floor(Math.random()*maxDepth);
+      let move;
+      if(depth === 1) move = face + mod;
+      else if(depth === 2) move = face + 'w' + mod;
+      else move = depth + face + 'w' + mod;
+      seq.push(move);
+    }
+    return seq.join(' ');
+  }
+
+  function genSkewb(){
+    const faces = ['R','U','L','B'];
+    const seq = [];
+    let lastFace = null;
+    while(seq.length < 11){
+      const face = faces[Math.floor(Math.random()*faces.length)];
+      if(face === lastFace) continue;
+      lastFace = face;
+      seq.push(face + MODS_NO2[Math.floor(Math.random()*2)]);
+    }
+    return seq.join(' ');
+  }
+
+  function genPyraminx(){
+    const faces = ['U','L','R','B'];
+    const seq = [];
+    let lastFace = null;
+    while(seq.length < 8){
+      const face = faces[Math.floor(Math.random()*faces.length)];
+      if(face === lastFace) continue;
+      lastFace = face;
+      seq.push(face + MODS_NO2[Math.floor(Math.random()*2)]);
+    }
+    const tips = ['u','l','r','b'];
+    tips.forEach(t => {
+      if(Math.random() < 0.7){
+        seq.push(t + MODS_NO2[Math.floor(Math.random()*2)]);
+      }
+    });
+    return seq.join(' ');
+  }
+
+  function genMegaminx(){
+    const seq = [];
+    for(let half = 0; half < 2; half++){
+      for(let i = 0; i < 10; i++){
+        seq.push(Math.random() < 0.5 ? 'R++' : 'R--');
+        seq.push(Math.random() < 0.5 ? 'D++' : 'D--');
+      }
+      seq.push('U' + (Math.random() < 0.5 ? '' : "'"));
+    }
+    return seq.join(' ');
+  }
+
+  function genSquare1(){
+    const seq = [];
+    for(let i = 0; i < 10; i++){
+      const x = Math.floor(Math.random()*12) - 5;
+      const y = Math.floor(Math.random()*12) - 5;
+      seq.push(`(${x},${y})`);
+    }
+    return seq.join(' / ') + ' /';
+  }
+
+  function genClock(){
+    const pins = ['UR','DR','DL','UL','U','R','D','L','ALL'];
+    function part(){
+      return pins.map(p => {
+        const v = Math.floor(Math.random()*12) - 5;
+        const sign = v >= 0 ? '+' : '';
+        return p + sign + v;
+      }).join(' ');
+    }
+    return part() + ' y2 ' + part();
+  }
+
+  const PUZZLES = {
+    '2x2':     { label: '2x2 Cube',  gen: () => genCubeScramble(2, 9,  ['R','U','F']) },
+    '3x3':     { label: '3x3 Cube',  gen: () => genCubeScramble(3, 20) },
+    '4x4':     { label: '4x4 Cube',  gen: () => genCubeScramble(4, 40) },
+    '5x5':     { label: '5x5 Cube',  gen: () => genCubeScramble(5, 60) },
+    '6x6':     { label: '6x6 Cube',  gen: () => genCubeScramble(6, 70) },
+    '7x7':     { label: '7x7 Cube',  gen: () => genCubeScramble(7, 80) },
+    'skewb':   { label: 'Skewb',     gen: genSkewb },
+    'megaminx':{ label: 'Megaminx',  gen: genMegaminx },
+    'pyraminx':{ label: 'Pyraminx',  gen: genPyraminx },
+    'square1': { label: 'Square-1',  gen: genSquare1 },
+    'clock':   { label: 'Clock',     gen: genClock }
+  };
+
+  // ---------- App state ----------
+
+  const STORAGE_KEY = 'cube-timer-data-v1';
+
+  const state = {
+    puzzle: '3x3',
+    sessions: {},        // { puzzleKey: [ {id, ms, scramble, penalty} ] }
+    currentScramble: '',
+    phase: 'idle',
+    holdStart: 0,
+    holdTimer: null,
+    runStart: 0,
+    rafId: null
+  };
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      const saved = JSON.parse(raw);
+      if(saved && typeof saved === 'object'){
+        if(saved.sessions && typeof saved.sessions === 'object') state.sessions = saved.sessions;
+        if(saved.puzzle && PUZZLES[saved.puzzle]) state.puzzle = saved.puzzle;
+      }
+    } catch(err){
+      console.error('Failed to load saved times:', err);
+    }
+  }
+
+  function saveState(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ sessions: state.sessions, puzzle: state.puzzle }));
+    } catch(err){
+      console.error('Failed to save times:', err);
+    }
+  }
+
+  function currentTimes(){
+    if(!state.sessions[state.puzzle]) state.sessions[state.puzzle] = [];
+    return state.sessions[state.puzzle];
+  }
+
+  const el = {
+    scramble: document.getElementById('scramble'),
+    timer: document.getElementById('timer'),
+    main: document.getElementById('main'),
+    hint: document.getElementById('hint'),
+    timesList: document.getElementById('times-list'),
+    emptyMsg: document.getElementById('empty-msg'),
+    puzzleSelect: document.getElementById('puzzle-select'),
+    clearAll: document.getElementById('clear-all'),
+    modalOverlay: document.getElementById('modal-overlay'),
+    detailTime: document.getElementById('detail-time'),
+    detailPuzzle: document.getElementById('detail-puzzle'),
+    detailScramble: document.getElementById('detail-scramble'),
+    detailActions: document.getElementById('detail-actions'),
+    confirmOverlay: document.getElementById('confirm-overlay'),
+    confirmText: document.getElementById('confirm-text'),
+    confirmCancel: document.getElementById('confirm-cancel'),
+    confirmYes: document.getElementById('confirm-yes'),
+    statBest: document.getElementById('stat-best'),
+    statCount: document.getElementById('stat-count'),
+    statAo5: document.getElementById('stat-ao5'),
+    statAo12: document.getElementById('stat-ao12'),
+    statAo50: document.getElementById('stat-ao50'),
+    statAo100: document.getElementById('stat-ao100'),
+    statMean: document.getElementById('stat-mean'),
+    statDeviation: document.getElementById('stat-deviation')
+  };
+
+  function fmt(ms){
+    if(ms == null) return '-';
+    if(ms === 'DNF' || ms === Infinity) return 'DNF';
+    const total = ms/1000;
+    const m = Math.floor(total/60);
+    const s = (total - m*60).toFixed(2);
+    return (m>0 ? m+':'+s.padStart(5,'0') : s);
+  }
+
+  function newScramble(){
+    state.currentScramble = PUZZLES[state.puzzle].gen();
+    el.scramble.textContent = state.currentScramble;
+  }
+
+  function effectiveMs(t){
+    if(t.penalty === 'dnf') return Infinity;
+    return t.penalty === 'plus2' ? t.ms + 2000 : t.ms;
+  }
+
+  // WCA Standard Trimmed Average for Ao5 / Ao12 / Ao50 / Ao100
+  function computeAvg(list){
+    const vals = list.map(effectiveMs);
+    const dnfCount = vals.filter(v => v === Infinity).length;
+    
+    // Max allowable DNFs before an average is invalid
+    const maxAllowedDnf = Math.floor(list.length * 0.1); 
+    if(dnfCount > (maxAllowedDnf === 0 ? 1 : maxAllowedDnf)) return null;
+
+    const sorted = [...vals].sort((a,b)=>a-b);
+    
+    // Trim top/bottom 5% (min 1 solve trimmed for standard averages)
+    const trim = Math.max(1, Math.floor(list.length * 0.05));
+    const trimmed = sorted.slice(trim, sorted.length - trim);
+
+    if(trimmed.some(v => v === Infinity)) return null;
+    const sum = trimmed.reduce((a,b)=>a+b,0);
+    return sum/trimmed.length;
+  }
+
+  // Fixed Twisty Timer Style Session Mean Calculation
+  function computeMean(list) {
+    if (!list || list.length === 0) return null;
+
+    // 1. Separate valid solves from DNFs
+    const valid = list.filter(t => t.penalty !== 'dnf').map(effectiveMs);
+    const dnfCount = list.length - valid.length;
+
+    // 2. If no valid solves, or if > 20% of the session is DNFs, return DNF
+    if (valid.length === 0) return 'DNF';
+    if (list.length >= 5 && (dnfCount / list.length) > 0.20) return 'DNF';
+
+    // 3. Sort valid times ascending
+    valid.sort((a, b) => a - b);
+
+    // 4. Apply 5% trimming ONLY when there are enough solves (20+) to trim
+    let target = valid;
+    if (valid.length >= 20) {
+      const trimCount = Math.floor(valid.length * 0.05);
+      target = valid.slice(trimCount, valid.length - trimCount);
+    }
+
+    // 5. Calculate average
+    const sum = target.reduce((a, b) => a + b, 0);
+    return sum / target.length;
+  }
+
+  // Twisty Timer Standard Deviation (Calculated on valid solves)
+  function computeStdDev(list){
+    const valid = list.filter(t => t.penalty !== 'dnf').map(effectiveMs);
+    if(valid.length < 2) return null;
+
+    const mean = valid.reduce((a,b)=>a+b,0) / valid.length;
+    const variance = valid.reduce((a,b)=>a+(b-mean)*(b-mean),0)/(valid.length-1);
+    return Math.sqrt(variance);
+  }
+
+  function updateStats(){
+    const times = currentTimes();
+    const valid = times.filter(t => t.penalty !== 'dnf');
+    const bestVal = valid.length ? Math.min(...valid.map(effectiveMs)) : null;
+    el.statBest.textContent = fmt(bestVal);
+    el.statCount.textContent = times.length;
+
+    const last = n => times.slice(Math.max(0, times.length-n));
+    el.statAo5.textContent = times.length>=5 ? (computeAvg(last(5))===null?'DNF':fmt(computeAvg(last(5)))) : '-';
+    el.statAo12.textContent = times.length>=12 ? (computeAvg(last(12))===null?'DNF':fmt(computeAvg(last(12)))) : '-';
+    el.statAo50.textContent = times.length>=50 ? (computeAvg(last(50))===null?'DNF':fmt(computeAvg(last(50)))) : '-';
+    el.statAo100.textContent = times.length>=100 ? (computeAvg(last(100))===null?'DNF':fmt(computeAvg(last(100)))) : '-';
+    
+    const mean = times.length ? computeMean(times) : null;
+    el.statMean.textContent = mean === 'DNF' ? 'DNF' : fmt(mean);
+
+    const dev = computeStdDev(times);
+    el.statDeviation.textContent = dev === null ? '-' : fmt(dev);
+  }
+
+  function renderTimes(){
+    const times = currentTimes();
+    el.timesList.innerHTML = '';
+    el.emptyMsg.style.display = times.length ? 'none' : 'block';
+    for(let i = times.length - 1; i >= 0; i--){
+      const t = times[i];
+      const row = document.createElement('div');
+      row.className = 'time-row';
+      row.dataset.id = t.id;
+      const label = t.penalty === 'dnf' ? 'DNF' : (t.penalty === 'plus2' ? fmt(t.ms+2000)+'+' : fmt(t.ms));
+      row.innerHTML = `<span><span class="idx">${i+1}</span><span class="val ${t.penalty==='dnf'?'dnf':''} ${t.penalty==='plus2'?'plus2':''}">${label}</span></span>`;
+      row.addEventListener('click', () => openDetail(t.id));
+      el.timesList.appendChild(row);
+    }
+    el.timesList.scrollTop = 0;
+    updateStats();
+  }
+
+  function openDetail(id){
+    const times = currentTimes();
+    const t = times.find(x => x.id === id);
+    if(!t) return;
+    el.modalOverlay.dataset.id = id;
+    el.detailPuzzle.textContent = PUZZLES[state.puzzle].label;
+    el.detailScramble.textContent = t.scramble || '(no scramble recorded)';
+
+    el.detailTime.className = '';
+    if(t.penalty === 'dnf'){
+      el.detailTime.textContent = 'DNF';
+      el.detailTime.classList.add('dnf');
+    } else if(t.penalty === 'plus2'){
+      el.detailTime.textContent = fmt(t.ms+2000)+'+';
+      el.detailTime.classList.add('plus2');
+    } else {
+      el.detailTime.textContent = fmt(t.ms);
+    }
+
+    [...el.detailActions.children].forEach(btn => {
+      btn.classList.toggle('active',
+        (btn.dataset.action === 'plus2' && t.penalty === 'plus2') ||
+        (btn.dataset.action === 'dnf' && t.penalty === 'dnf'));
+    });
+
+    el.modalOverlay.style.display = 'flex';
+  }
+
+  function closeDetail(){
+    el.modalOverlay.style.display = 'none';
+  }
+
+  function handleAction(action){
+    const id = el.modalOverlay.dataset.id;
+    const times = currentTimes();
+    const t = times.find(x => x.id === id);
+    if(!t) return;
+    if(action === 'ok') t.penalty = null;
+    if(action === 'plus2') t.penalty = t.penalty === 'plus2' ? null : 'plus2';
+    if(action === 'dnf') t.penalty = t.penalty === 'dnf' ? null : 'dnf';
+    if(action === 'delete') state.sessions[state.puzzle] = times.filter(x => x.id !== id);
+    saveState();
+    renderTimes();
+    closeDetail();
+  }
+
+  el.modalOverlay.addEventListener('click', (e) => {
+    if(e.target === el.modalOverlay) closeDetail();
+  });
+
+  el.detailActions.addEventListener('click', (e) => {
+    const action = e.target.dataset.action;
+    if(action) handleAction(action);
+  });
+
+  // Custom Confirmation Modal
+  el.clearAll.addEventListener('click', () => {
+    const times = currentTimes();
+    if(!times.length) return;
+    el.confirmText.textContent = `Clear all ${PUZZLES[state.puzzle].label} solves this session?`;
+    el.confirmOverlay.style.display = 'flex';
+  });
+
+  el.confirmCancel.addEventListener('click', () => {
+    el.confirmOverlay.style.display = 'none';
+  });
+
+  el.confirmYes.addEventListener('click', () => {
+    state.sessions[state.puzzle] = [];
+    saveState();
+    renderTimes();
+    el.confirmOverlay.style.display = 'none';
+  });
+
+  el.confirmOverlay.addEventListener('click', (e) => {
+    if(e.target === el.confirmOverlay) el.confirmOverlay.style.display = 'none';
+  });
+
+  el.puzzleSelect.addEventListener('change', e => {
+    state.puzzle = e.target.value;
+    saveState();
+    newScramble();
+    renderTimes();
+    el.puzzleSelect.blur();
+  });
+
+  function setTimerDisplay(text){ el.timer.textContent = text; }
+
+  function tickRunning(){
+    const elapsed = performance.now() - state.runStart;
+    setTimerDisplay(fmt(elapsed));
+    state.rafId = requestAnimationFrame(tickRunning);
+  }
+
+  function startHold(){
+    if(state.phase !== 'idle') return;
+    state.phase = 'holding';
+    el.main.classList.add('holding');
+    el.timer.classList.add('holding');
+    state.holdStart = performance.now();
+    state.holdTimer = setTimeout(() => {
+      if(state.phase === 'holding'){
+        state.phase = 'ready';
+        el.main.classList.remove('holding'); el.main.classList.add('ready');
+        el.timer.classList.remove('holding'); el.timer.classList.add('ready');
+      }
+    }, 300);
+  }
+
+  function releaseHold(){
+    if(state.phase === 'holding'){
+      clearTimeout(state.holdTimer);
+      state.phase = 'idle';
+      el.main.classList.remove('holding');
+      el.timer.classList.remove('holding');
+      return;
+    }
+    if(state.phase === 'ready'){
+      el.main.classList.remove('ready'); el.timer.classList.remove('ready');
+      beginSolve();
+      return;
+    }
+  }
+
+  function beginSolve(){
+    state.phase = 'running';
+    state.runStart = performance.now();
+    el.hint.textContent = 'Press Space to stop';
+    tickRunning();
+  }
+
+  function stopSolve(){
+    cancelAnimationFrame(state.rafId);
+    const elapsed = performance.now() - state.runStart;
+    setTimerDisplay(fmt(elapsed));
+    currentTimes().push({ id: 'solve-'+Date.now()+Math.random().toString(36).slice(2,6), ms: Math.round(elapsed), scramble: state.currentScramble, penalty: null });
+    saveState();
+    renderTimes();
+    state.phase = 'idle';
+    el.hint.textContent = 'Hold Space to start · tap and hold on mobile';
+    newScramble();
+  }
+
+  window.addEventListener('keydown', (e) => {
+    // Shortcuts for detail modal
+    if(el.modalOverlay.style.display === 'flex'){
+      if(e.code === 'Escape') closeDetail();
+      if(e.code === 'Digit2') handleAction('plus2');
+      if(e.code === 'KeyD') handleAction('dnf');
+      if(e.code === 'Backspace' || e.code === 'Delete') handleAction('delete');
+      return;
+    }
+
+    if(el.confirmOverlay.style.display === 'flex'){
+      if(e.code === 'Escape') el.confirmOverlay.style.display = 'none';
+      return;
+    }
+
+    if(e.code !== 'Space') return;
+    e.preventDefault();
+    const active = document.activeElement;
+    if(active && active !== document.body && typeof active.blur === 'function'){
+      active.blur();
+    }
+    if(e.repeat) return;
+
+    // Instant stop if running
+    if(state.phase === 'running'){
+      stopSolve();
+      return;
+    }
+
+    startHold();
+  });
+
+  window.addEventListener('keyup', (e) => {
+    if(e.code !== 'Space') return;
+    e.preventDefault();
+    releaseHold();
+  });
+
+  let touchActive = false;
+  el.main.addEventListener('touchstart', (e) => { 
+    if(state.phase === 'running'){
+      stopSolve();
+      return;
+    }
+    e.preventDefault(); touchActive = true; startHold(); 
+  }, {passive:false});
+  
+  el.main.addEventListener('touchend', (e) => { e.preventDefault(); if(touchActive){ touchActive=false; releaseHold(); } }, {passive:false});
+  el.main.addEventListener('mousedown', (e) => { 
+    if(e.button===0 && e.target === el.main){
+      if(state.phase === 'running'){
+        stopSolve();
+        return;
+      }
+      startHold();
+    }
+  });
+  window.addEventListener('mouseup', (e) => { if(e.button===0) releaseHold(); });
+
+  loadState();
+  el.puzzleSelect.value = state.puzzle;
+  newScramble();
+  renderTimes();
+})();
+</script>
+
+</body>
+</html>
