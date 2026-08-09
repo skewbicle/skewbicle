@@ -680,6 +680,11 @@ width: 100%;
 
 @media (max-width: 768px) {
 
+    body {
+        background-size: auto 100%;
+        background-attachment: scroll;
+    }
+
   h1 {
     font-size: 42px;
     margin: 20px;
