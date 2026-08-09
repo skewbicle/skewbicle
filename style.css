@@ -683,6 +683,7 @@ width: 100%;
     body {
         
         background-attachment: local;
+        background-position: center;
     }
 
   h1 {
