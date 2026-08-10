@@ -27,6 +27,9 @@ body::before{
     background-repeat: no-repeat;
 }
 
+html, body {
+    overscroll-behavior-y: contain;
+}
 
 
 
