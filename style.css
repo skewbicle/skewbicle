@@ -682,13 +682,12 @@ width: 100%;
 
     body{
     background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
-    min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-  font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
   h1 {
