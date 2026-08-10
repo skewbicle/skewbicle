@@ -6,17 +6,28 @@
 
 html{
     min-height: 100%;
+}
+
+body{
+    min-height: 100%;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-body{
-    min-height: 100%;
-    margin: 0;
-    background: transparent; 
-    font-family: 'Times New Roman', Times, serif;
+html, body {
+    overscroll-behavior-y: contain;
 }
 
 
