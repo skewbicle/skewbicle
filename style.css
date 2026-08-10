@@ -4,34 +4,21 @@
     box-sizing: border-box;
 }
 
-html{
+html {
     min-height: 100%;
     background: #15171c;
 }
 
-body{
-    min-height: 100%;
+body {
+    min-height: 100vh;
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
-    position: relative;
+
+    background:
+        url(b35fef11-eb5c-4227-a863-4207255b3711.png)
+        center top / cover
+        no-repeat;
 }
-
-body::before{
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-html, body {
-    overscroll-behavior-y: contain;
-}
-
-
 
 .container button{
     border-radius: 50%;
