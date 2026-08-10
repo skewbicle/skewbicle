@@ -682,10 +682,9 @@ width: 100%;
 
     body{
     background-image: url(b35fef11-eb5c-4227-a863-4207255b3711.png);
-   -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+   -webkit-overflow-scrolling: touch;
+-webkit-transform:translate3d(0,0,0);
+-webkit-backface-visibility: hidden;
     font-family: 'Times New Roman', Times, serif;
 }
 
