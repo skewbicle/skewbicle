@@ -19,6 +19,10 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
+html, body {
+    overscroll-behavior-y: none;
+}
+
 .container button{
     border-radius: 50%;
     padding: 0;
