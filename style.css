@@ -19,9 +19,6 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
-html, body {
-    overscroll-behavior-y: contain;
-}
 
 .container button{
     border-radius: 50%;
