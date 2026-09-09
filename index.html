@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
 <head>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-MVGS5PM6ZN');
   </script>
 
+  <!-- SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,16 +43,18 @@
   <link rel="icon"
         href="c892b4dc-ed37-4c3c-bf60-6affeba9571b.jpg">
 
+  <!-- Swiper -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
+  <!-- Your CSS -->
   <link rel="stylesheet"
         href="style.css">
 
   <style>
 
     /* ============================== */
-    /* ===== Language Switcher ====== */
+    /* ===== LANGUAGE SWITCHER ====== */
     /* ============================== */
 
     nav {
@@ -82,15 +84,20 @@
       color: white;
     }
 
+
     /* ============================== */
-    /* ========= Arabic RTL ========= */
+    /* ========= RTL PAGE ============ */
     /* ============================== */
 
     html[dir="rtl"] {
       direction: rtl;
     }
 
+
+    /* Arabic text */
+
     html[dir="rtl"] .text-overlay {
+      direction: rtl;
       text-align: right;
     }
 
@@ -102,19 +109,49 @@
       text-align: right;
     }
 
-   
 
-    /* Arabic navigation */
+    /* ============================== */
+    /* ======= IMPORTANT SWIPER ====== */
+    /* ============================== */
+
+    /*
+      Keep Swiper itself LTR.
+
+      This prevents Swiper from getting confused
+      when the whole page changes to RTL.
+    */
+
+    html[dir="rtl"] .swiper {
+      direction: ltr;
+    }
+
+    /*
+      But make the contents of each slide RTL.
+    */
+
+    html[dir="rtl"] .swiper-slide {
+      direction: rtl;
+    }
+
+
+    /* Navigation */
+
     html[dir="rtl"] .nav-links {
       direction: rtl;
     }
 
-    /* Arabic footer */
+
+    /* Footer */
+
     html[dir="rtl"] footer {
       direction: rtl;
     }
 
-    /* Mobile */
+
+    /* ============================== */
+    /* ========= MOBILE ============== */
+    /* ============================== */
+
     @media (max-width: 768px) {
 
       nav {
@@ -132,7 +169,9 @@
 
 </head>
 
+
 <body>
+
 
 <!-- ============================== -->
 <!-- ============ NAV ============= -->
@@ -176,7 +215,8 @@
 
   </ul>
 
-  <!-- Language selector -->
+
+  <!-- Language dropdown -->
 
   <select id="languageSwitcher"
           class="language-switcher"
@@ -187,16 +227,17 @@
     </option>
 
     <option value="ar">
-  🇸🇦 العربية
-</option>
+      🇸🇦 العربية
+    </option>
 
   </select>
 
 </nav>
 
 
+
 <!-- ============================== -->
-<!-- ============ SLIDER ========== -->
+<!-- ============ SWIPER ========== -->
 <!-- ============================== -->
 
 <div class="swiper mySwiper">
@@ -204,7 +245,7 @@
   <div class="swiper-wrapper">
 
 
-    <!-- Slide 1 -->
+    <!-- SLIDE 1 -->
 
     <div class="swiper-slide">
 
@@ -234,7 +275,8 @@
     </div>
 
 
-    <!-- Slide 2 -->
+
+    <!-- SLIDE 2 -->
 
     <div class="swiper-slide">
 
@@ -264,7 +306,8 @@
     </div>
 
 
-    <!-- Slide 3 -->
+
+    <!-- SLIDE 3 -->
 
     <div class="swiper-slide">
 
@@ -294,7 +337,8 @@
     </div>
 
 
-    <!-- Slide 4 -->
+
+    <!-- SLIDE 4 -->
 
     <div class="swiper-slide">
 
@@ -322,18 +366,20 @@
           </span>
 
           <span>
+
             <a
               href="https://www.worldcubeassociation.org/"
               data-en="World Cube Association"
               data-ar="الرابطة العالمية للمكعبات">
               World Cube Association
             </a>
+
           </span>
 
           <span
             data-en=" website."
             data-ar=".">
-             website.
+            website.
           </span>
 
         </p>
@@ -354,6 +400,7 @@
 </div>
 
 
+
 <!-- ============================== -->
 <!-- ========= TUTORIALS ========== -->
 <!-- ============================== -->
@@ -368,10 +415,7 @@
 <div class="container">
 
 
-  <!-- 2x2 -->
-
   <a href="2x2.html">
-
     <button class="cube-button">
 
       <img
@@ -379,22 +423,15 @@
         alt="2x2">
 
       <div class="overlay">
-        <span
-          data-en="2x2"
-          data-ar="2×2">
-          2x2
-        </span>
+        <span data-en="2x2" data-ar="2×2">2x2</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- 3x3 -->
 
   <a href="3x3.html">
-
     <button class="cube-button">
 
       <img
@@ -402,22 +439,15 @@
         alt="3x3">
 
       <div class="overlay">
-        <span
-          data-en="3x3"
-          data-ar="3×3">
-          3x3
-        </span>
+        <span data-en="3x3" data-ar="3×3">3x3</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- 4x4 -->
 
   <a href="4x4.html">
-
     <button class="cube-button">
 
       <img
@@ -425,22 +455,15 @@
         alt="4x4">
 
       <div class="overlay">
-        <span
-          data-en="4x4"
-          data-ar="4×4">
-          4x4
-        </span>
+        <span data-en="4x4" data-ar="4×4">4x4</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- 5x5 -->
 
   <a href="5x5.html">
-
     <button class="cube-button">
 
       <img
@@ -448,22 +471,15 @@
         alt="5x5">
 
       <div class="overlay">
-        <span
-          data-en="5x5"
-          data-ar="5×5">
-          5x5
-        </span>
+        <span data-en="5x5" data-ar="5×5">5x5</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- 6x6 -->
 
   <a href="6x6.html">
-
     <button class="cube-button">
 
       <img
@@ -471,22 +487,15 @@
         alt="6x6">
 
       <div class="overlay">
-        <span
-          data-en="6x6"
-          data-ar="6×6">
-          6x6
-        </span>
+        <span data-en="6x6" data-ar="6×6">6x6</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- 7x7 -->
 
   <a href="7x7.html">
-
     <button class="cube-button">
 
       <img
@@ -494,22 +503,15 @@
         alt="7x7">
 
       <div class="overlay">
-        <span
-          data-en="7x7"
-          data-ar="7×7">
-          7x7
-        </span>
+        <span data-en="7x7" data-ar="7×7">7x7</span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Skewb -->
 
   <a href="skewb.html">
-
     <button class="cube-button">
 
       <img
@@ -517,22 +519,17 @@
         alt="Skewb">
 
       <div class="overlay">
-        <span
-          data-en="Skewb"
-          data-ar="سكيوب">
+        <span data-en="Skewb" data-ar="سكيوب">
           Skewb
         </span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Gear Cube -->
 
   <a href="gear.html">
-
     <button class="cube-button">
 
       <img
@@ -540,22 +537,17 @@
         alt="Gear Cube">
 
       <div class="overlay">
-        <span
-          data-en="Gear Cube"
-          data-ar="مكعب التروس">
+        <span data-en="Gear Cube" data-ar="مكعب التروس">
           Gear Cube
         </span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Square-1 -->
 
   <a href="Square-1.html">
-
     <button class="cube-button">
 
       <img
@@ -563,22 +555,17 @@
         alt="Square-1">
 
       <div class="overlay">
-        <span
-          data-en="Square-1"
-          data-ar="Square-1">
+        <span data-en="Square-1" data-ar="Square-1">
           Square-1
         </span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Pyraminx -->
 
   <a href="pyraminx.html">
-
     <button class="cube-button">
 
       <img
@@ -586,22 +573,17 @@
         alt="Pyraminx">
 
       <div class="overlay">
-        <span
-          data-en="Pyraminx"
-          data-ar="بيرامينكس">
+        <span data-en="Pyraminx" data-ar="بيرامينكس">
           Pyraminx
         </span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Megaminx -->
 
   <a href="mega.html">
-
     <button class="cube-button">
 
       <img
@@ -609,22 +591,17 @@
         alt="Megaminx">
 
       <div class="overlay">
-        <span
-          data-en="Megaminx"
-          data-ar="ميجامينكس">
+        <span data-en="Megaminx" data-ar="ميجامينكس">
           Megaminx
         </span>
       </div>
 
     </button>
-
   </a>
 
 
-  <!-- Rubik's Clock -->
 
   <a href="Clock.html">
-
     <button class="cube-button">
 
       <img
@@ -632,18 +609,16 @@
         alt="Rubik's Clock">
 
       <div class="overlay">
-        <span
-          data-en="Rubik's Clock"
-          data-ar="ساعة روبيك">
+        <span data-en="Rubik's Clock" data-ar="ساعة روبيك">
           Rubik's Clock
         </span>
       </div>
 
     </button>
-
   </a>
 
 </div>
+
 
 
 <!-- ============================== -->
@@ -668,6 +643,7 @@
 </footer>
 
 
+
 <!-- ============================== -->
 <!-- =========== SCRIPTS ========== -->
 <!-- ============================== -->
@@ -675,93 +651,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="script.js"></script>
-
-
-<script>
-
-/* ================================= */
-/* ======== LANGUAGE SYSTEM ========= */
-/* ================================= */
-
-const languageSwitcher =
-  document.getElementById("languageSwitcher");
-
-
-function changeLanguage(language) {
-
-  /* Change HTML language */
-
-  document.documentElement.lang = language;
-
-
-  /* Change text direction */
-
-  if (language === "ar") {
-    document.documentElement.dir = "rtl";
-  } else {
-    document.documentElement.dir = "ltr";
-  }
-
-
-  /* Translate all elements */
-
-  document.querySelectorAll("[data-en][data-ar]")
-    .forEach(element => {
-
-      element.textContent =
-        element.dataset[language];
-
-    });
-
-
-  /* Translate image alt text */
-
-  document.querySelectorAll("img[data-alt-en][data-alt-ar]")
-    .forEach(image => {
-
-      image.alt =
-        image.dataset["alt-" + language];
-
-    });
-
-
-  /* Save language */
-
-  localStorage.setItem(
-    "skewbicle-language",
-    language
-  );
-
-}
-
-
-/* ================================= */
-/* ======== LOAD LANGUAGE ========== */
-/* ================================= */
-
-const savedLanguage =
-  localStorage.getItem("skewbicle-language") || "en";
-
-languageSwitcher.value = savedLanguage;
-
-changeLanguage(savedLanguage);
-
-
-/* ================================= */
-/* ===== LANGUAGE SWITCH EVENT ===== */
-/* ================================= */
-
-languageSwitcher.addEventListener(
-  "change",
-  function () {
-
-    changeLanguage(this.value);
-
-  }
-);
-
-</script>
-
 
 </body>
 </html>

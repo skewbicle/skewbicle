@@ -4,6 +4,30 @@
     box-sizing: border-box;
 }
 
+/* Keep Swiper's internal direction LTR */
+html[dir="rtl"] .swiper {
+    direction: ltr;
+}
+
+/* Make the contents of Arabic slides RTL */
+html[dir="rtl"] .swiper-slide {
+    direction: rtl;
+}
+
+/* Arabic slide text */
+html[dir="rtl"] .text-overlay {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .text-overlay h2 {
+    text-align: right;
+}
+
+html[dir="rtl"] .text-overlay p {
+    text-align: right;
+}
+
 html{
     min-height: 100%;
     background: #15171c;
