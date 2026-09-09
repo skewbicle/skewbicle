@@ -1,237 +1,778 @@
+```html
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot">
+<html lang="en" dir="ltr">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Skewbicle",
-  "url": "https://skewbicle.github.io/"
-}
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<meta property="og:image" content="https://skewbicle.github.io/New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
-<meta name="google-adsense-account" content="ca-pub-4365486648474610">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Skewbicle provides step-by-step tutorials for solving Rubik's Cubes and other twisty puzzles, plus algorithms, a cube simulator, and a timer.">
-<link rel="canonical" href="https://skewbicle.github.io/skewbicle/">
-<title>Welcome to Skewbicle</title>
-<link rel="icon" href="c892b4dc-ed37-4c3c-bf60-6affeba9571b.jpg">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="style.css">
+    gtag('config', 'G-MVGS5PM6ZN');
+  </script>
 
-<style>
-  /* Language switcher styling */
-  .lang-switch {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Skewbicle",
+    "url": "https://skewbicle.github.io/"
   }
-  .lang-switch select {
-    background: #15171c;
-    color: #fff;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 4px 8px;
-    font-family: inherit;
-    cursor: pointer;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-  }
-  /* RTL adjustments */
-  html[dir="rtl"] body {
-    font-family: 'Tahoma', 'Segoe UI', sans-serif;
-  }
-  html[dir="rtl"] .nav-links {
-    padding-right: 0;
-  }
-</style>
-</head>
-<body>
+  </script>
 
-<nav>
-  <ul class="nav-links">
-    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
-    <li><a href="timer.html" data-en="Timer" data-ar="المؤقت">Timer</a></li>
-    <li><a href="simulator.html" data-en="Simulator" data-ar="المحاكي">Simulator</a></li>
-    <li><a href="algorithms.html" data-en="Algorithms" data-ar="الخوارزميات">Algorithms</a></li>
-  </ul>
-  <div class="lang-switch">
-    <select id="langSwitch" aria-label="Language switcher">
-      <option value="en">🇬🇧 English</option>
-      <option value="ar">🇸🇦 العربية</option>
-    </select>
-  </div>
-</nav>
+  <meta property="og:image"
+        content="https://skewbicle.github.io/New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
 
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="New folder (2)/5bcf9bbd-1717-45a1-bf93-04ea3255ef7b.jpg" alt="Slide 1">
-      <div class="text-overlay">
-        <h2 data-en="The Rubik's Cube" data-ar="مكعب روبيك">The Rubik's Cube</h2>
-        <p data-en="The Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube."
-           data-ar="مكعب روبيك هو أحجية تركيب ثلاثية الأبعاد اخترعها عام 1974 النحات وأستاذ العمارة المجري إرنو روبيك. كان يُعرف في الأصل باسم المكعب السحري.">
-          The Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube.
-        </p>
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <img src="New folder (2)/7c20c419-62ac-48ed-9887-2a829e9af707.jpg" alt="Slide 2">
-      <div class="text-overlay">
-        <h2 data-en="There Are Over 43 Quintillion Combinations" data-ar="هناك أكثر من 43 كوينتليون احتمال">There Are Over 43 Quintillion Combinations</h2>
-        <p data-en="When you twist the cube, there are exactly 43,252,003,274,489,856,000 possible ways to mix it up. To picture just how large that number is, if you had one cube for every possible combination and lined them up, they could cover the entire surface of the Earth in thick, multiple layers!"
-           data-ar="عند تحريك المكعب، هناك بالضبط 43,252,003,274,489,856,000 طريقة ممكنة لخلطه. ولتتخيل حجم هذا الرقم، لو كان لديك مكعب واحد لكل احتمال ممكن ووضعتها بجانب بعضها، لغطت سطح الأرض بأكمله بطبقات سميكة ومتعددة!">
-          When you twist the cube, there are exactly 43,252,003,274,489,856,000 possible ways to mix it up. To picture just how large that number is, if you had one cube for every possible combination and lined them up, they could cover the entire surface of the Earth in thick, multiple layers!
-        </p>
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <img src="New folder (2)/78a45637-aa21-4c48-bce7-e9f12125de66.jpg" alt="Slide 3">
-      <div class="text-overlay">
-        <h2 data-en="The Inventor Couldn't Solve It Right Away" data-ar="لم يستطع المخترع حلها على الفور">The Inventor Couldn't Solve It Right Away</h2>
-        <p data-en="Even though Ernő Rubik invented the puzzle, he did not know the solution when he first built his prototype. It took him over a month of hard work and thinking to figure out how to put it back into a solved state."
-           data-ar="على الرغم من أن إرنو روبيك اخترع الأحجية، إلا أنه لم يكن يعرف الحل عند بنائه للنموذج الأول. استغرق الأمر منه أكثر من شهر من العمل الجاد والتفكير لمعرفة كيفية إعادتها إلى حالتها المحلولة.">
-          Even though Ernő Rubik invented the puzzle, he did not know the solution when he first built his prototype. It took him over a month of hard work and thinking to figure out how to put it back into a solved state.
-        </p>
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <img src="New folder (2)/e66da887-f57f-44bd-9a67-ab89aa86935e.jpg" alt="Slide 4">
-      <div class="text-overlay">
-        <h2 data-en="People Speed-Solve It in Seconds" data-ar="يحلها الناس بسرعة في ثوانٍ">People Speed-Solve It in Seconds</h2>
-        <p data-en="There is a whole hobby and sport dedicated to solving the cube as fast as possible, called &quot;speedcubing&quot;. The fastest humans solve a 3x3 Rubik's Cube in under 3 seconds! You can learn more about official competitions and global records on the World Cube Association website."
-           data-ar="توجد هواية ورياضة كاملة مخصصة لحل المكعب بأسرع وقت ممكن، تسمى &quot;سبيد كيوبينج&quot;. أسرع البشر يحلون مكعب روبيك 3×3 في أقل من 3 ثوانٍ! يمكنك معرفة المزيد عن المسابقات الرسمية والأرقام القياسية العالمية على موقع اتحاد المكعب العالمي.">
-          There is a whole hobby and sport dedicated to solving the cube as fast as possible, called "speedcubing". The fastest humans solve a 3x3 Rubik's Cube in under 3 seconds! You can learn more about official competitions and global records on the <span><a href="https://www.worldcubeassociation.org/">World Cube Association</a></span> website.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
+  <meta name="google-adsense-account"
+        content="ca-pub-4365486648474610">
 
-<h1 data-en="Tutorials" data-ar="الدروس التعليمية">Tutorials</h1>
+  <meta charset="UTF-8">
 
-<div class="container">
-  <a href="2x2.html">
-    <button class="cube-button">
-      <img src="New folder/d11c2cb0-e324-45d8-9c08-44d2f8274e9a.jpg" alt="2x2">
-      <div class="overlay"><span>2x2</span></div>
-    </button>
-  </a>
-  <a href="3x3.html">
-    <button class="cube-button">
-      <img src="New folder/3013a43b-22e2-4274-9e91-079e5bcad55a.jpg" alt="3x3">
-      <div class="overlay"><span>3x3</span></div>
-    </button>
-  </a>
-  <a href="4x4.html">
-    <button class="cube-button">
-      <img src="New folder/1c6fb87c-3cf9-479a-af99-3bf391d6e2aa.jpg" alt="4x4">
-      <div class="overlay"><span>4x4</span></div>
-    </button>
-  </a>
-  <a href="5x5.html">
-    <button class="cube-button">
-      <img src="New folder/219ade65-b255-4f60-9ab3-e8eb92f08df6.jpg" alt="5x5">
-      <div class="overlay"><span>5x5</span></div>
-    </button>
-  </a>
-  <a href="6x6.html">
-    <button class="cube-button">
-      <img src="New folder/168a7ce5-133a-41d0-ae41-3dbe7a3d064b.jpg" alt="6x6">
-      <div class="overlay"><span>6x6</span></div>
-    </button>
-  </a>
-  <a href="7x7.html">
-    <button class="cube-button">
-      <img src="New folder/485785c9-768c-48a3-82a0-cbbb09e47950.jpg" alt="7x7">
-      <div class="overlay"><span>7x7</span></div>
-    </button>
-  </a>
-  <a href="skewb.html">
-    <button class="cube-button">
-      <img src="New folder/ee8d2fc0-f0f2-4a7c-a4e5-f1686c624cf2.jpg" alt="Skewb">
-      <div class="overlay"><span data-en="Skewb" data-ar="سكيوب">Skewb</span></div>
-    </button>
-  </a>
-  <a href="gear.html">
-    <button class="cube-button">
-      <img src="New folder/4b50e760-ef7e-4699-b765-d115ac6bc314.jpg" alt="GearCube">
-      <div class="overlay"><span data-en="Gear Cube" data-ar="مكعب التروس">Gear Cube</span></div>
-    </button>
-  </a>
-  <a href="Square-1.html">
-    <button class="cube-button">
-      <img src="New folder/66aa0777-431a-4b48-a7ed-87b36d2e8fa2.jpg" alt="Square-1">
-      <div class="overlay"><span>Square-1</span></div>
-    </button>
-  </a>
-  <a href="pyraminx.html">
-    <button class="cube-button">
-      <img src="New folder/f40ffc29-8756-4b3d-b6ef-d2b773c1e5f0.jpg" alt="Pyraminx">
-      <div class="overlay"><span data-en="Pyraminx" data-ar="بيراميكس">Pyraminx</span></div>
-    </button>
-  </a>
-  <a href="mega.html">
-    <button class="cube-button">
-      <img src="New folder/544496ce-a10a-458f-877c-85693dea10dc.jpg" alt="Megaminx">
-      <div class="overlay"><span data-en="Megaminx" data-ar="ميجامينكس">Megaminx</span></div>
-    </button>
-  </a>
-  <a href="Clock.html">
-    <button class="cube-button">
-      <img src="New folder/2558f69a-34df-45fb-8500-4191ec4f98d3.jpg" alt="Clock">
-      <div class="overlay"><span data-en="Rubik's Clock" data-ar="ساعة روبيك">Rubik's Clock</span></div>
-    </button>
-  </a>
-</div>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<footer>
-  <p>&copy; 2026 Skewbicle. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
-  <a href="mailto:skewbicle@gmail.com" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
-</footer>
+  <meta name="description"
+        content="Skewbicle provides step-by-step tutorials for solving Rubik's Cubes and other twisty puzzles, plus algorithms, a cube simulator, and a timer.">
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
+  <link rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/">
 
-<script>
-  // Simple EN/AR language switcher, persisted across pages
-  (function () {
-    const htmlRoot = document.getElementById('htmlRoot');
-    const select = document.getElementById('langSwitch');
+  <title>Welcome to Skewbicle</title>
 
-    function applyLang(lang) {
-      document.querySelectorAll('[data-en]').forEach(el => {
-        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-        if (text !== null) el.textContent = text;
-      });
-      htmlRoot.setAttribute('lang', lang);
-      htmlRoot.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-      select.value = lang;
-      localStorage.setItem('siteLang', lang);
+  <link rel="icon"
+        href="c892b4dc-ed37-4c3c-bf60-6affeba9571b.jpg">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <link rel="stylesheet"
+        href="style.css">
+
+  <style>
+
+    /* ============================== */
+    /* ===== Language Switcher ====== */
+    /* ============================== */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    const saved = localStorage.getItem('siteLang') || 'en';
-    applyLang(saved);
+    .language-switcher {
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      cursor: pointer;
+      outline: none;
+    }
 
-    select.addEventListener('change', (e) => applyLang(e.target.value));
-  })();
+    .language-switcher:hover {
+      border-color: white;
+    }
+
+    .language-switcher option {
+      background: #1a1a1a;
+      color: white;
+    }
+
+    /* ============================== */
+    /* ========= Arabic RTL ========= */
+    /* ============================== */
+
+    html[dir="rtl"] {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] .text-overlay {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .text-overlay h2 {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .text-overlay p {
+      text-align: right;
+    }
+
+    /* Keep Swiper arrows working correctly */
+    html[dir="rtl"] .swiper-button-next {
+      right: auto;
+      left: 10px;
+    }
+
+    html[dir="rtl"] .swiper-button-prev {
+      left: auto;
+      right: 10px;
+    }
+
+    /* Arabic navigation */
+    html[dir="rtl"] .nav-links {
+      direction: rtl;
+    }
+
+    /* Arabic footer */
+    html[dir="rtl"] footer {
+      direction: rtl;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+
+      nav {
+        gap: 10px;
+      }
+
+      .language-switcher {
+        font-size: 13px;
+        padding: 6px 8px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- ============================== -->
+<!-- ============ NAV ============= -->
+<!-- ============================== -->
+
+<nav>
+
+  <ul class="nav-links">
+
+    <li>
+      <a href="index.html"
+         data-en="Home"
+         data-ar="الرئيسية">
+        Home
+      </a>
+    </li>
+
+    <li>
+      <a href="timer.html"
+         data-en="Timer"
+         data-ar="المؤقت">
+        Timer
+      </a>
+    </li>
+
+    <li>
+      <a href="simulator.html"
+         data-en="Simulator"
+         data-ar="المحاكي">
+        Simulator
+      </a>
+    </li>
+
+    <li>
+      <a href="algorithms.html"
+         data-en="Algorithms"
+         data-ar="الخوارزميات">
+        Algorithms
+      </a>
+    </li>
+
+  </ul>
+
+  <!-- Language selector -->
+
+  <select id="languageSwitcher"
+          class="language-switcher"
+          aria-label="Language">
+
+    <option value="en">
+      🇬🇧 English
+    </option>
+
+    <option value="ar">
+  🇸🇦 العربية
+</option>
+
+  </select>
+
+</nav>
+
+
+<!-- ============================== -->
+<!-- ============ SLIDER ========== -->
+<!-- ============================== -->
+
+<div class="swiper mySwiper">
+
+  <div class="swiper-wrapper">
+
+
+    <!-- Slide 1 -->
+
+    <div class="swiper-slide">
+
+      <img
+        src="New folder (2)/5bcf9bbd-1717-45a1-bf93-04ea3255ef7b.jpg"
+        alt="Rubik's Cube"
+        data-alt-en="Rubik's Cube"
+        data-alt-ar="مكعب روبيك"
+      >
+
+      <div class="text-overlay">
+
+        <h2
+          data-en="The Rubik's Cube"
+          data-ar="مكعب روبيك">
+          The Rubik's Cube
+        </h2>
+
+        <p
+          data-en="The Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube."
+          data-ar="مكعب روبيك هو لغز ثلاثي الأبعاد اخترعه النحات المجري وأستاذ الهندسة المعمارية إرنو روبيك عام 1974. وكان يُسمى في الأصل المكعب السحري.">
+          The Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Slide 2 -->
+
+    <div class="swiper-slide">
+
+      <img
+        src="New folder (2)/7c20c419-62ac-48ed-9887-2a829e9af707.jpg"
+        alt="Rubik's Cube combinations"
+        data-alt-en="Rubik's Cube combinations"
+        data-alt-ar="تركيبات مكعب روبيك"
+      >
+
+      <div class="text-overlay">
+
+        <h2
+          data-en="There Are Over 43 Quintillion Combinations"
+          data-ar="هناك أكثر من 43 كوينتيليون تركيبة">
+          There Are Over 43 Quintillion Combinations
+        </h2>
+
+        <p
+          data-en="When you twist the cube, there are exactly 43,252,003,274,489,856,000 possible ways to mix it up. To picture just how large that number is, if you had one cube for every possible combination and lined them up, they could cover the entire surface of the Earth in thick, multiple layers!"
+          data-ar="عند تدوير المكعب، توجد بالضبط 43,252,003,274,489,856,000 طريقة ممكنة لخلطه. ولتخيل مدى ضخامة هذا الرقم، إذا كان لديك مكعب واحد لكل تركيبة ممكنة وصففتها بجانب بعضها، فمن الممكن أن تغطي كامل سطح الأرض بطبقات سميكة ومتعددة!">
+          When you twist the cube, there are exactly 43,252,003,274,489,856,000 possible ways to mix it up. To picture just how large that number is, if you had one cube for every possible combination and lined them up, they could cover the entire surface of the Earth in thick, multiple layers!
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Slide 3 -->
+
+    <div class="swiper-slide">
+
+      <img
+        src="New folder (2)/78a45637-aa21-4c48-bce7-e9f12125de66.jpg"
+        alt="Ernő Rubik"
+        data-alt-en="Ernő Rubik"
+        data-alt-ar="إرنو روبيك"
+      >
+
+      <div class="text-overlay">
+
+        <h2
+          data-en="The Inventor Couldn't Solve It Right Away"
+          data-ar="المخترع لم يستطع حله فورًا">
+          The Inventor Couldn't Solve It Right Away
+        </h2>
+
+        <p
+          data-en="Even though Ernő Rubik invented the puzzle, he did not know the solution when he first built his prototype. It took him over a month of hard work and thinking to figure out how to put it back into a solved state."
+          data-ar="على الرغم من أن إرنو روبيك اخترع اللغز، فإنه لم يكن يعرف طريقة حله عندما صنع النموذج الأولي. وقد استغرق الأمر أكثر من شهر من العمل الجاد والتفكير حتى اكتشف كيفية إعادته إلى الحالة المحلولة.">
+          Even though Ernő Rubik invented the puzzle, he did not know the solution when he first built his prototype. It took him over a month of hard work and thinking to figure out how to put it back into a solved state.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Slide 4 -->
+
+    <div class="swiper-slide">
+
+      <img
+        src="New folder (2)/e66da887-f57f-44bd-9a67-ab89aa86935e.jpg"
+        alt="Speedcubing"
+        data-alt-en="Speedcubing"
+        data-alt-ar="حل المكعب بسرعة"
+      >
+
+      <div class="text-overlay">
+
+        <h2
+          data-en="People Speed-Solve It in Seconds"
+          data-ar="الناس يحلون المكعب في ثوانٍ">
+          People Speed-Solve It in Seconds
+        </h2>
+
+        <p>
+
+          <span
+            data-en="There is a whole hobby and sport dedicated to solving the cube as fast as possible, called 'speedcubing'. The fastest humans solve a 3x3 Rubik's Cube in under 3 seconds! You can learn more about official competitions and global records on the "
+            data-ar="هناك هواية ورياضة كاملة مخصصة لحل المكعب بأسرع وقت ممكن، وتُعرف باسم «Speedcubing». يستطيع أسرع الأشخاص حل مكعب روبيك 3×3 في أقل من 3 ثوانٍ! يمكنك معرفة المزيد عن المسابقات الرسمية والأرقام القياسية العالمية على موقع ">
+            There is a whole hobby and sport dedicated to solving the cube as fast as possible, called "speedcubing". The fastest humans solve a 3x3 Rubik's Cube in under 3 seconds! You can learn more about official competitions and global records on the
+          </span>
+
+          <span>
+            <a
+              href="https://www.worldcubeassociation.org/"
+              data-en="World Cube Association"
+              data-ar="الرابطة العالمية للمكعبات">
+              World Cube Association
+            </a>
+          </span>
+
+          <span
+            data-en=" website."
+            data-ar=".">
+             website.
+          </span>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="swiper-pagination"></div>
+
+  <div class="swiper-button-next"></div>
+
+  <div class="swiper-button-prev"></div>
+
+</div>
+
+
+<!-- ============================== -->
+<!-- ========= TUTORIALS ========== -->
+<!-- ============================== -->
+
+<h1
+  data-en="Tutorials"
+  data-ar="الدروس التعليمية">
+  Tutorials
+</h1>
+
+
+<div class="container">
+
+
+  <!-- 2x2 -->
+
+  <a href="2x2.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/d11c2cb0-e324-45d8-9c08-44d2f8274e9a.jpg"
+        alt="2x2">
+
+      <div class="overlay">
+        <span
+          data-en="2x2"
+          data-ar="2×2">
+          2x2
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- 3x3 -->
+
+  <a href="3x3.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/3013a43b-22e2-4274-9e91-079e5bcad55a.jpg"
+        alt="3x3">
+
+      <div class="overlay">
+        <span
+          data-en="3x3"
+          data-ar="3×3">
+          3x3
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- 4x4 -->
+
+  <a href="4x4.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/1c6fb87c-3cf9-479a-af99-3bf391d6e2aa.jpg"
+        alt="4x4">
+
+      <div class="overlay">
+        <span
+          data-en="4x4"
+          data-ar="4×4">
+          4x4
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- 5x5 -->
+
+  <a href="5x5.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/219ade65-b255-4f60-9ab3-e8eb92f08df6.jpg"
+        alt="5x5">
+
+      <div class="overlay">
+        <span
+          data-en="5x5"
+          data-ar="5×5">
+          5x5
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- 6x6 -->
+
+  <a href="6x6.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/168a7ce5-133a-41d0-ae41-3dbe7a3d064b.jpg"
+        alt="6x6">
+
+      <div class="overlay">
+        <span
+          data-en="6x6"
+          data-ar="6×6">
+          6x6
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- 7x7 -->
+
+  <a href="7x7.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/485785c9-768c-48a3-82a0-cbbb09e47950.jpg"
+        alt="7x7">
+
+      <div class="overlay">
+        <span
+          data-en="7x7"
+          data-ar="7×7">
+          7x7
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Skewb -->
+
+  <a href="skewb.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/ee8d2fc0-f0f2-4a7c-a4e5-f1686c624cf2.jpg"
+        alt="Skewb">
+
+      <div class="overlay">
+        <span
+          data-en="Skewb"
+          data-ar="سكيوبي">
+          Skewb
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Gear Cube -->
+
+  <a href="gear.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/4b50e760-ef7e-4699-b765-d115ac6bc314.jpg"
+        alt="Gear Cube">
+
+      <div class="overlay">
+        <span
+          data-en="Gear Cube"
+          data-ar="مكعب التروس">
+          Gear Cube
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Square-1 -->
+
+  <a href="Square-1.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/66aa0777-431a-4b48-a7ed-87b36d2e8fa2.jpg"
+        alt="Square-1">
+
+      <div class="overlay">
+        <span
+          data-en="Square-1"
+          data-ar="Square-1">
+          Square-1
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Pyraminx -->
+
+  <a href="pyraminx.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/f40ffc29-8756-4b3d-b6ef-d2b773c1e5f0.jpg"
+        alt="Pyraminx">
+
+      <div class="overlay">
+        <span
+          data-en="Pyraminx"
+          data-ar="بيرامينكس">
+          Pyraminx
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Megaminx -->
+
+  <a href="mega.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/544496ce-a10a-458f-877c-85693dea10dc.jpg"
+        alt="Megaminx">
+
+      <div class="overlay">
+        <span
+          data-en="Megaminx"
+          data-ar="ميجامينكس">
+          Megaminx
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+
+  <!-- Rubik's Clock -->
+
+  <a href="Clock.html">
+
+    <button class="cube-button">
+
+      <img
+        src="New folder/2558f69a-34df-45fb-8500-4191ec4f98d3.jpg"
+        alt="Rubik's Clock">
+
+      <div class="overlay">
+        <span
+          data-en="Rubik's Clock"
+          data-ar="ساعة روبيك">
+          Rubik's Clock
+        </span>
+      </div>
+
+    </button>
+
+  </a>
+
+</div>
+
+
+<!-- ============================== -->
+<!-- ============ FOOTER ========== -->
+<!-- ============================== -->
+
+<footer>
+
+  <p
+    data-en="© 2026 Skewbicle. All rights reserved."
+    data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة.">
+    © 2026 Skewbicle. All rights reserved.
+  </p>
+
+  <a
+    href="mailto:skewbicle@gmail.com"
+    data-en="Contact Us"
+    data-ar="تواصل معنا">
+    Contact Us
+  </a>
+
+</footer>
+
+
+<!-- ============================== -->
+<!-- =========== SCRIPTS ========== -->
+<!-- ============================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* ================================= */
+/* ======== LANGUAGE SYSTEM ========= */
+/* ================================= */
+
+const languageSwitcher =
+  document.getElementById("languageSwitcher");
+
+
+function changeLanguage(language) {
+
+  /* Change HTML language */
+
+  document.documentElement.lang = language;
+
+
+  /* Change text direction */
+
+  if (language === "ar") {
+    document.documentElement.dir = "rtl";
+  } else {
+    document.documentElement.dir = "ltr";
+  }
+
+
+  /* Translate all elements */
+
+  document.querySelectorAll("[data-en][data-ar]")
+    .forEach(element => {
+
+      element.textContent =
+        element.dataset[language];
+
+    });
+
+
+  /* Translate image alt text */
+
+  document.querySelectorAll("img[data-alt-en][data-alt-ar]")
+    .forEach(image => {
+
+      image.alt =
+        image.dataset["alt-" + language];
+
+    });
+
+
+  /* Save language */
+
+  localStorage.setItem(
+    "skewbicle-language",
+    language
+  );
+
+}
+
+
+/* ================================= */
+/* ======== LOAD LANGUAGE ========== */
+/* ================================= */
+
+const savedLanguage =
+  localStorage.getItem("skewbicle-language") || "en";
+
+languageSwitcher.value = savedLanguage;
+
+changeLanguage(savedLanguage);
+
+
+/* ================================= */
+/* ===== LANGUAGE SWITCH EVENT ===== */
+/* ================================= */
+
+languageSwitcher.addEventListener(
+  "change",
+  function () {
+
+    changeLanguage(this.value);
+
+  }
+);
+
 </script>
+
 
 </body>
 </html>
+```
