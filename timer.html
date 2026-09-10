@@ -318,46 +318,101 @@
     }
   }
 
-  /* Arabic changes only the navigation on this page. */
-  #site-nav {
-    direction: ltr;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  #site-nav .nav-links { direction: ltr; }
-  #site-nav .language-switcher { direction: ltr; flex-shrink: 0; }
-  #site-nav .language-switcher select {
-    width: auto;
-    min-width: 125px;
-    margin: 0;
-  }
-  html[lang="ar"] #site-nav { direction: rtl; }
-  html[lang="ar"] #site-nav .nav-links { direction: rtl; }
+  /* ============================== */
+  /* ===== Language Switcher ====== */
+  /* ============================== */
 
-  /* Never flip the timer UI when Arabic is selected. */
-  #app, #app header, #app aside, #app #main,
-  #modal-overlay, #confirm-overlay { direction: ltr; }
-  #scramble, #timer, #hint, #times-list, #detail-scramble { direction: ltr; }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .language-switcher {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .language-switcher:hover {
+    border-color: white;
+  }
+
+  .language-switcher option {
+    background: #1a1a1a;
+    color: white;
+  }
+
+  /* Arabic navigation only */
+  html[lang="ar"] nav {
+    direction: rtl;
+  }
+
+  html[lang="ar"] .nav-links {
+    direction: rtl;
+  }
+
+  /* Keep the timer application LTR */
+  #app,
+  #app header,
+  #app aside,
+  #app #main,
+  #modal-overlay,
+  #confirm-overlay {
+    direction: ltr;
+  }
+
+  #scramble,
+  #timer,
+  #hint,
+  #times-list,
+  #detail-scramble {
+    direction: ltr;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav {
+      gap: 10px;
+    }
+
+    .language-switcher {
+      font-size: 13px;
+      padding: 6px 8px;
+    }
+  }
 
 </style>
 </head>
 <body>
 
-<nav id="site-nav">
+<nav>
   <ul class="nav-links">
     <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
     <li><a href="timer.html" data-en="Timer" data-ar="المؤقت">Timer</a></li>
     <li><a href="simulator.html" data-en="Simulator" data-ar="المحاكي">Simulator</a></li>
     <li><a href="algorithms.html" data-en="Algorithms" data-ar="الخوارزميات">Algorithms</a></li>
   </ul>
-  <div class="language-switcher">
-    <select id="languageSwitcher" aria-label="Language">
-      <option value="en">🇬🇧 English</option>
-      <option value="ar">🇸🇦 العربية</option>
-    </select>
-  </div>
+  <!-- Language selector -->
+  <select id="languageSwitcher"
+          class="language-switcher"
+          aria-label="Language">
+
+    <option value="en">
+      🇬🇧 English
+    </option>
+
+    <option value="ar">
+      🇸🇦 العربية
+    </option>
+
+  </select>
 </nav>
 
 <div id="app">
