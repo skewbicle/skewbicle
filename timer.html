@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
@@ -12,9 +12,9 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use Skewbicle's online Rubik's Cube timer to time your solves and practice speedcubing.">
+    <meta name="description" data-meta-en="Use Skewbicle\'s online Rubik\'s Cube timer to time your solves and practice speedcubing." data-meta-ar="استخدم مؤقت Skewbicle لمكعب روبيك لقياس أوقات الحل والتدرب على السرعة." content="Use Skewbicle\'s online Rubik\'s Cube timer to time your solves and practice speedcubing.">
     <link rel="canonical" href="https://skewbicle.github.io/skewbicle/timer.html">
-    <title>Timer - Skewbicle</title>
+    <title data-title-en="Timer - Skewbicle" data-title-ar="المؤقت - Skewbicle">Timer - Skewbicle</title>
     <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -317,17 +317,47 @@
       grid-template-columns: 1fr 1fr;
     }
   }
+
+  /* Arabic changes only the navigation on this page. */
+  #site-nav {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  #site-nav .nav-links { direction: ltr; }
+  #site-nav .language-switcher { direction: ltr; flex-shrink: 0; }
+  #site-nav .language-switcher select {
+    width: auto;
+    min-width: 125px;
+    margin: 0;
+  }
+  html[lang="ar"] #site-nav { direction: rtl; }
+  html[lang="ar"] #site-nav .nav-links { direction: rtl; }
+
+  /* Never flip the timer UI when Arabic is selected. */
+  #app, #app header, #app aside, #app #main,
+  #modal-overlay, #confirm-overlay { direction: ltr; }
+  #scramble, #timer, #hint, #times-list, #detail-scramble { direction: ltr; }
+
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="site-nav">
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
+    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+    <li><a href="timer.html" data-en="Timer" data-ar="المؤقت">Timer</a></li>
+    <li><a href="simulator.html" data-en="Simulator" data-ar="المحاكي">Simulator</a></li>
+    <li><a href="algorithms.html" data-en="Algorithms" data-ar="الخوارزميات">Algorithms</a></li>
   </ul>
+  <div class="language-switcher">
+    <select id="languageSwitcher" aria-label="Language">
+      <option value="en">🇬🇧 English</option>
+      <option value="ar">🇸🇦 العربية</option>
+    </select>
+  </div>
 </nav>
 
 <div id="app">
@@ -338,30 +368,30 @@
   <header><div id="scramble">Loading scramble…</div></header>
 
   <aside class="left">
-    <h3 class="section">Puzzle</h3>
+    <h3 class="section" data-en="Puzzle" data-ar="المكعب">Puzzle</h3>
     <select id="puzzle-select">
-      <option value="2x2">2x2 Cube</option>
-      <option value="3x3" selected>3x3 Cube</option>
-      <option value="4x4">4x4 Cube</option>
-      <option value="5x5">5x5 Cube</option>
-      <option value="6x6">6x6 Cube</option>
-      <option value="7x7">7x7 Cube</option>
-      <option value="skewb">Skewb</option>
-      <option value="megaminx">Megaminx</option>
-      <option value="pyraminx">Pyraminx</option>
-      <option value="square1">Square-1</option>
-      <option value="clock">Clock</option>
+      <option value="2x2" data-en="2x2 Cube" data-ar="مكعب 2x2">2x2 Cube</option>
+      <option value="3x3" selected data-en="3x3 Cube" data-ar="مكعب 3x3">3x3 Cube</option>
+      <option value="4x4" data-en="4x4 Cube" data-ar="مكعب 4x4">4x4 Cube</option>
+      <option value="5x5" data-en="5x5 Cube" data-ar="مكعب 5x5">5x5 Cube</option>
+      <option value="6x6" data-en="6x6 Cube" data-ar="مكعب 6x6">6x6 Cube</option>
+      <option value="7x7" data-en="7x7 Cube" data-ar="مكعب 7x7">7x7 Cube</option>
+      <option value="skewb" data-en="Skewb" data-ar="سكويب">Skewb</option>
+      <option value="megaminx" data-en="Megaminx" data-ar="ميغامِنكس">Megaminx</option>
+      <option value="pyraminx" data-en="Pyraminx" data-ar="بيرامينكس">Pyraminx</option>
+      <option value="square1" data-en="Square-1" data-ar="Square-1">Square-1</option>
+      <option value="clock" data-en="Clock" data-ar="Clock">Clock</option>
     </select>
-    <h3 class="section" style="margin-top:22px;">Stats</h3>
+    <h3 class="section" style="margin-top:22px;" data-en="Stats" data-ar="الإحصائيات">Stats</h3>
     <div class="stat-grid">
-      <div class="stat-box"><div class="label">Best</div><div class="value" id="stat-best">-</div></div>
-      <div class="stat-box"><div class="label">Solves</div><div class="value" id="stat-count">0</div></div>
-      <div class="stat-box"><div class="label">Ao5</div><div class="value" id="stat-ao5">-</div></div>
-      <div class="stat-box"><div class="label">Ao12</div><div class="value" id="stat-ao12">-</div></div>
-      <div class="stat-box"><div class="label">Ao50</div><div class="value" id="stat-ao50">-</div></div>
-      <div class="stat-box"><div class="label">Ao100</div><div class="value" id="stat-ao100">-</div></div>
-      <div class="stat-box"><div class="label">Mean</div><div class="value" id="stat-mean">-</div></div>
-      <div class="stat-box"><div class="label">Deviation</div><div class="value" id="stat-deviation">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Best" data-ar="الأفضل">Best</div><div class="value" id="stat-best">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Solves" data-ar="الحلول">Solves</div><div class="value" id="stat-count">0</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao5" data-ar="متوسط 5">Ao5</div><div class="value" id="stat-ao5">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao12" data-ar="متوسط 12">Ao12</div><div class="value" id="stat-ao12">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao50" data-ar="متوسط 50">Ao50</div><div class="value" id="stat-ao50">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao100" data-ar="متوسط 100">Ao100</div><div class="value" id="stat-ao100">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Mean" data-ar="المتوسط">Mean</div><div class="value" id="stat-mean">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Deviation" data-ar="الانحراف">Deviation</div><div class="value" id="stat-deviation">-</div></div>
     </div>
   </aside>
 
@@ -371,34 +401,34 @@
   </section>
 
   <aside class="right">
-    <h3 class="section">Times</h3>
+    <h3 class="section" data-en="Times" data-ar="الأوقات">Times</h3>
     <div id="times-list"></div>
-    <div id="empty-msg">No solves yet. Get cubing.</div>
-    <button class="ctrl" id="clear-all">Clear session</button>
+    <div id="empty-msg" data-en="No solves yet. Get cubing." data-ar="لا توجد حلول بعد. ابدأ حل المكعب!">No solves yet. Get cubing.</div>
+    <button class="ctrl" id="clear-all" data-en="Clear session" data-ar="مسح الجلسة">Clear session</button>
   </aside>
 </div>
 
 <div id="modal-overlay">
   <div id="detail-modal">
     <div id="detail-time">0.00</div>
-    <div id="detail-puzzle">3x3 Cube</div>
-    <div id="detail-scramble-label">Scramble</div>
+    <div id="detail-puzzle" data-en="3x3 Cube" data-ar="مكعب 3x3">3x3 Cube</div>
+    <div id="detail-scramble-label" data-en="Scramble" data-ar="الخلطة">Scramble</div>
     <div id="detail-scramble">-</div>
     <div id="detail-actions">
-      <button data-action="ok">OK</button>
-      <button data-action="plus2">+2</button>
-      <button data-action="dnf">DNF</button>
-      <button data-action="delete" class="danger">Delete</button>
+      <button data-action="ok" data-en="OK" data-ar="موافق">OK</button>
+      <button data-action="plus2" data-en="+2" data-ar="+2">+2</button>
+      <button data-action="dnf" data-en="DNF" data-ar="DNF">DNF</button>
+      <button data-action="delete" class="danger" data-en="Delete" data-ar="حذف">Delete</button>
     </div>
   </div>
 </div>
 
 <div id="confirm-overlay">
   <div id="confirm-modal">
-    <div id="confirm-text">Clear all solves this session?</div>
+    <div id="confirm-text" data-en="Clear all solves this session?" data-ar="مسح جميع حلول هذه الجلسة؟">Clear all solves this session?</div>
     <div id="confirm-actions">
-      <button id="confirm-cancel">Cancel</button>
-      <button id="confirm-yes" class="danger">Clear</button>
+      <button id="confirm-cancel" data-en="Cancel" data-ar="إلغاء">Cancel</button>
+      <button id="confirm-yes" class="danger" data-en="Clear" data-ar="مسح">Clear</button>
     </div>
   </div>
 </div>
@@ -406,6 +436,52 @@
 
 <script>
 (function(){
+
+
+  // ---------- Shared language system ----------
+  const LANGUAGE_KEY = 'skewbicle-language';
+  let currentLanguage = localStorage.getItem(LANGUAGE_KEY) === 'ar' ? 'ar' : 'en';
+
+  const translations = {
+    en: {
+      noScramble: '(no scramble recorded)',
+      clearConfirm: puzzle => `Clear all ${puzzle} solves this session?`
+    },
+    ar: {
+      noScramble: '(لم يتم تسجيل خلطة)',
+      clearConfirm: puzzle => `مسح جميع حلول ${puzzle} في هذه الجلسة؟`
+    }
+  };
+
+  function applyLanguage(language) {
+    currentLanguage = language === 'ar' ? 'ar' : 'en';
+
+    // Timer page stays LTR. Only #site-nav is allowed to become RTL.
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir = 'ltr';
+
+    document.querySelectorAll('[data-en][data-ar]').forEach(node => {
+      node.textContent = node.dataset[currentLanguage];
+    });
+
+    const title = document.querySelector('title[data-title-en][data-title-ar]');
+    if (title) title.textContent = title.dataset[`title-${currentLanguage}`];
+
+    const meta = document.querySelector('meta[data-meta-en][data-meta-ar]');
+    if (meta) meta.setAttribute('content', meta.dataset[`meta-${currentLanguage}`]);
+
+    const switcher = document.getElementById('languageSwitcher');
+    if (switcher) switcher.value = currentLanguage;
+
+    localStorage.setItem(LANGUAGE_KEY, currentLanguage);
+
+    if (typeof refreshLocalizedUI === 'function') refreshLocalizedUI();
+  }
+
+  const languageSwitcher = document.getElementById('languageSwitcher');
+  if (languageSwitcher) {
+    languageSwitcher.addEventListener('change', e => applyLanguage(e.target.value));
+  }
 
   // ---------- Scramble generators ----------
 
@@ -509,17 +585,17 @@
   }
 
   const PUZZLES = {
-    '2x2':     { label: '2x2 Cube',  gen: () => genCubeScramble(2, 9,  ['R','U','F']) },
-    '3x3':     { label: '3x3 Cube',  gen: () => genCubeScramble(3, 20) },
-    '4x4':     { label: '4x4 Cube',  gen: () => genCubeScramble(4, 40) },
-    '5x5':     { label: '5x5 Cube',  gen: () => genCubeScramble(5, 60) },
-    '6x6':     { label: '6x6 Cube',  gen: () => genCubeScramble(6, 70) },
-    '7x7':     { label: '7x7 Cube',  gen: () => genCubeScramble(7, 80) },
-    'skewb':   { label: 'Skewb',     gen: genSkewb },
-    'megaminx':{ label: 'Megaminx',  gen: genMegaminx },
-    'pyraminx':{ label: 'Pyraminx',  gen: genPyraminx },
-    'square1': { label: 'Square-1',  gen: genSquare1 },
-    'clock':   { label: 'Clock',     gen: genClock }
+    '2x2':     { label: '2x2 Cube',  arLabel: 'مكعب 2x2', gen: () => genCubeScramble(2, 9,  ['R','U','F']) },
+    '3x3':     { label: '3x3 Cube',  arLabel: 'مكعب 3x3', gen: () => genCubeScramble(3, 20) },
+    '4x4':     { label: '4x4 Cube',  arLabel: 'مكعب 4x4', gen: () => genCubeScramble(4, 40) },
+    '5x5':     { label: '5x5 Cube',  arLabel: 'مكعب 5x5', gen: () => genCubeScramble(5, 60) },
+    '6x6':     { label: '6x6 Cube',  arLabel: 'مكعب 6x6', gen: () => genCubeScramble(6, 70) },
+    '7x7':     { label: '7x7 Cube',  arLabel: 'مكعب 7x7', gen: () => genCubeScramble(7, 80) },
+    'skewb':   { label: 'Skewb',     arLabel: 'سكويب', gen: genSkewb },
+    'megaminx':{ label: 'Megaminx',  arLabel: 'ميغامِنكس', gen: genMegaminx },
+    'pyraminx':{ label: 'Pyraminx',  arLabel: 'بيرامينكس', gen: genPyraminx },
+    'square1': { label: 'Square-1',  arLabel: 'Square-1', gen: genSquare1 },
+    'clock':   { label: 'Clock',     arLabel: 'Clock', gen: genClock }
   };
 
   // ---------- App state ----------
@@ -711,8 +787,8 @@
     const t = times.find(x => x.id === id);
     if(!t) return;
     el.modalOverlay.dataset.id = id;
-    el.detailPuzzle.textContent = PUZZLES[state.puzzle].label;
-    el.detailScramble.textContent = t.scramble || '(no scramble recorded)';
+    el.detailPuzzle.textContent = currentLanguage === 'ar' ? PUZZLES[state.puzzle].arLabel : PUZZLES[state.puzzle].label;
+    el.detailScramble.textContent = t.scramble || translations[currentLanguage].noScramble;
 
     el.detailTime.className = '';
     if(t.penalty === 'dnf'){
@@ -765,7 +841,7 @@
   el.clearAll.addEventListener('click', () => {
     const times = currentTimes();
     if(!times.length) return;
-    el.confirmText.textContent = `Clear all ${PUZZLES[state.puzzle].label} solves this session?`;
+    el.confirmText.textContent = translations[currentLanguage].clearConfirm(currentLanguage === 'ar' ? PUZZLES[state.puzzle].arLabel : PUZZLES[state.puzzle].label);
     el.confirmOverlay.style.display = 'flex';
   });
 
@@ -833,7 +909,7 @@
   function beginSolve(){
     state.phase = 'running';
     state.runStart = performance.now();
-    el.hint.textContent = 'Press Space to stop';
+    el.hint.innerHTML = currentLanguage === 'ar' ? 'اضغط <kbd>Space</kbd> للإيقاف' : 'Press <kbd>Space</kbd> to stop';
     tickRunning();
   }
 
@@ -845,7 +921,7 @@
     saveState();
     renderTimes();
     state.phase = 'idle';
-    el.hint.textContent = 'Hold Space to start · tap and hold on mobile';
+    el.hint.innerHTML = currentLanguage === 'ar' ? 'اضغط باستمرار على <kbd>Space</kbd> للبدء · اضغط باستمرار على الهاتف' : 'Hold <kbd>Space</kbd> to start · tap and hold on mobile';
     newScramble();
   }
 
@@ -908,10 +984,27 @@
   });
   window.addEventListener('mouseup', (e) => { if(e.button===0) releaseHold(); });
 
+
+  function refreshLocalizedUI() {
+    const puzzle = PUZZLES[state.puzzle];
+    const puzzleLabel = currentLanguage === 'ar' ? puzzle.arLabel : puzzle.label;
+
+    el.hint.innerHTML = currentLanguage === 'ar'
+      ? 'اضغط باستمرار على <kbd>Space</kbd> للبدء · اضغط باستمرار على الهاتف'
+      : 'Hold <kbd>Space</kbd> to start · tap and hold on mobile';
+
+    el.detailPuzzle.textContent = puzzleLabel;
+
+    if (el.confirmOverlay.style.display === 'flex') {
+      el.confirmText.textContent = translations[currentLanguage].clearConfirm(puzzleLabel);
+    }
+  }
+
   loadState();
   el.puzzleSelect.value = state.puzzle;
   newScramble();
   renderTimes();
+  applyLanguage(currentLanguage);
 })();
 </script>
 
