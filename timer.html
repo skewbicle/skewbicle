@@ -319,15 +319,16 @@
   }
 
   /* Arabic changes only the navigation on this page. */
-  #site-nav {
-    direction: ltr;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  #site-nav .nav-links { direction: ltr; }
-  #site-nav .language-switcher { flex-shrink: 0; }
+ #site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#site-nav .language-switcher {
+  flex-shrink: 0;
+}
 nav {
       display: flex;
       justify-content: space-between;
