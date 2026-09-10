@@ -429,10 +429,10 @@ html[lang="ar"] #site-nav .nav-links {
     <div class="stat-grid">
       <div class="stat-box"><div class="label" data-en="Best" data-ar="الأفضل">Best</div><div class="value" id="stat-best">-</div></div>
       <div class="stat-box"><div class="label" data-en="Solves" data-ar="الحلول">Solves</div><div class="value" id="stat-count">0</div></div>
-      <div class="stat-box"><div class="label" data-en="Ao5" data-ar="متوسط 5">Ao5</div><div class="value" id="stat-ao5">-</div></div>
-      <div class="stat-box"><div class="label" data-en="Ao12" data-ar="متوسط 12">Ao12</div><div class="value" id="stat-ao12">-</div></div>
-      <div class="stat-box"><div class="label" data-en="Ao50" data-ar="متوسط 50">Ao50</div><div class="value" id="stat-ao50">-</div></div>
-      <div class="stat-box"><div class="label" data-en="Ao100" data-ar="متوسط 100">Ao100</div><div class="value" id="stat-ao100">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao5" data-ar="متوسط ٥">Ao5</div><div class="value" id="stat-ao5">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao12" data-ar="متوسط ۱۲">Ao12</div><div class="value" id="stat-ao12">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao50" data-ar="متوسط ٥۰">Ao50</div><div class="value" id="stat-ao50">-</div></div>
+      <div class="stat-box"><div class="label" data-en="Ao100" data-ar="متوسط ۱۰۰">Ao100</div><div class="value" id="stat-ao100">-</div></div>
       <div class="stat-box"><div class="label" data-en="Mean" data-ar="المتوسط">Mean</div><div class="value" id="stat-mean">-</div></div>
       <div class="stat-box"><div class="label" data-en="Deviation" data-ar="الانحراف">Deviation</div><div class="value" id="stat-deviation">-</div></div>
     </div>
@@ -446,7 +446,7 @@ html[lang="ar"] #site-nav .nav-links {
   <aside class="right">
     <h3 class="section" data-en="Times" data-ar="الأوقات">Times</h3>
     <div id="times-list"></div>
-    <div id="empty-msg" data-en="No solves yet. Get cubing." data-ar="لا توجد حلول بعد. ابدأ حل المكعب!">No solves yet. Get cubing.</div>
+    <div id="empty-msg" data-en="No solves yet. Get cubing." data-ar="!لا توجد حلول بعد. ابدأ حل المكعب">No solves yet. Get cubing.</div>
     <button class="ctrl" id="clear-all" data-en="Clear session" data-ar="مسح الجلسة">Clear session</button>
   </aside>
 </div>
@@ -628,17 +628,17 @@ html[lang="ar"] #site-nav .nav-links {
   }
 
   const PUZZLES = {
-    '2x2':     { label: '2x2 Cube',  arLabel: 'مكعب 2x2', gen: () => genCubeScramble(2, 9,  ['R','U','F']) },
-    '3x3':     { label: '3x3 Cube',  arLabel: 'مكعب 3x3', gen: () => genCubeScramble(3, 20) },
-    '4x4':     { label: '4x4 Cube',  arLabel: 'مكعب 4x4', gen: () => genCubeScramble(4, 40) },
-    '5x5':     { label: '5x5 Cube',  arLabel: 'مكعب 5x5', gen: () => genCubeScramble(5, 60) },
-    '6x6':     { label: '6x6 Cube',  arLabel: 'مكعب 6x6', gen: () => genCubeScramble(6, 70) },
-    '7x7':     { label: '7x7 Cube',  arLabel: 'مكعب 7x7', gen: () => genCubeScramble(7, 80) },
+    '2x2':     { label: '2x2 Cube',  arLabel: '۲x۲', gen: () => genCubeScramble(2, 9,  ['R','U','F']) },
+    '3x3':     { label: '3x3 Cube',  arLabel: '۳x۳', gen: () => genCubeScramble(3, 20) },
+    '4x4':     { label: '4x4 Cube',  arLabel: '٤x٤', gen: () => genCubeScramble(4, 40) },
+    '5x5':     { label: '5x5 Cube',  arLabel: '٥x٥', gen: () => genCubeScramble(5, 60) },
+    '6x6':     { label: '6x6 Cube',  arLabel: '٦x٦', gen: () => genCubeScramble(6, 70) },
+    '7x7':     { label: '7x7 Cube',  arLabel: '۷x۷', gen: () => genCubeScramble(7, 80) },
     'skewb':   { label: 'Skewb',     arLabel: 'سكويب', gen: genSkewb },
     'megaminx':{ label: 'Megaminx',  arLabel: 'ميغامِنكس', gen: genMegaminx },
     'pyraminx':{ label: 'Pyraminx',  arLabel: 'بيرامينكس', gen: genPyraminx },
-    'square1': { label: 'Square-1',  arLabel: 'Square-1', gen: genSquare1 },
-    'clock':   { label: 'Clock',     arLabel: 'Clock', gen: genClock }
+    'square1': { label: 'Square-1',  arLabel: 'مربع-۱', gen: genSquare1 },
+    'clock':   { label: 'Clock',     arLabel: 'ساعة روبيك', gen: genClock }
   };
 
   // ---------- App state ----------
@@ -952,7 +952,7 @@ html[lang="ar"] #site-nav .nav-links {
   function beginSolve(){
     state.phase = 'running';
     state.runStart = performance.now();
-    el.hint.innerHTML = currentLanguage === 'ar' ? 'اضغط <kbd>Space</kbd> للإيقاف' : 'Press <kbd>Space</kbd> to stop';
+    el.hint.innerHTML = currentLanguage === 'ar' ? 'للإيقاف <kbd>Space</kbd> اضغط' : 'Press <kbd>Space</kbd> to stop';
     tickRunning();
   }
 
@@ -964,7 +964,7 @@ html[lang="ar"] #site-nav .nav-links {
     saveState();
     renderTimes();
     state.phase = 'idle';
-    el.hint.innerHTML = currentLanguage === 'ar' ? 'اضغط باستمرار على <kbd>Space</kbd> للبدء · اضغط باستمرار على الهاتف' : 'Hold <kbd>Space</kbd> to start · tap and hold on mobile';
+    el.hint.innerHTML = currentLanguage === 'ar' ? 'انقر مع الاستمرار على الأجهزة المحمولة <kbd>Space</kbd>اضغط باستمرار على' : 'Hold <kbd>Space</kbd> to start · tap and hold on mobile';
     newScramble();
   }
 
