@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" dir="ltr">
+
 <head>
-    <!-- Google tag (gtag.js) -->
+
+<!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -10,64 +15,394 @@
 
   gtag('config', 'G-MVGS5PM6ZN');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn 2-Look PLL algorithms for solving the final layer of a 3x3 Rubik's Cube with a beginner-friendly guide.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/bpll.html">
-    <title>3x3 2-Look PLL Algorithms</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
-</nav>
- 
-<h1>2-Look PLL</h1>
 
-<h2>(Fixing the corners first and then the edges)</h2>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+   content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+   content="Learn 2-Look PLL algorithms for solving the final layer of a 3x3 Rubik's Cube with a beginner-friendly guide.">
+
+<link rel="canonical"
+      href="https://skewbicle.github.io/skewbicle/bpll.html">
+
+<title>3x3 2-Look PLL Algorithms</title>
+
+<link rel="icon"
+      href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+<link rel="stylesheet"
+      href="style.css">
+
+<style>
+
+    /* ============================== */
+    /* ===== LANGUAGE SWITCHER ====== */
+    /* ============================== */
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .language-switcher {
+        background: #1a1a1a;
+        color: white;
+        border: 1px solid #555;
+        border-radius: 8px;
+        padding: 7px 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 15px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .language-switcher:hover {
+        border-color: white;
+    }
+
+    .language-switcher option {
+        background: #1a1a1a;
+        color: white;
+    }
+
+
+    /* ============================== */
+    /* ========= RTL NAV ============= */
+    /* ============================== */
+
+    html[dir="rtl"] nav {
+        direction: rtl;
+    }
+
+    html[dir="rtl"] .nav-links {
+        direction: rtl;
+    }
+
+
+    /* ============================== */
+    /* ========= RTL FOOTER ========== */
+    /* ============================== */
+
+    html[dir="rtl"] footer {
+        direction: rtl;
+    }
+
+
+    /* ============================== */
+    /* ======= KEEP TUTORIAL LTR ==== */
+    /* ============================== */
+
+    /*
+      The PLL algorithms, headings,
+      cards and tutorial content stay LTR.
+    */
+
+    html[dir="rtl"] body {
+        direction: ltr;
+    }
+
+
+    /* ============================== */
+    /* ========= MOBILE ============== */
+    /* ============================== */
+
+    @media (max-width: 768px) {
+
+        nav {
+            gap: 10px;
+        }
+
+        .language-switcher {
+            font-size: 13px;
+            padding: 6px 8px;
+        }
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ============================== -->
+
+<!-- ============ NAV ============= -->
+
+<!-- ============================== -->
+
+<nav>
+
+
+<ul class="nav-links">
+
+    <li>
+        <a href="index.html"
+           data-en="Home"
+           data-ar="الرئيسية">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="timer.html"
+           data-en="Timer"
+           data-ar="المؤقت">
+            Timer
+        </a>
+    </li>
+
+    <li>
+        <a href="simulator.html"
+           data-en="Simulator"
+           data-ar="المحاكي">
+            Simulator
+        </a>
+    </li>
+
+    <li>
+        <a href="algorithms.html"
+           data-en="Algorithms"
+           data-ar="الخوارزميات">
+            Algorithms
+        </a>
+    </li>
+
+</ul>
+
+
+<!-- Language dropdown -->
+
+<select id="languageSwitcher"
+        class="language-switcher"
+        aria-label="Language">
+
+    <option value="en">
+        🇬🇧 English
+    </option>
+
+    <option value="ar">
+        🇸🇦 العربية
+    </option>
+
+</select>
+
+
+</nav>
+
+<!-- ============================== -->
+
+<!-- ============ TITLE =========== -->
+
+<!-- ============================== -->
+
+<h1>
+    2-Look PLL
+</h1>
+
+<h2
+    data-en="(Fixing the corners first and then the edges)"
+    data-ar="(حل الزوايا أولًا ثم الحواف)">
+    (Fixing the corners first and then the edges)
+</h2>
+
+<!-- ============================== -->
+
+<!-- ========== ALGORITHMS ======== -->
+
+<!-- ============================== -->
 
 <div class="card-container1">
-  
-  <div class="card">
+
+
+<div class="card">
+
     <img src="b.pll/download (10).png">
-    <p>R U R' U' R' F R2 U' R' U' R U R' F'</p>
-  </div>
 
-  <div class="card">
-    <img src="b.pll/download.png">
-    <p>F R U' R' U' R U R' F' R U R' U' R' F R F'</p>
-  </div>
+    <p>
+        R U R' U' R' F R2 U' R' U' R U R' F'
+    </p>
 
-  <div class="card">
-    <img src="b.pll/download (1).png">
-    <p>R U' R U R U R U' R' U' R2</p>
-  </div>
-
-  <div class="card">
-    <img src="b.pll/download (2).png">
-    <p>R2 U R U R' U' R' U' R' U R'</p>
-  </div>
-
-  <div class="card">
-    <img src="b.pll/download (3).png">
-    <p>M2 U M2 U2 M2 U M2</p>
-  </div>
-
-  <div class="card">
-    <img src="b.pll/download (4).png">
-    <p>M' U M2 U M2 U M' U2 M2</p>
-  </div>
 </div>
 
+
+
+<div class="card">
+
+    <img src="b.pll/download.png">
+
+    <p>
+        F R U' R' U' R U R' F' R U R' U' R' F R F'
+    </p>
+
+</div>
+
+
+
+<div class="card">
+
+    <img src="b.pll/download (1).png">
+
+    <p>
+        R U' R U R U R U' R' U' R2
+    </p>
+
+</div>
+
+
+
+<div class="card">
+
+    <img src="b.pll/download (2).png">
+
+    <p>
+        R2 U R U R' U' R' U' R' U R'
+    </p>
+
+</div>
+
+
+
+<div class="card">
+
+    <img src="b.pll/download (3).png">
+
+    <p>
+        M2 U M2 U2 M2 U M2
+    </p>
+
+</div>
+
+
+
+<div class="card">
+
+    <img src="b.pll/download (4).png">
+
+    <p>
+        M' U M2 U M2 U M' U2 M2
+    </p>
+
+</div>
+
+
+</div>
+
+<!-- ============================== -->
+
+<!-- ============ FOOTER ========== -->
+
+<!-- ============================== -->
+
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>    
+
+
+<p
+    data-en="© 2026 Skewbicle. All rights reserved."
+    data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة.">
+    © 2026 Skewbicle. All rights reserved.
+</p>
+
+<a
+    href="mailto:skewbicle@gmail.com"
+    data-en="Contact Us"
+    data-ar="تواصل معنا">
+    Contact Us
+</a>
+
+
+</footer>
+
+<!-- ============================== -->
+
+<!-- =========== SCRIPT ============ -->
+
+<!-- ============================== -->
+
+<script>
+
+    const languageSwitcher =
+        document.getElementById("languageSwitcher");
+
+
+    function setLanguage(language) {
+
+        /*
+          Change the HTML language.
+        */
+
+        document.documentElement.lang = language;
+
+
+        /*
+          Arabic makes only the nav
+          and footer RTL.
+        */
+
+        if (language === "ar") {
+
+            document.documentElement.dir = "rtl";
+
+        } else {
+
+            document.documentElement.dir = "ltr";
+
+        }
+
+
+        /*
+          Translate elements using
+          data-en and data-ar.
+        */
+
+        document.querySelectorAll("[data-en]").forEach(element => {
+
+            element.textContent =
+                element.getAttribute(`data-${language}`);
+
+        });
+
+
+        /*
+          Save language so it stays
+          consistent across pages.
+        */
+
+        localStorage.setItem(
+            "skewbicle-language",
+            language
+        );
+
+    }
+
+
+    /*
+      Change language.
+    */
+
+    languageSwitcher.addEventListener("change", function () {
+
+        setLanguage(this.value);
+
+    });
+
+
+    /*
+      Load saved language.
+    */
+
+    const savedLanguage =
+        localStorage.getItem("skewbicle-language") || "en";
+
+
+    languageSwitcher.value = savedLanguage;
+
+    setLanguage(savedLanguage);
+
+</script>
+
 </body>
 </html>
