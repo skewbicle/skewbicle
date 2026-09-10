@@ -1,205 +1,446 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
   gtag('config', 'G-MVGS5PM6ZN');
 </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="description"
-    content="Learn Rubik's Cube move notation and understand the algorithms used in Skewbicle's solving tutorials."
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<link rel="canonical" href="https://skewbicle.github.io/skewbicle/algorithms.html">
+<meta name="description"
+      content="Learn Rubik's Cube move notation and understand the algorithms used in Skewbicle's solving tutorials.">
 
-<title id="page-title">Algorithms - Skewbicle</title>
+<link rel="canonical"
+      href="https://skewbicle.github.io/skewbicle/algorithms.html">
 
-<link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
-<link rel="stylesheet" href="style.css">
+<title>Algorithms - Skewbicle</title>
+
+<link rel="icon"
+      href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+<link rel="stylesheet"
+      href="style.css">
+
 
 <style>
-    /* Only the navigation and footer change direction in Arabic */
-    html[dir="rtl"] nav,
-    html[dir="rtl"] footer {
-        direction: rtl;
+
+    /* ============================== */
+    /* ===== LANGUAGE SWITCHER ====== */
+    /* ============================== */
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
+
+    .language-switcher {
+        background: #1a1a1a;
+        color: white;
+        border: 1px solid #555;
+        border-radius: 8px;
+        padding: 7px 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 15px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .language-switcher:hover {
+        border-color: white;
+    }
+
+    .language-switcher option {
+        background: #1a1a1a;
+        color: white;
+    }
+
+
+    /* ============================== */
+    /* ========= RTL NAV ============= */
+    /* ============================== */
+
+    /*
+      Only the navigation becomes RTL.
+      The Algorithms page itself stays LTR.
+    */
 
     html[dir="rtl"] .nav-links {
         direction: rtl;
     }
 
-    /* Keep the Algorithms page itself LTR */
+
+    /* ============================== */
+    /* ========= RTL FOOTER ========== */
+    /* ============================== */
+
+    html[dir="rtl"] footer {
+        direction: rtl;
+    }
+
+
+    /* ============================== */
+    /* ========= KEEP CONTENT LTR ==== */
+    /* ============================== */
+
     html[dir="rtl"] body {
         direction: ltr;
     }
 
-    html[dir="rtl"] nav,
-    html[dir="rtl"] footer {
-        text-align: right;
+
+    /* ============================== */
+    /* ========= MOBILE ============== */
+    /* ============================== */
+
+    @media (max-width: 768px) {
+
+        nav {
+            gap: 10px;
+        }
+
+        .language-switcher {
+            font-size: 13px;
+            padding: 6px 8px;
+        }
+
     }
+
 </style>
+
 
 </head>
 
 <body>
 
+<!-- ============================== -->
+
+<!-- ============ NAV ============= -->
+
+<!-- ============================== -->
 
 <nav>
-    <ul class="nav-links">
-        <li><a href="index.html" data-i18n="home">Home</a></li>
-        <li><a href="timer.html" data-i18n="timer">Timer</a></li>
-        <li><a href="simulator.html" data-i18n="simulator">Simulator</a></li>
-        <li><a href="algorithms.html" data-i18n="algorithms">Algorithms</a></li>
 
-        <!-- Language switcher -->
-        <li>
-            <button id="language-toggle" type="button">العربية</button>
-        </li>
-    </ul>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="index.html"
+           data-en="Home"
+           data-ar="الرئيسية">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="timer.html"
+           data-en="Timer"
+           data-ar="المؤقت">
+            Timer
+        </a>
+    </li>
+
+    <li>
+        <a href="simulator.html"
+           data-en="Simulator"
+           data-ar="المحاكي">
+            Simulator
+        </a>
+    </li>
+
+    <li>
+        <a href="algorithms.html"
+           data-en="Algorithms"
+           data-ar="الخوارزميات">
+            Algorithms
+        </a>
+    </li>
+
+</ul>
+
+
+<!-- Language dropdown -->
+
+<select id="languageSwitcher"
+        class="language-switcher"
+        aria-label="Language">
+
+    <option value="en">
+        🇬🇧 English
+    </option>
+
+    <option value="ar">
+        🇸🇦 العربية
+    </option>
+
+</select>
+
+
 </nav>
 
-<h1 data-i18n="moveNotation">Move Notation</h1>
+<!-- ============================== -->
+
+<!-- ======== ALGORITHMS ========== -->
+
+<!-- ============================== -->
+
+<h1
+    data-en="Move Notation"
+    data-ar="ترميز الحركات">
+    Move Notation
+</h1>
 
 <div class="lang">
-    <img
-        src="algorithms/ec3481ae-4ccd-454e-bb05-535d5890a1d2.jpg"
-        alt="Move Notation"
-    >
+
+
+<img
+    src="algorithms/ec3481ae-4ccd-454e-bb05-535d5890a1d2.jpg"
+    alt="Move Notation"
+>
+
+
 </div>
 
 <div class="algp">
-    <h2 data-i18n="lastLayer">Last Layer</h2>
+
+
+<h2
+    data-en="Last Layer"
+    data-ar="الطبقة الأخيرة">
+    Last Layer
+</h2>
+
+
 </div>
 
 <div class="algorithms-container">
 
-    <a href="boll.html">
-        <button class="algorithm-button">
-            <img
-                src="algorithms/12ba8394-439d-488b-bc70-b239cfb4f1bf.jpg"
-                alt="2-Look OLL"
-            >
-            <div class="overlay">
-                <span>2-Look OLL</span>
-            </div>
-        </button>
-    </a>
 
-    <a href="bpll.html">
-        <button class="algorithm-button">
-            <img
-                src="algorithms/1a6b731f-8b0c-45e1-b592-18488edb004b.jpg"
-                alt="2-Look PLL"
-            >
-            <div class="overlay">
-                <span>2-Look PLL</span>
-            </div>
-        </button>
-    </a>
+<!-- 2-Look OLL -->
 
-    <a href="oll.html">
-        <button class="algorithm-button">
-            <img
-                src="algorithms/0c523282-4c34-4b70-92f8-e3fcac3fcc7a.jpg"
-                alt="OLL"
-            >
-            <div class="overlay">
-                <span>OLL</span>
-            </div>
-        </button>
-    </a>
+<a href="boll.html">
 
-    <a href="pll.html">
-        <button class="algorithm-button">
-            <img
-                src="algorithms/09daaab6-aafa-431d-96b5-0e9565e9d60e.jpg"
-                alt="PLL"
-            >
-            <div class="overlay">
-                <span>PLL</span>
-            </div>
-        </button>
-    </a>
+    <button class="algorithm-button">
+
+        <img
+            src="algorithms/12ba8394-439d-488b-bc70-b239cfb4f1bf.jpg"
+            alt="2-Look OLL"
+        >
+
+        <div class="overlay">
+
+            <span>
+                2-Look OLL
+            </span>
+
+        </div>
+
+    </button>
+
+</a>
+
+
+
+<!-- 2-Look PLL -->
+
+<a href="bpll.html">
+
+    <button class="algorithm-button">
+
+        <img
+            src="algorithms/1a6b731f-8b0c-45e1-b592-18488edb004b.jpg"
+            alt="2-Look PLL"
+        >
+
+        <div class="overlay">
+
+            <span>
+                2-Look PLL
+            </span>
+
+        </div>
+
+    </button>
+
+</a>
+
+
+
+<!-- OLL -->
+
+<a href="oll.html">
+
+    <button class="algorithm-button">
+
+        <img
+            src="algorithms/0c523282-4c34-4b70-92f8-e3fcac3fcc7a.jpg"
+            alt="OLL"
+        >
+
+        <div class="overlay">
+
+            <span>
+                OLL
+            </span>
+
+        </div>
+
+    </button>
+
+</a>
+
+
+
+<!-- PLL -->
+
+<a href="pll.html">
+
+    <button class="algorithm-button">
+
+        <img
+            src="algorithms/09daaab6-aafa-431d-96b5-0e9565e9d60e.jpg"
+            alt="PLL"
+        >
+
+        <div class="overlay">
+
+            <span>
+                PLL
+            </span>
+
+        </div>
+
+    </button>
+
+</a>
+
 
 </div>
 
+<!-- ============================== -->
+
+<!-- ============ FOOTER ========== -->
+
+<!-- ============================== -->
+
 <footer>
-    <p>&copy; 2026 Skewbicle. <span data-i18n="rights">All rights reserved.</span></p>
-    <a href="mailto:skewbicle@gmail.com" data-i18n="contact">Contact Us</a>
+
+
+<p
+    data-en="© 2026 Skewbicle. All rights reserved."
+    data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة.">
+    © 2026 Skewbicle. All rights reserved.
+</p>
+
+<a
+    href="mailto:skewbicle@gmail.com"
+    data-en="Contact Us"
+    data-ar="تواصل معنا">
+    Contact Us
+</a>
+
+
 </footer>
 
+<!-- ============================== -->
+
+<!-- =========== SCRIPT ============ -->
+
+<!-- ============================== -->
+
 <script>
-    const translations = {
-        en: {
-            home: "Home",
-            timer: "Timer",
-            simulator: "Simulator",
-            algorithms: "Algorithms",
-            moveNotation: "Move Notation",
-            lastLayer: "Last Layer",
-            rights: "All rights reserved.",
-            contact: "Contact Us",
-            language: "العربية",
-            title: "Algorithms - Skewbicle"
-        },
 
-        ar: {
-            home: "الرئيسية",
-            timer: "المؤقت",
-            simulator: "المحاكي",
-            algorithms: "الخوارزميات",
-            moveNotation: "ترميز الحركات",
-            lastLayer: "الطبقة الأخيرة",
-            rights: "جميع الحقوق محفوظة.",
-            contact: "تواصل معنا",
-            language: "English",
-            title: "الخوارزميات - Skewbicle"
-        }
-    };
+    const languageSwitcher =
+        document.getElementById("languageSwitcher");
 
-    const languageToggle = document.getElementById("language-toggle");
 
     function setLanguage(language) {
-        const lang = translations[language];
+
+        /*
+          Change the language attribute.
+        */
 
         document.documentElement.lang = language;
-        document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
 
-        document.title = lang.title;
 
-        document.querySelectorAll("[data-i18n]").forEach(element => {
-            const key = element.getAttribute("data-i18n");
+        /*
+          We only use RTL for the navigation
+          and footer on this page.
+        */
 
-            if (lang[key]) {
-                element.textContent = lang[key];
-            }
+        if (language === "ar") {
+
+            document.documentElement.dir = "rtl";
+
+        } else {
+
+            document.documentElement.dir = "ltr";
+
+        }
+
+
+        /*
+          Translate all elements containing
+          data-en and data-ar.
+        */
+
+        document.querySelectorAll("[data-en]").forEach(element => {
+
+            element.textContent =
+                element.getAttribute(`data-${language}`);
+
         });
 
-        languageToggle.textContent = lang.language;
 
-        localStorage.setItem("skewbicle-language", language);
+        /*
+          Keep the selected language between pages.
+        */
+
+        localStorage.setItem(
+            "skewbicle-language",
+            language
+        );
+
     }
 
-    languageToggle.addEventListener("click", () => {
-        const currentLanguage = localStorage.getItem("skewbicle-language") || "en";
-        setLanguage(currentLanguage === "en" ? "ar" : "en");
+
+    /*
+      Language dropdown changed.
+    */
+
+    languageSwitcher.addEventListener("change", function () {
+
+        setLanguage(this.value);
+
     });
 
-    // Load saved language
-    const savedLanguage = localStorage.getItem("skewbicle-language") || "en";
-    setLanguage(savedLanguage);
-</script>
 
+    /*
+      Load saved language.
+      English is the default.
+    */
+
+    const savedLanguage =
+        localStorage.getItem("skewbicle-language") || "en";
+
+
+    languageSwitcher.value = savedLanguage;
+
+    setLanguage(savedLanguage);
+
+</script>
 
 </body>
 </html>
