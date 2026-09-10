@@ -68,22 +68,28 @@
     }
 
 
-    /* ============================== */
-    /* ========= RTL NAV ============= */
-    /* ============================== */
+   /* ============================== */
+/* ========= RTL NAV ============= */
+/* ============================== */
 
-    /*
-      Only the navigation and footer
-      become RTL.
-    */
+html[dir="rtl"] nav {
+    direction: rtl;
+}
 
-    html[dir="rtl"] .nav-links {
-        direction: rtl;
-    }
+html[dir="rtl"] .nav-links {
+    direction: rtl;
+}
 
-    html[dir="rtl"] footer {
-        direction: rtl;
-    }
+
+/* ============================== */
+/* ========= RTL FOOTER ========== */
+/* ============================== */
+
+html[dir="rtl"] footer {
+    direction: rtl;
+}
+
+
 
 
     /* ============================== */
@@ -95,7 +101,7 @@
       tutorial content stay LTR.
     */
 
-    /* html[dir="rtl"] body {
+     html[dir="rtl"] body {
         direction: ltr;
     }
 
