@@ -1,148 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn 3x3 PLL algorithms for permuting the last layer of a Rubik's Cube, with diagrams and algorithms from Skewbicle.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/pll.html">
+
+    <meta
+        name="description"
+        content="Learn 3x3 PLL algorithms for permuting the last layer of a Rubik's Cube, with diagrams and algorithms from Skewbicle."
+    >
+
+    <link
+        rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/pll.html"
+    >
+
     <title>3x3 PLL Algorithms</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+    <link
+        rel="icon"
+        href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png"
+    >
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-switcher {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: white;
+        }
+
+        .language-switcher option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        html[dir="rtl"] nav {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .nav-links {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] footer {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] body {
+            direction: ltr;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 10px;
+            }
+
+            .language-switcher {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
+
+<nav>
+    <ul class="nav-links">
+        <li>
+            <a href="index.html"
+               data-en="Home"
+               data-ar="الرئيسية">
+               Home
+            </a>
+        </li>
+
+        <li>
+            <a href="timer.html"
+               data-en="Timer"
+               data-ar="المؤقت">
+               Timer
+            </a>
+        </li>
+
+        <li>
+            <a href="simulator.html"
+               data-en="Simulator"
+               data-ar="المحاكي">
+               Simulator
+            </a>
+        </li>
+
+        <li>
+            <a href="algorithms.html"
+               data-en="Algorithms"
+               data-ar="الخوارزميات">
+               Algorithms
+            </a>
+        </li>
+    </ul>
+
+    <select
+        id="languageSwitcher"
+        class="language-switcher"
+        aria-label="Language"
+    >
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
 </nav>
- 
+
 <h1>PLL</h1>
 
-<h2>(Permutation of the Last Layer)</h2>
+<h2
+    data-en="(Permutation of the Last Layer)"
+    data-ar="(ترتيب الطبقة الأخيرة)"
+>
+    (Permutation of the Last Layer)
+</h2>
 
 <div class="card-container2">
-  
-  <div class="card">
-    <img src="pll/download (57).png">
-    <p>x L2 D2 L' U' L D2 L' U L'</p>
-  </div>
 
-  <div class="card">
-    <img src="pll/download.png">
-    <p>x' L2 D2 L U L' D2 L U' L</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (57).png">
+        <p>x L2 D2 L' U' L D2 L' U L'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (1).png">
-    <p>R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R</p>
-  </div>
+    <div class="card">
+        <img src="pll/download.png">
+        <p>x' L2 D2 L U L' D2 L U' L</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (2).png">
-    <p>R2 U R' U R' U' R U' R2 U' D R' U R D'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (1).png">
+        <p>R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (3).png">
-    <p>R' U' R U D' R2 U R' U R U' R U' R2 D</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (2).png">
+        <p>R2 U R' U R' U' R U' R2 U' D R' U R D'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (4).png">
-    <p>R2 U' R U' R U R' U R2 U D' R U' R' D</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (3).png">
+        <p>R' U' R U D' R2 U R' U R U' R U' R2 D</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (5).png">
-    <p>R U R' U' D R2 U' R U' R' U R' U R2 D'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (4).png">
+        <p>R2 U' R U' R U R' U R2 U D' R U' R' D</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (6).png">
-    <p>x R2 F R F' R U2 r' U r U2</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (5).png">
+        <p>R U R' U' D R2 U' R U' R' U R' U R2 D'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (7).png">
-    <p>R U R' F' R U R' U' R' F R2 U' R'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (6).png">
+        <p>x R2 F R F' R U2 r' U r U2</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (8).png">
-    <p>R U' R' U' R U R D R' U' R D' R' U2 R'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (7).png">
+        <p>R U R' F' R U R' U' R' F R2 U' R'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (9).png">
-    <p>R2 F R U R U' R' F' R U2 R' U2 R</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (8).png">
+        <p>R U' R' U' R U R D R' U' R D' R' U2 R'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (10).png">
-    <p>R U R' U' R' F R2 U' R' U' R U R' F'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (9).png">
+        <p>R2 F R U R U' R' F' R U2 R' U2 R</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (11).png">
-    <p>x' L' U L D' L' U' L D L' U' L D' L' U L D</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (10).png">
+        <p>R U R' U' R' F R2 U' R' U' R U R' F'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (12).png">
-    <p>R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (11).png">
+        <p>x' L' U L D' L' U' L D L' U' L D' L' U L D</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (13).png">
-    <p>R' U R U' R' F' U' F R U R' F R' F' R U' R</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (12).png">
+        <p>R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (14).png">
-    <p>R' U R' U' y R' F' R2 U' R' U R' F R F</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (13).png">
+        <p>R' U R U' R' F' U' F R U R' F R' F' R U' R</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (15).png">
-    <p>F R U' R' U' R U R' F' R U R' U' R' F R F'</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (14).png">
+        <p>R' U R' U' y R' F' R2 U' R' U R' F R F</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (16).png">
-    <p>M' U M2 U M2 U M' U2 M2</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (15).png">
+        <p>F R U' R' U' R U R' F' R U R' U' R' F R F'</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (17).png">
-    <p>M2 U' M U2 M' U' M2</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (16).png">
+        <p>M' U M2 U M2 U M' U2 M2</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (18).png">
-    <p>M2 U M U2 M' U M2</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (17).png">
+        <p>M2 U' M U2 M' U' M2</p>
+    </div>
 
-  <div class="card">
-    <img src="pll/download (19).png">
-    <p>M2 U M2 U2 M2 U M2</p>
-  </div>
+    <div class="card">
+        <img src="pll/download (18).png">
+        <p>M2 U M U2 M' U M2</p>
+    </div>
+
+    <div class="card">
+        <img src="pll/download (19).png">
+        <p>M2 U M2 U2 M2 U M2</p>
+    </div>
+
 </div>
 
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>    
+    <p
+        data-en="© 2026 Skewbicle. All rights reserved."
+        data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة."
+    >
+        © 2026 Skewbicle. All rights reserved.
+    </p>
+
+    <a
+        href="mailto:skewbicle@gmail.com"
+        data-en="Contact Us"
+        data-ar="تواصل معنا"
+    >
+        Contact Us
+    </a>
+</footer>
+
+<script>
+    const languageSwitcher =
+        document.getElementById("languageSwitcher");
+
+    function setLanguage(language) {
+        document.documentElement.lang = language;
+
+        if (language === "ar") {
+            document.documentElement.dir = "rtl";
+        } else {
+            document.documentElement.dir = "ltr";
+        }
+
+        document.querySelectorAll("[data-en]").forEach(element => {
+            element.textContent =
+                element.getAttribute(`data-${language}`);
+        });
+
+        localStorage.setItem("skewbicle-language", language);
+    }
+
+    languageSwitcher.addEventListener("change", function () {
+        setLanguage(this.value);
+    });
+
+    const savedLanguage =
+        localStorage.getItem("skewbicle-language") || "en";
+
+    languageSwitcher.value = savedLanguage;
+    setLanguage(savedLanguage);
+</script>
+
 </body>
 </html>
