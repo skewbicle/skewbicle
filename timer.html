@@ -413,17 +413,17 @@ html[lang="ar"] #site-nav .nav-links {
   <aside class="left">
     <h3 class="section" data-en="Puzzle" data-ar="المكعب">Puzzle</h3>
     <select id="puzzle-select">
-      <option value="2x2" data-en="2x2 Cube" data-ar="مكعب 2x2">2x2 Cube</option>
-      <option value="3x3" selected data-en="3x3 Cube" data-ar="مكعب 3x3">3x3 Cube</option>
-      <option value="4x4" data-en="4x4 Cube" data-ar="مكعب 4x4">4x4 Cube</option>
-      <option value="5x5" data-en="5x5 Cube" data-ar="مكعب 5x5">5x5 Cube</option>
-      <option value="6x6" data-en="6x6 Cube" data-ar="مكعب 6x6">6x6 Cube</option>
-      <option value="7x7" data-en="7x7 Cube" data-ar="مكعب 7x7">7x7 Cube</option>
+      <option value="2x2" data-en="2x2 Cube" data-ar="۲x۲">2x2 Cube</option>
+      <option value="3x3" selected data-en="3x3 Cube" data-ar="۳x۳">3x3 Cube</option>
+      <option value="4x4" data-en="4x4 Cube" data-ar="٤x٤ ">4x4 Cube</option>
+      <option value="5x5" data-en="5x5 Cube" data-ar="٥x٥">5x5 Cube</option>
+      <option value="6x6" data-en="6x6 Cube" data-ar="٦x٦">6x6 Cube</option>
+      <option value="7x7" data-en="7x7 Cube" data-ar="۷x۷">7x7 Cube</option>
       <option value="skewb" data-en="Skewb" data-ar="سكويب">Skewb</option>
       <option value="megaminx" data-en="Megaminx" data-ar="ميغامِنكس">Megaminx</option>
       <option value="pyraminx" data-en="Pyraminx" data-ar="بيرامينكس">Pyraminx</option>
-      <option value="square1" data-en="Square-1" data-ar="Square-1">Square-1</option>
-      <option value="clock" data-en="Clock" data-ar="Clock">Clock</option>
+      <option value="square1" data-en="Square-1" data-ar="مربع-۱"">Square-1</option>
+      <option value="clock" data-en="Clock" data-ar="ساعة روبيك">Clock</option>
     </select>
     <h3 class="section" style="margin-top:22px;" data-en="Stats" data-ar="الإحصائيات">Stats</h3>
     <div class="stat-grid">
@@ -454,12 +454,12 @@ html[lang="ar"] #site-nav .nav-links {
 <div id="modal-overlay">
   <div id="detail-modal">
     <div id="detail-time">0.00</div>
-    <div id="detail-puzzle" data-en="3x3 Cube" data-ar="مكعب 3x3">3x3 Cube</div>
+    <div id="detail-puzzle" data-en="3x3 Cube" data-ar="۳x۳">3x3 Cube</div>
     <div id="detail-scramble-label" data-en="Scramble" data-ar="الخلطة">Scramble</div>
     <div id="detail-scramble">-</div>
     <div id="detail-actions">
       <button data-action="ok" data-en="OK" data-ar="موافق">OK</button>
-      <button data-action="plus2" data-en="+2" data-ar="+2">+2</button>
+      <button data-action="plus2" data-en="+2" data-ar="+۲">+2</button>
       <button data-action="dnf" data-en="DNF" data-ar="DNF">DNF</button>
       <button data-action="delete" class="danger" data-en="Delete" data-ar="حذف">Delete</button>
     </div>
@@ -1033,7 +1033,7 @@ html[lang="ar"] #site-nav .nav-links {
     const puzzleLabel = currentLanguage === 'ar' ? puzzle.arLabel : puzzle.label;
 
     el.hint.innerHTML = currentLanguage === 'ar'
-      ? 'اضغط باستمرار على <kbd>Space</kbd> للبدء · اضغط باستمرار على الهاتف'
+      ? 'انقر مع الاستمرار على الأجهزة المحمولة <kbd>Space</kbd> اضغط باستمرار على'
       : 'Hold <kbd>Space</kbd> to start · tap and hold on mobile';
 
     el.detailPuzzle.textContent = puzzleLabel;
