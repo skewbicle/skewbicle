@@ -1,255 +1,729 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to solve a 5x5 Rubik's Cube (Professor's Cube) step by step with Skewbicle's tutorial.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/5x5.html">
+
+    <meta
+        name="description"
+        content="Learn how to solve a 5x5 Rubik's Cube (Professor's Cube) step by step with Skewbicle's tutorial."
+    >
+
+    <link
+        rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/5x5.html"
+    >
+
     <title>5x5 Tutorial</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+    <link
+        rel="icon"
+        href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
-</nav>
- 
-<div class="timeline-nav" id="timelineNav">
-  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/5X5/download.png" alt="Step 1"></span><span class="labels">White Center</span></a>
-  <a href="#s2"><span class="thumb"><img src="tutorials/5X5/download (26).png" alt="Step 2"></span><span class="labels">Yellow Center</span></a>
-  <a href="#s3"><span class="thumb"><img src="tutorials/5X5/download (1).png" alt="Step 3"></span><span class="labels">Side Centers</span></a>
-  <a href="#s4"><span class="thumb"><img src="tutorials/5X5/download (2).png" alt="Step 4"></span><span class="labels">Edge Pairing</span></a>
-  <a href="#s5"><span class="thumb"><img src="tutorials/5X5/download (3).png" alt="Step 5"></span><span class="labels">Parity</span></a>
-  <a href="#s6"><span class="thumb"><img src="tutorials/5X5/download (4).png" alt="Step 5"></span><span class="labels">Solve Like a 3x3</span></a>
-</div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html"
+                   data-en="Home"
+                   data-ar="الرئيسية">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="timer.html"
+                   data-en="Timer"
+                   data-ar="المؤقت">
+                    Timer
+                </a>
+            </li>
+
+            <li>
+                <a href="simulator.html"
+                   data-en="Simulator"
+                   data-ar="المحاكي">
+                    Simulator
+                </a>
+            </li>
+
+            <li>
+                <a href="algorithms.html"
+                   data-en="Algorithms"
+                   data-ar="الخوارزميات">
+                    Algorithms
+                </a>
+            </li>
+        </ul>
+
+        <select
+            id="languageSwitcher"
+            class="language-switcher"
+            aria-label="Language"
+        >
+            <option value="en">🇬🇧 English</option>
+            <option value="ar">🇸🇦 العربية</option>
+        </select>
+    </nav>
+
+
+    <div class="timeline-nav" id="timelineNav">
+
+        <a href="#s1" class="active">
+            <span class="thumb">
+                <img src="tutorials/5X5/download.png" alt="Step 1">
+            </span>
+            <span
+                class="labels"
+                data-en="White Center"
+                data-ar="المركز الأبيض">
+                White Center
+            </span>
+        </a>
+
+        <a href="#s2">
+            <span class="thumb">
+                <img src="tutorials/5X5/download (26).png" alt="Step 2">
+            </span>
+            <span
+                class="labels"
+                data-en="Yellow Center"
+                data-ar="المركز الأصفر">
+                Yellow Center
+            </span>
+        </a>
+
+        <a href="#s3">
+            <span class="thumb">
+                <img src="tutorials/5X5/download (1).png" alt="Step 3">
+            </span>
+            <span
+                class="labels"
+                data-en="Side Centers"
+                data-ar="المراكز الجانبية">
+                Side Centers
+            </span>
+        </a>
+
+        <a href="#s4">
+            <span class="thumb">
+                <img src="tutorials/5X5/download (2).png" alt="Step 4">
+            </span>
+            <span
+                class="labels"
+                data-en="Edge Pairing"
+                data-ar="تجميع الحواف">
+                Edge Pairing
+            </span>
+        </a>
+
+        <a href="#s5">
+            <span class="thumb">
+                <img src="tutorials/5X5/download (3).png" alt="Step 5">
+            </span>
+            <span
+                class="labels"
+                data-en="Parity"
+                data-ar="التكافؤ">
+                Parity
+            </span>
+        </a>
+
+        <a href="#s6">
+            <span class="thumb">
+                <img src="tutorials/5X5/download (4).png" alt="Step 6">
+            </span>
+            <span
+                class="labels"
+                data-en="Solve Like a 3x3"
+                data-ar="الحل مثل ٣x٣">
+                Solve Like a 3x3
+            </span>
+        </a>
+
+    </div>
+
+
+    <header>
+
+        <h1
+            data-en="5x5 (Professor's Cube)"
+            data-ar="٥x٥ (مكعب الأستاذ)">
+            5x5 (Professor's Cube)
+        </h1>
+
+        <p
+            data-en='The smallest "odd" layered big cube. It combines fixed centers with edge-pairing techniques from the 4x4, but has no center-edge parities.'
+            data-ar='أصغر مكعب كبير بعدد طبقات "فردي". يجمع بين المراكز الثابتة وتقنيات تجميع الحواف من ٤x٤، لكنه لا يحتوي على حالات تكافؤ بين المركز والحافة.'>
+            The smallest "odd" layered big cube. It combines fixed centers with edge-pairing techniques from the 4x4, but has no center-edge parities.
+        </p>
+
+    </header>
+
+
+    <div class="introduction">
+
+        <p
+            data-en="Before starting, get familiar with 5x5 move notation:"
+            data-ar="قبل البدء، تعرّف على رموز حركات ٥x٥:">
+            Before starting, get familiar with
+            <span>
+                <a href="algorithms.html">5x5 move notation</a>
+            </span>:
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise"
+                data-ar="Rw / Rw': تحريك الطبقتين الموجودتين في أقصى اليمين معًا مع عقارب الساعة / عكس عقارب الساعة">
+                Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise
+            </li>
+
+            <li
+                data-en="Uw / Uw': Move the two top layers together clockwise / counter-clockwise"
+                data-ar="Uw / Uw': تحريك الطبقتين العلويتين معًا مع عقارب الساعة / عكس عقارب الساعة">
+                Uw / Uw': Move the two top layers together clockwise / counter-clockwise
+            </li>
+
+            <li
+                data-en="Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise"
+                data-ar="Lw / Lw': تحريك الطبقتين الموجودتين في أقصى اليسار معًا مع عقارب الساعة / عكس عقارب الساعة">
+                Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise
+            </li>
+
+            <li
+                data-en="3Rw: Move the outer 3 layers on the right side together"
+                data-ar="3Rw: تحريك الطبقات الثلاث الخارجية في الجانب الأيمن معًا">
+                3Rw: Move the outer 3 layers on the right side together
+            </li>
+
+            <li
+                data-en="x: Tilt the cube forward (the bottom face moves to face front)"
+                data-ar="x: إمالة المكعب إلى الأمام (ينتقل الوجه السفلي ليصبح في الأمام)">
+                x: Tilt the cube forward (the bottom face moves to face front)
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <main>
+
+        <!-- STEP 1 -->
+
+        <section id="s1">
+
+            <h2
+                data-en="Step 1 — White Center"
+                data-ar="الخطوة ١ — المركز الأبيض">
+                Step 1 — White Center
+            </h2>
+
+            <p
+                data-en="Build the white 3x3 center grid by making three 1x3 bars."
+                data-ar="كوّن شبكة المركز الأبيض ٣x٣ من خلال صنع ثلاثة أشرطة بحجم ١x٣.">
+                Build the white 3x3 center grid by making three 1x3 bars.
+            </p>
+
+            <ul>
+
+                <li
+                    data-en="Middle Bar"
+                    data-ar="الشريط الأوسط">
+                    Middle Bar
+                </li>
+
+                <p
+                    data-en="Pair the white center piece with 2 White inner-edges to make a 1x3 line."
+                    data-ar="اجمع قطعة المركز البيضاء مع حافتين داخليتين بيضاوين لتكوين خط ١x٣.">
+                    Pair the white center piece with 2 White inner-edges to make a 1x3 line.
+                </p>
+
+                <img src="tutorials/5X5/download (5).png" alt="">
+                <img src="tutorials/5X5/download (6).png" alt="">
+
+                <li
+                    data-en="Side Bars"
+                    data-ar="الأشرطة الجانبية">
+                    Side Bars
+                </li>
 
-<header>
+                <p
+                    data-en="Make two separate 1x3 bars on adjacent faces (1 corner-center + 1 edge-center + 1 corner-center)."
+                    data-ar="اصنع شريطين منفصلين بحجم ١x٣ على وجهين متجاورين (قطعة مركز زاوية + قطعة مركز حافة + قطعة مركز زاوية).">
+                    Make two separate 1x3 bars on adjacent faces (1 corner-center + 1 edge-center + 1 corner-center).
+                </p>
+
+                <img src="tutorials/5X5/download (7).png" alt="">
+
+                <li
+                    data-en="Assemble"
+                    data-ar="التجميع">
+                    Assemble
+                </li>
+
+                <p
+                    data-en="Slide the side bars onto the White face to form a complete 3x3 block."
+                    data-ar="حرّك الأشرطة الجانبية إلى الوجه الأبيض لتكوين كتلة ٣x٣ كاملة.">
+                    Slide the side bars onto the White face to form a complete 3x3 block.
+                </p>
+
+                <img src="tutorials/5X5/download.png" alt="">
+
+            </ul>
+
+        </section>
+
+
+        <!-- STEP 2 -->
+
+        <section id="s2">
+
+            <h2
+                data-en="Step 2 — Yellow Center"
+                data-ar="الخطوة ٢ — المركز الأصفر">
+                Step 2 — Yellow Center
+            </h2>
+
+            <p
+                data-en="Flip the cube so White is on the bottom."
+                data-ar="اقلب المكعب بحيث يكون اللون الأبيض في الأسفل.">
+                Flip the cube so White is on the bottom.
+            </p>
+
+            <ul>
 
-  <h1>5x5 (Professor's Cube)</h1>
+                <li
+                    data-en="Middle Bar"
+                    data-ar="الشريط الأوسط">
+                    Middle Bar
+                </li>
 
-  <p>The smallest "odd" layered big cube. It combines fixed centers with edge-pairing techniques from the 4x4, but has no center-edge parities.</p>
+                <p
+                    data-en="Build a yellow bar on the top face while preserving the white center using: Rw and U"
+                    data-ar="كوّن شريطًا أصفر على الوجه العلوي مع الحفاظ على المركز الأبيض باستخدام: Rw و U">
+                    Build a yellow bar on the top face while preserving the white center using: Rw and U
+                </p>
 
-</header>
+                <img src="tutorials/5X5/download (8).png" alt="">
 
-<div class="introduction">
+                <li
+                    data-en="Second Bar"
+                    data-ar="الشريط الثاني">
+                    Second Bar
+                </li>
 
-  <p>Before starting, get familiar with 5x5 <span><a href="algorithms.html">move notation</a></span>:</p>
+                <p
+                    data-en="Build a yellow bar and move it to the top face while preserving the white center using: Rw U2 Rw'"
+                    data-ar="كوّن شريطًا أصفر وانقله إلى الوجه العلوي مع الحفاظ على المركز الأبيض باستخدام: Rw U2 Rw'">
+                    Build a yellow bar and move it to the top face while preserving the white center using: Rw U2 Rw'
+                </p>
+
+                <img src="tutorials/5X5/download (11).png" alt="">
+                <img src="tutorials/5X5/download (9).png" alt="">
+
+                <li
+                    data-en="Last Bar"
+                    data-ar="الشريط الأخير">
+                    Last Bar
+                </li>
+
+                <p
+                    data-en="Make the last yellow bar and align it under an existing top bar to finish the 3x3 yellow center by also using: Rw U2 Rw'"
+                    data-ar="اصنع الشريط الأصفر الأخير وحاذه أسفل شريط علوي موجود لإنهاء مركز ٣x٣ الأصفر باستخدام: Rw U2 Rw'">
+                    Make the last yellow bar and align it under an existing top bar to finish the 3x3 yellow center by also using: Rw U2 Rw'
+                </p>
+
+                <img src="tutorials/5X5/download (10).png" alt="">
+                <img src="tutorials/5X5/download (26).png" alt="">
+
+            </ul>
+
+        </section>
+
+
+        <!-- STEP 3 -->
+
+        <section id="s3">
+
+            <h2
+                data-en="Step 3 — Side Centers"
+                data-ar="الخطوة ٣ — المراكز الجانبية">
+                Step 3 — Side Centers
+            </h2>
+
+            <p
+                data-en="With White on the left and Yellow on the right, solve the 4 middle centers around the sides."
+                data-ar="مع وجود الأبيض على اليسار والأصفر على اليمين، حلّ المراكز الأربعة الوسطى حول الجوانب.">
+                With White on the left and Yellow on the right, solve the 4 middle centers around the sides.
+            </p>
+
+            <ul>
+
+                <li
+                    data-en="First 2 Centers"
+                    data-ar="أول مركزين">
+                    First 2 Centers
+                </li>
+
+                <p
+                    data-en="Solve the first two centers using the Rw U2 Rw' bar-insertion logic."
+                    data-ar="حلّ أول مركزين باستخدام طريقة إدخال الأشرطة Rw U2 Rw'.">
+                    Solve the first two centers using the Rw U2 Rw' bar-insertion logic.
+                </p>
+
+                <li
+                    data-en="Last 2 Centers"
+                    data-ar="آخر مركزين">
+                    Last 2 Centers
+                </li>
+
+                <p
+                    data-en="We need to make only two corner center pieces remain to be swapped by using: Lw' U2 Lw U Lw' U Lw."
+                    data-ar="نحتاج إلى إبقاء قطعتَي مركز الزاوية فقط ليتم تبديلهما باستخدام: Lw' U2 Lw U Lw' U Lw.">
+                    We need to make only two corner center pieces remain to be swapped by using: Lw' U2 Lw U Lw' U Lw.
+                </p>
 
-  <ul>
+                <img src="tutorials/5X5/download (12).png" alt="">
+                <img src="tutorials/5X5/download (13).png" alt="">
+
+            </ul>
+
+        </section>
+
+
+        <!-- STEP 4 -->
+
+        <section id="s4">
+
+            <h2
+                data-en="Step 4 — Edge Pairing"
+                data-ar="الخطوة ٤ — تجميع الحواف">
+                Step 4 — Edge Pairing
+            </h2>
+
+            <ul>
 
-    <li>Rw / Rw': Move the two rightmost layers together clockwise / counter-clockwise</li>
+                <li
+                    data-en="Free Pairing (First 8 Edges)"
+                    data-ar="التجميع الحر (أول ٨ حواف)">
+                    Free Pairing (First 8 Edges)
+                </li>
 
-    <li>Uw / Uw': Move the two top layers together clockwise / counter-clockwise</li>
+                <p
+                    data-en="Place matching edges on the front-left and front-right slots and check if they line up or not."
+                    data-ar="ضع الحواف المتطابقة في موضعي الأمام-اليسار والأمام-اليمين وتحقق مما إذا كانت مصطفة أم لا.">
+                    Place matching edges on the front-left and front-right slots and check if they line up or not.
+                </p>
 
-    <li>Lw / Lw': Move the two leftmost layers together clockwise / counter-clockwise</li>
+                <li
+                    data-en="If they line up"
+                    data-ar="إذا كانت مصطفة">
+                    If they line up
+                </li>
 
-    <li>3Rw: Move the outer 3 layers on the right side together</li>
+                <img src="tutorials/5X5/download (14).png" alt="">
+                <img src="tutorials/5X5/download (20).png" alt="">
 
-    <li>x: tilt the cube forward (the bottom face moves to face front)</li>
+                <p
+                    data-en="Slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers."
+                    data-ar="حرّك الطبقات الداخلية لتكوين حافة كاملة من ٣ قطع → خزّنها في الطبقة العلوية → استبدلها بحافة غير محلولة → أعد الطبقات الداخلية لإصلاح المراكز.">
+                    Slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.
+                </p>
 
-  </ul>
+                <img src="tutorials/5X5/download (24).png" alt="">
+                <img src="tutorials/5X5/download (25).png" alt="">
 
-</div>
+                <li
+                    data-en="If they don't line up"
+                    data-ar="إذا لم تكن مصطفة">
+                    If they don't line up
+                </li>
 
-<main>
+                <img src="tutorials/5X5/download (17).png" alt="">
+                <img src="tutorials/5X5/download (19).png" alt="">
 
-  <section id="s1">
+                <p
+                    data-en="Apply the Flipping Algorithm: R U R' F R' F' R"
+                    data-ar="طبّق خوارزمية القلب: R U R' F R' F' R">
+                    Apply the Flipping Algorithm:
+                    <span class="algorithm">R U R' F R' F' R</span>
+                </p>
 
-    <h2>Step 1 — White Center</h2>
+                <img src="tutorials/5X5/download (22).png" alt="">
+                <img src="tutorials/5X5/download (23).png" alt="">
 
-    <p>Build the white 3x3 center grid by making three 1x3 bars.</p>
+                <p
+                    data-en="Then slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers."
+                    data-ar="ثم حرّك الطبقات الداخلية لتكوين حافة كاملة من ٣ قطع → خزّنها في الطبقة العلوية → استبدلها بحافة غير محلولة → أعد الطبقات الداخلية لإصلاح المراكز.">
+                    Then slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.
+                </p>
 
-    <ul>
+                <img src="tutorials/5X5/download (24).png" alt="">
+                <img src="tutorials/5X5/download (25).png" alt="">
 
-      <li>Middle Bar</li>
+                <li
+                    data-en="Last 4 Edges"
+                    data-ar="آخر ٤ حواف">
+                    Last 4 Edges
+                </li>
 
-      <p>Pair the white center piece with 2 White inner-edges to make a 1x3 line.</p>
+                <p
+                    data-en="When no unsolved top/bottom edges remain, place matching pieces on the same horizontal row and use slicing and flipping turns to join them directly without breaking centers."
+                    data-ar="عندما لا تبقى أي حواف غير محلولة في الأعلى أو الأسفل، ضع القطع المتطابقة في الصف الأفقي نفسه واستخدم حركات القطع والقلب لضمها مباشرةً دون إفساد المراكز.">
+                    When no unsolved top/bottom edges remain, place matching pieces on the same horizontal row and use slicing and flipping turns to join them directly without breaking centers.
+                </p>
 
-      <img src="tutorials/5X5/download (5).png" alt="">
-      <img src="tutorials/5X5/download (6).png" alt="">
+            </ul>
 
-      <li>Side Bars</li>
+        </section>
 
-     <p>Make two separate 1x3 bars on adjacent faces (1 corner-center + 1 edge-center + 1 corner-center).</p>
 
-     <img src="tutorials/5X5/download (7).png" alt="">
+        <!-- STEP 5 -->
 
-     <li>Assemble</li>
+        <section id="s5">
 
-     <p>Slide the side bars onto the White face to form a complete 3x3 block.</p>
+            <h2
+                data-en="Step 5 — Fix The Parity (If Needed)"
+                data-ar="الخطوة ٥ — إصلاح التكافؤ (إذا لزم الأمر)">
+                Step 5 — Fix The Parity (If Needed)
+            </h2>
 
-     <img src="tutorials/5X5/download.png" alt="">
+            <p
+                data-en="A 5x5 Rubik's cube edge parity happens when pairing the last edges and one single edge piece remains flipped or mismatched."
+                data-ar="يحدث تكافؤ حواف ٥x٥ عند تجميع الحواف الأخيرة وتبقى قطعة حافة واحدة مقلوبة أو غير متطابقة.">
+                A 5x5 Rubik's cube edge parity happens when pairing the last edges and one single edge piece remains flipped or mismatched.
+            </p>
 
-    </ul>
+            <img src="tutorials/5X5/download (3).png" alt="">
 
-  </section>
+            <p class="algorithm">
+                Rw U2 x Rw U2 Rw U2 3Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'
+            </p>
 
-  <section id="s2">
+        </section>
 
-    <h2>Step 2 — Yellow Center</h2>
 
-    <p>Flip the cube so White is on the bottom.</p>
+        <!-- STEP 6 -->
 
-    <ul>
+        <section id="s6">
 
-      <li>Middle Bar</li>
+            <h2
+                data-en="Step 6 — Solve Like a 3x3"
+                data-ar="الخطوة ٦ — الحل مثل ٣x٣">
+                Step 6 — Solve Like a 3x3
+            </h2>
 
-      <p>Build a yellow bar on the top face while preserving the white center using: Rw and U</p>
+            <p
+                data-en="Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!"
+                data-ar="حرّك الطبقات الخارجية فقط (R, L, U, D, F, B) وحلّ بقية المكعب مثل مكعب ٣x٣ عادي!">
+                Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!
+            </p>
 
-      <img src="tutorials/5X5/download (8).png" alt="">
+        </section>
 
-      <li>Second Bar</li>
+    </main>
 
-      <p>Build a yellow bar and move it to the top face while preserving the white center using: Rw U2 Rw'</p>
 
-      <img src="tutorials/5X5/download (11).png" alt="">
-      <img src="tutorials/5X5/download (9).png" alt="">
+    <footer>
 
-      <li>Last Bar</li>
+        <p
+            data-en="© 2026 Skewbicle. All rights reserved."
+            data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة.">
+            © 2026 Skewbicle. All rights reserved.
+        </p>
 
-      <p>Make the last yellow bar and align it under an existing top bar to finish the 3x3 yellow center by also using: Rw U2 Rw'</p>
+        <a
+            href="mailto:skewbicle@gmail.com"
+            data-en="Contact Us"
+            data-ar="تواصل معنا">
+            Contact Us
+        </a>
 
-      <img src="tutorials/5X5/download (10).png" alt="">
-      <img src="tutorials/5X5/download (26).png" alt="">
+    </footer>
 
-    </ul>
 
-  </section>
+    <script>
 
-  <section id="s3">
+        const links = document.querySelectorAll('.timeline-nav a');
 
-    <h2>Step 3 — Side Centers</h2>
+        const sections = [...links].map(
+            l => document.querySelector(l.getAttribute('href'))
+        );
 
-    <p>With White on the left and Yellow on the right, solve the 4 middle centers around the sides.</p>
 
-    <ul>
+        const observer = new IntersectionObserver((entries) => {
 
-      <li>First 2 Centers</li>
+            entries.forEach(entry => {
 
-      <p>Solve the first two centers using the Rw U2 Rw' bar-insertion logic.</p>
+                const idx = sections.indexOf(entry.target);
 
-      <li>Last 2 centers</li>
+                if (entry.isIntersecting) {
 
-      <p>We nee to make only two corner center pieces remain to be swapped by usin: Lw' U2 Lw U Lw' U Lw.</p>
+                    links.forEach((l, i) => {
+                        l.classList.toggle('active', i === idx);
+                    });
 
-      <img src="tutorials/5X5/download (12).png" alt="">
-      <img src="tutorials/5X5/download (13).png" alt="">
+                }
 
-    </ul>
+            });
 
-  </section>
+        }, {
+            rootMargin: '-45% 0px -45% 0px',
+            threshold: 0
+        });
 
-  <section id="s4">
 
-    <h2>Step 4 — Edge Pairing</h2>
+        sections.forEach(s => observer.observe(s));
 
-    
-    <ul>
 
-      <li>Free Pairing (First 8 Edges)</li>
+        links.forEach(link => {
 
-       <p>Place matching edges on the front-left and front-right slots and check if they line up or not.</p>
+            link.addEventListener('click', e => {
 
-      <li>If they line up</li>
+                e.preventDefault();
 
-      <img src="tutorials/5X5/download (14).png" alt="">
-      <img src="tutorials/5X5/download (20).png" alt="">
+                document
+                    .querySelector(link.getAttribute('href'))
+                    .scrollIntoView({
+                        behavior: 'smooth'
+                    });
 
-      <p>Slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.</p>
+            });
 
-      <img src="tutorials/5X5/download (24).png" alt="">
-      <img src="tutorials/5X5/download (25).png" alt="">
+        });
 
-      <li>If they don't line up</li>
 
-      <img src="tutorials/5X5/download (17).png" alt="">
-      <img src="tutorials/5X5/download (19).png" alt="">
+        /* ================================
+           LANGUAGE SWITCHER
+        ================================= */
 
-      <p>Apply the Flipping Algorithm: R U R' F R' F' R</p>
-      
-      <img src="tutorials/5X5/download (22).png" alt="">
-      <img src="tutorials/5X5/download (23).png" alt="">
+        const languageSwitcher =
+            document.getElementById('languageSwitcher');
 
-      <p>Then slice inner layers to form a complete 3-piece edge → Store it in the top layer → Replace it with an unsolved edge → Unslice to fix centers.</p>
 
-      <img src="tutorials/5X5/download (24).png" alt="">
-      <img src="tutorials/5X5/download (25).png" alt="">
+        function setLanguage(language) {
 
-      <li>Last 4 Edges</li>
+            document.documentElement.lang = language;
 
-      <p>When no unsolved top/bottom edges remain, place matching pieces on the same horizontal row and use slicing and flipping turns to join them directly without breaking centers.</p>
+            document.documentElement.dir =
+                language === 'ar' ? 'rtl' : 'ltr';
 
-    </ul>
 
-  </section>
+            document
+                .querySelectorAll('[data-en][data-ar]')
+                .forEach(element => {
 
-  <section id="s5">
+                    const text =
+                        language === 'ar'
+                            ? element.getAttribute('data-ar')
+                            : element.getAttribute('data-en');
 
-    <h2>Step 5 — Fix The Parity (If Needed)</h2>
-    
-    <p>A 5x5 Rubik's cube edge parity happens when pairing the last edges and one single edge piece remains flipped or mismatched.</p>
+                    if (text !== null) {
+                        element.textContent = text;
+                    }
 
-    <img src="tutorials/5X5/download (3).png" alt="">
+                });
 
-    <p>Rw U2 x Rw U2 Rw U2 3Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'</p>
 
-  </section>
+            languageSwitcher.value = language;
 
-  <section id="s6">
 
-    <h2>Step 6 — Solve Like a 3x3</h2>
+            localStorage.setItem(
+                'skewbicle-language',
+                language
+            );
 
-    <p>Turn only the outer layers (R, L, U, D, F, B) and solve the rest of the cube like a standard 3x3!</p>
+        }
 
-  </section>
 
+        languageSwitcher.addEventListener(
+            'change',
+            function () {
+                setLanguage(this.value);
+            }
+        );
 
-</main>
 
+        const savedLanguage =
+            localStorage.getItem('skewbicle-language') || 'en';
 
-<footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>    
-    
-        <script>
-  const links = document.querySelectorAll('.timeline-nav a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = sections.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        links.forEach((l, i) => l.classList.toggle('active', i === idx));
-      }
-    });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+        setLanguage(savedLanguage);
 
-  sections.forEach(s => observer.observe(s));
+    </script>
 
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
+
+    <style>
+
+        /* Keep cube notation and algorithms LTR */
+
+        .notation,
+        .algorithm,
+        .algo {
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+
+
+        /* ================================
+           RTL TUTORIAL LAYOUT
+        ================================= */
+
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+            left: auto;
+            right: 28px;
+        }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+
+        @media (max-width: 1024px) {
+
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+        }
+
+    </style>
 
 </body>
 </html>
