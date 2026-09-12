@@ -35,6 +35,11 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+
+        /* ============================= */
+        /* ===== Navigation ============= */
+        /* ============================= */
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -62,6 +67,11 @@
             color: white;
         }
 
+
+        /* ============================= */
+        /* ===== Language Direction ===== */
+        /* ============================= */
+
         html[dir="rtl"] nav {
             direction: rtl;
         }
@@ -78,9 +88,46 @@
             direction: rtl;
         }
 
+
+        /* ============================= */
+        /* ===== RTL Tutorial Layout ==== */
+        /* ============================= */
+
+        /*
+         * English:
+         * timeline -> left
+         * content -> 250px from left
+         *
+         * Arabic:
+         * timeline -> right
+         * content -> 250px from right
+         */
+
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
         html[dir="rtl"] .timeline-nav {
             direction: rtl;
+            left: auto;
+            right: 28px;
         }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+
+        /* ============================= */
+        /* ===== Cube Notation ========== */
+        /* ============================= */
 
         /* Keep cube notation left-to-right */
         .notation,
@@ -89,7 +136,26 @@
             unicode-bidi: isolate;
         }
 
+
+        /* ============================= */
+        /* ===== Responsive ============= */
+        /* ============================= */
+
+        @media (max-width: 1024px) {
+
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+
         @media (max-width: 768px) {
+
             nav {
                 gap: 10px;
             }
@@ -98,15 +164,25 @@
                 font-size: 13px;
                 padding: 6px 8px;
             }
+
         }
+
     </style>
 
 </head>
 
+
 <body>
 
+
+<!-- ============================= -->
+<!-- ===== Navigation ============ -->
+<!-- ============================= -->
+
 <nav>
+
     <ul class="nav-links">
+
         <li>
             <a
                 href="index.html"
@@ -146,7 +222,9 @@
                 Algorithms
             </a>
         </li>
+
     </ul>
+
 
     <select
         id="languageSwitcher"
@@ -156,17 +234,27 @@
         <option value="en">🇬🇧 English</option>
         <option value="ar">🇸🇦 العربية</option>
     </select>
+
 </nav>
 
 
+
+<!-- ============================= -->
+<!-- ===== Timeline ============== -->
+<!-- ============================= -->
+
 <div class="timeline-nav" id="timelineNav">
 
+
     <a href="#s1" class="active">
+
         <span class="thumb">
+
             <img
                 src="tutorials/2X2/download.png"
                 alt="Step 1"
             >
+
         </span>
 
         <span
@@ -176,16 +264,20 @@
         >
             White Layer
         </span>
+
     </a>
+
 
 
     <a href="#s2">
 
         <span class="thumb">
+
             <img
                 src="tutorials/2X2/download (1).png"
                 alt="Step 2"
             >
+
         </span>
 
         <span
@@ -199,13 +291,16 @@
     </a>
 
 
+
     <a href="#s3">
 
         <span class="thumb">
+
             <img
                 src="tutorials/2X2/download (2).png"
                 alt="Step 3"
             >
+
         </span>
 
         <span
@@ -218,8 +313,14 @@
 
     </a>
 
+
 </div>
 
+
+
+<!-- ============================= -->
+<!-- ===== Header ================ -->
+<!-- ============================= -->
 
 <header>
 
@@ -229,6 +330,7 @@
     >
         2x2 (Pocket Cube)
     </h1>
+
 
     <p
         data-en="A compact puzzle solved by arranging just the corners. It has no fixed centers and is often solved using simplified 3x3 layer methods."
@@ -240,9 +342,16 @@
 </header>
 
 
+
+<!-- ============================= -->
+<!-- ===== Introduction ========== -->
+<!-- ============================= -->
+
 <div class="introduction">
 
+
     <p>
+
         <span
             data-en="Before starting, make sure you know the basic "
             data-ar="قبل البدء، تأكد من أنك تعرف "
@@ -251,6 +360,7 @@
         </span>
 
         <span>
+
             <a
                 href="algorithms.html"
                 data-en="move notation"
@@ -258,6 +368,7 @@
             >
                 move notation
             </a>
+
         </span>
 
         <span
@@ -266,7 +377,9 @@
         >
             :
         </span>
+
     </p>
+
 
 
     <ul>
@@ -299,10 +412,11 @@
             data-en="D / D': Bottom layer clockwise / counter-clockwise"
             data-ar="D / D': الطبقة السفلية مع عقارب الساعة / عكس عقارب الساعة"
         >
-            D / D': Bottom layer clockwise / counter-clockwise
+            D / D': Bottom layer clockwise / عكس عقارب الساعة
         </li>
 
     </ul>
+
 
 
     <p
@@ -313,10 +427,12 @@
     </p>
 
 
+
     <img
         src="tutorials/2X2/f13f087b-e096-4232-b290-e9f506d1df3f.png"
         alt="Sexy Move"
     >
+
 
 
     <p
@@ -329,9 +445,18 @@
 </div>
 
 
+
+<!-- ============================= -->
+<!-- ===== Main Tutorial ========= -->
+<!-- ============================= -->
+
 <main>
 
-    <!-- STEP 1 -->
+
+    <!-- ============================= -->
+    <!-- ===== STEP 1 ================= -->
+    <!-- ============================= -->
+
     <section id="s1">
 
         <h2
@@ -404,9 +529,7 @@
             </p>
 
 
-            <p
-                class="algorithm"
-            >
+            <p class="algorithm">
                 R U R' U'
             </p>
 
@@ -439,7 +562,11 @@
     </section>
 
 
-    <!-- STEP 2 -->
+
+    <!-- ============================= -->
+    <!-- ===== STEP 2 ================= -->
+    <!-- ============================= -->
+
     <section id="s2">
 
         <h2
@@ -541,7 +668,11 @@
     </section>
 
 
-    <!-- STEP 3 -->
+
+    <!-- ============================= -->
+    <!-- ===== STEP 3 ================= -->
+    <!-- ============================= -->
+
     <section id="s3">
 
         <h2
@@ -659,6 +790,11 @@
 </main>
 
 
+
+<!-- ============================= -->
+<!-- ===== Footer ================ -->
+<!-- ============================= -->
+
 <footer>
 
     <p
@@ -678,6 +814,7 @@
     </a>
 
 </footer>
+
 
 
 <script>
@@ -744,6 +881,7 @@
         });
 
     });
+
 
 
     /* ==============================
@@ -820,4 +958,3 @@
 
 </body>
 </html>
-
