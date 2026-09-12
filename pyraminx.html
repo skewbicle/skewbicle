@@ -1,194 +1,785 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to solve a Pyraminx step by step with this beginner-friendly tutorial from Skewbicle.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/pyraminx.html">
+
+    <meta
+        name="description"
+        content="Learn how to solve a Pyraminx step by step with this beginner-friendly tutorial from Skewbicle."
+    >
+
+    <link
+        rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/pyraminx.html"
+    >
+
     <title>Pyraminx Tutorial</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+    <link
+        rel="icon"
+        href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png"
+    >
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-switcher {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: white;
+        }
+
+        .language-switcher option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        html[dir="rtl"] nav {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .nav-links {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] footer {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] body {
+            direction: rtl;
+        }
+
+        /*
+         * RTL tutorial layout
+         */
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+            left: auto;
+            right: 28px;
+        }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+        /*
+         * Algorithms and move notation always stay LTR
+         */
+        .algorithm,
+        .notation,
+        .algo {
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: left;
+        }
+
+        /*
+         * Keep the Pyraminx move images and labels clear
+         */
+        .move-label {
+            direction: rtl;
+        }
+
+        @media (max-width: 1024px) {
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 10px;
+            }
+
+            .language-switcher {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
+
+<nav>
+    <ul class="nav-links">
+        <li>
+            <a
+                href="index.html"
+                data-en="Home"
+                data-ar="الرئيسية"
+            >
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="timer.html"
+                data-en="Timer"
+                data-ar="المؤقت"
+            >
+                Timer
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="simulator.html"
+                data-en="Simulator"
+                data-ar="المحاكي"
+            >
+                Simulator
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="algorithms.html"
+                data-en="Algorithms"
+                data-ar="الخوارزميات"
+            >
+                Algorithms
+            </a>
+        </li>
+    </ul>
+
+    <select
+        id="languageSwitcher"
+        class="language-switcher"
+        aria-label="Language"
+    >
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
 </nav>
- 
+
+
 <div class="timeline-nav" id="timelineNav">
-  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png" alt="Step 1"></span><span class="labels">Corners</span></a>
-  <a href="#s2"><span class="thumb"><img src="tutorials/pyraminx/438b67d9-19fc-4c2c-a45d-2ac6bffb524f.png" alt="Step 2"></span><span class="labels">Yellow Side</span></a>
-  <a href="#s3"><span class="thumb"><img src="tutorials/pyraminx/ed167004-b49d-468d-ab36-3c12594c1e1f.png" alt="Step 3"></span><span class="labels">Blue Side</span></a>
-  <a href="#s4"><span class="thumb"><img src="tutorials/pyraminx/34af9d18-5d41-46c5-9120-a42ba5b8c03c.png" alt="Step 4"></span><span class="labels">Remaining Sides</span></a>
+
+    <a href="#s1" class="active">
+        <span class="thumb">
+            <img
+                src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png"
+                alt="Step 1"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Corners"
+            data-ar="الزوايا"
+        >
+            Corners
+        </span>
+    </a>
+
+
+    <a href="#s2">
+        <span class="thumb">
+            <img
+                src="tutorials/pyraminx/438b67d9-19fc-4c2c-a45d-2ac6bffb524f.png"
+                alt="Step 2"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Yellow Side"
+            data-ar="الجانب الأصفر"
+        >
+            Yellow Side
+        </span>
+    </a>
+
+
+    <a href="#s3">
+        <span class="thumb">
+            <img
+                src="tutorials/pyraminx/ed167004-b49d-468d-ab36-3c12594c1e1f.png"
+                alt="Step 3"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Blue Side"
+            data-ar="الجانب الأزرق"
+        >
+            Blue Side
+        </span>
+    </a>
+
+
+    <a href="#s4">
+        <span class="thumb">
+            <img
+                src="tutorials/pyraminx/34af9d18-5d41-46c5-9120-a42ba5b8c03c.png"
+                alt="Step 4"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Remaining Sides"
+            data-ar="الجوانب المتبقية"
+        >
+            Remaining Sides
+        </span>
+    </a>
+
 </div>
+
 
 <header>
 
-  <h1>Pyraminx</h1>
+    <h1
+        data-en="Pyraminx"
+        data-ar="بيرامينكس"
+    >
+        Pyraminx
+    </h1>
 
-  <p>A tetrahedral puzzle invented by Uwe Meffert.</p>
+    <p
+        data-en="A tetrahedral puzzle invented by Uwe Meffert."
+        data-ar="لغز رباعي السطوح اخترعه أوفه ميفرت."
+    >
+        A tetrahedral puzzle invented by Uwe Meffert.
+    </p>
 
 </header>
 
+
 <div class="introduction">
 
-  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+    <p>
+        <span
+            data-en="Before starting, make sure you know the basic "
+            data-ar="قبل البدء، تأكد من معرفتك بـ "
+        >
+            Before starting, make sure you know the basic
+        </span>
 
-  <p>Right-hand side move:</p>
+        <span>
+            <a
+                href="algorithms.html"
+                data-en="move notation"
+                data-ar="ترميز الحركات"
+            >
+                move notation
+            </a>
+        </span>
 
-  <img src="tutorials/pyraminx/074a16b0-b2bb-4da5-a34e-63d6b78874a3.png" alt="">
+        <span
+            data-en=":"
+            data-ar=" الأساسي:"
+        >
+            :
+        </span>
+    </p>
 
-  <p>left-hand side move:</p>
 
-  <img src="tutorials/pyraminx/929cd3fc-113e-430f-863b-888f672ecb4a.png" alt="">
+    <p
+        data-en="Right-hand side move:"
+        data-ar="حركة الجانب الأيمن:"
+    >
+        Right-hand side move:
+    </p>
+
+    <img
+        src="tutorials/pyraminx/074a16b0-b2bb-4da5-a34e-63d6b78874a3.png"
+        alt=""
+    >
+
+
+    <p
+        data-en="Left-hand side move:"
+        data-ar="حركة الجانب الأيسر:"
+    >
+        Left-hand side move:
+    </p>
+
+    <img
+        src="tutorials/pyraminx/929cd3fc-113e-430f-863b-888f672ecb4a.png"
+        alt=""
+    >
 
 </div>
 
+
 <main>
 
-  <section id="s1">
+    <!-- STEP 1 -->
+    <section id="s1">
 
-    <h2>Step 1 — Corners</h2>
+        <h2
+            data-en="Step 1 — Corners"
+            data-ar="الخطوة ١ — الزوايا"
+        >
+            Step 1 — Corners
+        </h2>
 
-    <ul>
+        <ul>
 
-      <li>Turn the Tips</li>
+            <li
+                data-en="Turn the Tips"
+                data-ar="تدوير الأطراف"
+            >
+                Turn the Tips
+            </li>
 
-    </ul>
+        </ul>
 
-    <p>The 4 small corner tips don't affect any other pieces on the puzzle.</p>
-    <p>Simply twist each of the 4 tips until their colors match the piece directly underneath them.</p>
+        <p
+            data-en="The 4 small corner tips don't affect any other pieces on the puzzle."
+            data-ar="الأطراف الأربعة الصغيرة في الزوايا لا تؤثر على أي قطع أخرى في اللغز."
+        >
+            The 4 small corner tips don't affect any other pieces on the puzzle.
+        </p>
 
-    <img src="tutorials/pyraminx/a753b686-8d78-4bcc-9ff4-ed7bd6a5997b.png" alt="">
-    <img src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png" alt="">
+        <p
+            data-en="Simply twist each of the 4 tips until their colors match the piece directly underneath them."
+            data-ar="قم ببساطة بتدوير كل طرف من الأطراف الأربعة حتى تتطابق ألوانه مع القطعة الموجودة تحته مباشرةً."
+        >
+            Simply twist each of the 4 tips until their colors match the piece directly underneath them.
+        </p>
 
-  </section>
+        <img
+            src="tutorials/pyraminx/a753b686-8d78-4bcc-9ff4-ed7bd6a5997b.png"
+            alt=""
+        >
 
-  <section id="s2">
+        <img
+            src="tutorials/pyraminx/9943562f-cae7-481d-8f0f-1b3d62a64975.png"
+            alt=""
+        >
 
-    <h2>Step 2 — Yellow Side</h2>
+    </section>
 
-    <ul>
 
-      <li>Solve the Center Pieces (First Layer Centers)</li>
+    <!-- STEP 2 -->
+    <section id="s2">
 
-      <img src="tutorials/pyraminx/91659bd0-ce3f-45d9-8920-fe048cb8b0e4.png" alt="">
+        <h2
+            data-en="Step 2 — Yellow Side"
+            data-ar="الخطوة ٢ — الجانب الأصفر"
+        >
+            Step 2 — Yellow Side
+        </h2>
 
-      <p>Look at the 3 main face centers (the pieces directly under the tips) on a side.</p>
-      <p>Rotate the main corners until all 3 Yellow centers are on the same face.</p>
-      <p>Tip: Look at the tip that doesn't have yellow on it—the face opposite that tip is your Yellow face!</p>
+        <ul>
 
-      <li>Insert the Bottom Edges (Solve the Yellow Base)</li>
+            <li
+                data-en="Solve the Center Pieces (First Layer Centers)"
+                data-ar="حل قطع المراكز (مراكز الطبقة الأولى)"
+            >
+                Solve the Center Pieces (First Layer Centers)
+            </li>
 
-      <p>Hold the puzzle so the completed Yellow face is on the bottom. Look at the 3 edge slots on the bottom layer.</p>
-      <p>Find a Yellow edge piece on the top layer.</p>
+            <img
+                src="tutorials/pyraminx/91659bd0-ce3f-45d9-8920-fe048cb8b0e4.png"
+                alt=""
+            >
 
-      <li>If the Yellow sticker is on the Right</li>
+            <p
+                data-en="Look at the 3 main face centers (the pieces directly under the tips) on a side."
+                data-ar="انظر إلى المراكز الرئيسية الثلاثة للوجه (القطع الموجودة مباشرةً أسفل الأطراف) على أحد الجوانب."
+            >
+                Look at the 3 main face centers (the pieces directly under the tips) on a side.
+            </p>
 
-      <img src="tutorials/pyraminx/a630d0ac-5a14-4d4f-b2f2-edd59b72cb8b.png" alt="">
+            <p
+                data-en="Rotate the main corners until all 3 Yellow centers are on the same face."
+                data-ar="قم بتدوير الزوايا الرئيسية حتى تصبح المراكز الصفراء الثلاثة على الوجه نفسه."
+            >
+                Rotate the main corners until all 3 Yellow centers are on the same face.
+            </p>
 
-      <p>Do the Right-hand side move</p>
+            <p
+                data-en="Tip: Look at the tip that doesn't have yellow on it—the face opposite that tip is your Yellow face!"
+                data-ar="نصيحة: انظر إلى الطرف الذي لا يحتوي على اللون الأصفر — الوجه المقابل لذلك الطرف هو وجهك الأصفر!"
+            >
+                Tip: Look at the tip that doesn't have yellow on it—the face opposite that tip is your Yellow face!
+            </p>
 
-      <li>If the Yellow sticker is on the Left</li>
 
-      <img src="tutorials/pyraminx/854bff58-c0e0-459d-bcc1-44997e537c8c.png" alt="">
+            <li
+                data-en="Insert the Bottom Edges (Solve the Yellow Base)"
+                data-ar="إدخال الحواف السفلية (حل القاعدة الصفراء)"
+            >
+                Insert the Bottom Edges (Solve the Yellow Base)
+            </li>
 
-      <p>Do the Left-hand side move</p>
+            <p
+                data-en="Hold the puzzle so the completed Yellow face is on the bottom. Look at the 3 edge slots on the bottom layer."
+                data-ar="أمسك اللغز بحيث يكون الوجه الأصفر المكتمل في الأسفل. انظر إلى أماكن الحواف الثلاثة في الطبقة السفلية."
+            >
+                Hold the puzzle so the completed Yellow face is on the bottom. Look at the 3 edge slots on the bottom layer.
+            </p>
 
-      <p>Repeat this for all 3 bottom edges until the entire Yellow layer and its matching side-strips are complete.</p>
+            <p
+                data-en="Find a Yellow edge piece on the top layer."
+                data-ar="ابحث عن قطعة حافة صفراء في الطبقة العلوية."
+            >
+                Find a Yellow edge piece on the top layer.
+            </p>
 
-    </ul>
 
-  </section>
+            <li
+                data-en="If the Yellow sticker is on the Right"
+                data-ar="إذا كانت الملصقة الصفراء على اليمين"
+            >
+                If the Yellow sticker is on the Right
+            </li>
 
-  <section id="s3">
+            <img
+                src="tutorials/pyraminx/a630d0ac-5a14-4d4f-b2f2-edd59b72cb8b.png"
+                alt=""
+            >
 
-    <h2>Step 3 — Blue Side</h2>
+            <p
+                data-en="Do the Right-hand side move"
+                data-ar="قم بحركة الجانب الأيمن"
+            >
+                Do the Right-hand side move
+            </p>
 
-    <ul>
 
-      <li>Forget and Move On</li>
+            <li
+                data-en="If the Yellow sticker is on the Left"
+                data-ar="إذا كانت الملصقة الصفراء على اليسار"
+            >
+                If the Yellow sticker is on the Left
+            </li>
 
-      <p>Once the first face (Yellow) is solved, completely ignore that Yellow was solved.</p>
+            <img
+                src="tutorials/pyraminx/854bff58-c0e0-459d-bcc1-44997e537c8c.png"
+                alt=""
+            >
 
-      <li>Pick a new color (like Blue)</li>
-      <li>Treat Blue as your new bottom face</li>
-      <li>Repeat the exact same steps to solve the Blue face</li>
+            <p
+                data-en="Do the Left-hand side move"
+                data-ar="قم بحركة الجانب الأيسر"
+            >
+                Do the Left-hand side move
+            </p>
 
-    </ul>
+            <p
+                data-en="Repeat this for all 3 bottom edges until the entire Yellow layer and its matching side-strips are complete."
+                data-ar="كرر ذلك مع جميع الحواف السفلية الثلاثة حتى تكتمل الطبقة الصفراء بالكامل والشرائط الجانبية المطابقة لها."
+            >
+                Repeat this for all 3 bottom edges until the entire Yellow layer and its matching side-strips are complete.
+            </p>
 
-  </section>
+        </ul>
 
-  <section id="s4">
+    </section>
 
-    <h2>Step 4 — Remaining Sides (If Needed)</h2>
 
-    <p>Once you finish your second face (e.g., Blue) and the Pyraminx still isn't solved:</p>
+    <!-- STEP 3 -->
+    <section id="s3">
 
-    <ul>
-      
-      <li>Pick the Next Unsolved Face</li>
+        <h2
+            data-en="Step 3 — Blue Side"
+            data-ar="الخطوة ٣ — الجانب الأزرق"
+        >
+            Step 3 — Blue Side
+        </h2>
 
-      <p>Look around the puzzle and pick a third color (e.g., Red or Green).</p>
+        <ul>
 
-      <li>Treat it as your new bottom</li>
+            <li
+                data-en="Forget and Move On"
+                data-ar="تجاهل وانتقل"
+            >
+                Forget and Move On
+            </li>
 
-      <p>Hold that face on the bottom and forget about Blue and Yellow.</p>
+            <p
+                data-en="Once the first face (Yellow) is solved, completely ignore that Yellow was solved."
+                data-ar="بمجرد حل الوجه الأول (الأصفر)، تجاهل تمامًا حقيقة أن اللون الأصفر قد تم حله."
+            >
+                Once the first face (Yellow) is solved, completely ignore that Yellow was solved.
+            </p>
 
-      <li>Repeat the exact same steps</li>
+            <li
+                data-en="Pick a new color (like Blue)"
+                data-ar="اختر لونًا جديدًا (مثل الأزرق)"
+            >
+                Pick a new color (like Blue)
+            </li>
 
-      <p>Best Case: The puzzle solves on the 2nd face (50% of the time).</p>
-      <p>Average Case: The puzzle solves after doing a 3rd face.</p>
-      <p>Worst Case: You might need to cycle through a 4th face, but it will always solve automatically without you ever needing to learn a single last-layer algorithm!</p>
+            <li
+                data-en="Treat Blue as your new bottom face"
+                data-ar="اعتبر الأزرق وجهك السفلي الجديد"
+            >
+                Treat Blue as your new bottom face
+            </li>
 
-    </ul>
+            <li
+                data-en="Repeat the exact same steps to solve the Blue face"
+                data-ar="كرر الخطوات نفسها تمامًا لحل الوجه الأزرق"
+            >
+                Repeat the exact same steps to solve the Blue face
+            </li>
 
-  </section>
+        </ul>
+
+    </section>
+
+
+    <!-- STEP 4 -->
+    <section id="s4">
+
+        <h2
+            data-en="Step 4 — Remaining Sides (If Needed)"
+            data-ar="الخطوة ٤ — الجوانب المتبقية (إذا لزم الأمر)"
+        >
+            Step 4 — Remaining Sides (If Needed)
+        </h2>
+
+        <p
+            data-en="Once you finish your second face (e.g., Blue) and the Pyraminx still isn't solved:"
+            data-ar="بمجرد الانتهاء من الوجه الثاني (مثل الأزرق) وبقاء البيرامينكس دون حل:"
+        >
+            Once you finish your second face (e.g., Blue) and the Pyraminx still isn't solved:
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Pick the Next Unsolved Face"
+                data-ar="اختر الوجه التالي غير المحلول"
+            >
+                Pick the Next Unsolved Face
+            </li>
+
+            <p
+                data-en="Look around the puzzle and pick a third color (e.g., Red or Green)."
+                data-ar="انظر حول اللغز واختر لونًا ثالثًا (مثل الأحمر أو الأخضر)."
+            >
+                Look around the puzzle and pick a third color (e.g., Red or Green).
+            </p>
+
+
+            <li
+                data-en="Treat it as your new bottom"
+                data-ar="اعتبره وجهك السفلي الجديد"
+            >
+                Treat it as your new bottom
+            </li>
+
+            <p
+                data-en="Hold that face on the bottom and forget about Blue and Yellow."
+                data-ar="أمسك ذلك الوجه في الأسفل وتجاهل اللونين الأزرق والأصفر."
+            >
+                Hold that face on the bottom and forget about Blue and Yellow.
+            </p>
+
+
+            <li
+                data-en="Repeat the exact same steps"
+                data-ar="كرر الخطوات نفسها تمامًا"
+            >
+                Repeat the exact same steps
+            </li>
+
+            <p
+                data-en="Best Case: The puzzle solves on the 2nd face (50% of the time)."
+                data-ar="أفضل حالة: يُحل اللغز عند الوجه الثاني (في ٥٠٪ من الحالات)."
+            >
+                Best Case: The puzzle solves on the 2nd face (50% of the time).
+            </p>
+
+            <p
+                data-en="Average Case: The puzzle solves after doing a 3rd face."
+                data-ar="الحالة المتوسطة: يُحل اللغز بعد حل الوجه الثالث."
+            >
+                Average Case: The puzzle solves after doing a 3rd face.
+            </p>
+
+            <p
+                data-en="Worst Case: You might need to cycle through a 4th face, but it will always solve automatically without you ever needing to learn a single last-layer algorithm!"
+                data-ar="أسوأ حالة: قد تحتاج إلى المرور عبر وجه رابع، لكنه سيُحل دائمًا تلقائيًا دون الحاجة إلى تعلم خوارزمية واحدة للطبقة الأخيرة!"
+            >
+                Worst Case: You might need to cycle through a 4th face, but it will always solve automatically without you ever needing to learn a single last-layer algorithm!
+            </p>
+
+        </ul>
+
+    </section>
 
 </main>
 
+
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>   
-    
+
+    <p
+        data-en="© 2026 Skewbicle. All rights reserved."
+        data-ar="© ٢٠٢٦ Skewbicle. جميع الحقوق محفوظة."
+    >
+        © 2026 Skewbicle. All rights reserved.
+    </p>
+
+    <a
+        href="mailto:skewbicle@gmail.com"
+        data-en="Contact Us"
+        data-ar="تواصل معنا"
+    >
+        Contact Us
+    </a>
+
+</footer>
+
+
 <script>
-  const links = document.querySelectorAll('.timeline-nav a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+    /*
+     * Timeline navigation
+     */
+    const links = document.querySelectorAll('.timeline-nav a');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = sections.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        links.forEach((l, i) => l.classList.toggle('active', i === idx));
-      }
+    const sections = [...links].map(l =>
+        document.querySelector(l.getAttribute('href'))
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+
+            const idx = sections.indexOf(entry.target);
+
+            if (entry.isIntersecting) {
+                links.forEach((l, i) =>
+                    l.classList.toggle('active', i === idx)
+                );
+            }
+
+        });
+    }, {
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
     });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-  sections.forEach(s => observer.observe(s));
+    sections.forEach(s => observer.observe(s));
 
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
+
+    links.forEach(link => {
+
+        link.addEventListener('click', e => {
+
+            e.preventDefault();
+
+            document
+                .querySelector(link.getAttribute('href'))
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+        });
+
     });
-  });
+
+
+    /*
+     * Language system
+     */
+    const languageSwitcher =
+        document.getElementById('languageSwitcher');
+
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        document.documentElement.dir =
+            language === 'ar' ? 'rtl' : 'ltr';
+
+
+        document
+            .querySelectorAll('[data-en][data-ar]')
+            .forEach(element => {
+
+                const text =
+                    language === 'ar'
+                        ? element.getAttribute('data-ar')
+                        : element.getAttribute('data-en');
+
+                if (text !== null) {
+                    element.textContent = text;
+                }
+
+            });
+
+
+        languageSwitcher.value = language;
+
+
+        localStorage.setItem(
+            'skewbicle-language',
+            language
+        );
+
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem('skewbicle-language') || 'en';
+
+
+    setLanguage(savedLanguage);
+
+
+    languageSwitcher.addEventListener(
+        'change',
+        () => {
+            setLanguage(languageSwitcher.value);
+        }
+    );
 </script>
 
-    
 </body>
 </html>
