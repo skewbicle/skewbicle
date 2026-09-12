@@ -1,180 +1,685 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to solve a Skewb step by step with this beginner-friendly tutorial from Skewbicle.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/skewb.html">
+
+    <meta
+        name="description"
+        content="Learn how to solve a Skewb step by step with this beginner-friendly tutorial from Skewbicle."
+    >
+
+    <link
+        rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/skewb.html"
+    >
+
     <title>Skewb Tutorial</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+    <link
+        rel="icon"
+        href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png"
+    >
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-switcher {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: white;
+        }
+
+        .language-switcher option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        html[dir="rtl"] nav {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .nav-links {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] footer {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] body {
+            direction: rtl;
+        }
+
+        /*
+         * RTL tutorial layout
+         */
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+            left: auto;
+            right: 28px;
+        }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+        /*
+         * Algorithms and cube moves always stay LTR
+         */
+        .algorithm,
+        .notation,
+        .algo {
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: left;
+        }
+
+        /*
+         * RTL timeline
+         */
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+        }
+
+        @media (max-width: 1024px) {
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 10px;
+            }
+
+            .language-switcher {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
+
+<nav>
+    <ul class="nav-links">
+        <li>
+            <a href="index.html"
+               data-en="Home"
+               data-ar="الرئيسية">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="timer.html"
+               data-en="Timer"
+               data-ar="المؤقت">
+                Timer
+            </a>
+        </li>
+
+        <li>
+            <a href="simulator.html"
+               data-en="Simulator"
+               data-ar="المحاكي">
+                Simulator
+            </a>
+        </li>
+
+        <li>
+            <a href="algorithms.html"
+               data-en="Algorithms"
+               data-ar="الخوارزميات">
+                Algorithms
+            </a>
+        </li>
+    </ul>
+
+    <select id="languageSwitcher"
+            class="language-switcher"
+            aria-label="Language">
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
 </nav>
 
+
 <div class="timeline-nav" id="timelineNav">
-  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/skewb/70736056-08a7-40ab-b1bd-f5ef5f3229af.png" alt="Step 1"></span><span class="labels">White Side</span></a>
-  <a href="#s2"><span class="thumb"><img src="tutorials/skewb/a9aa10ae-b159-4529-baf6-5d0ca1f0a634.png" alt="Step 2"></span><span class="labels">Yellow Corners</span></a>
-  <a href="#s3"><span class="thumb"><img src="tutorials/skewb/671105e3-80dc-47e1-ae7c-e41afe02a182.png" alt="Step 3"></span><span class="labels">Yellow center</span></a>
-  <a href="#s4"><span class="thumb"><img src="tutorials/skewb/57e09360-722e-4b47-9a97-dc32ab4d8fdf.png" alt="Step 4"></span><span class="labels">Remaining Side Centers</span></a>
+
+    <a href="#s1" class="active">
+        <span class="thumb">
+            <img
+                src="tutorials/skewb/70736056-08a7-40ab-b1bd-f5ef5f3229af.png"
+                alt="Step 1"
+            >
+        </span>
+
+        <span class="labels"
+              data-en="White Side"
+              data-ar="الجانب الأبيض">
+            White Side
+        </span>
+    </a>
+
+
+    <a href="#s2">
+        <span class="thumb">
+            <img
+                src="tutorials/skewb/a9aa10ae-b159-4529-baf6-5d0ca1f0a634.png"
+                alt="Step 2"
+            >
+        </span>
+
+        <span class="labels"
+              data-en="Yellow Corners"
+              data-ar="الزوايا الصفراء">
+            Yellow Corners
+        </span>
+    </a>
+
+
+    <a href="#s3">
+        <span class="thumb">
+            <img
+                src="tutorials/skewb/671105e3-80dc-47e1-ae7c-e41afe02a182.png"
+                alt="Step 3"
+            >
+        </span>
+
+        <span class="labels"
+              data-en="Yellow Center"
+              data-ar="المركز الأصفر">
+            Yellow Center
+        </span>
+    </a>
+
+
+    <a href="#s4">
+        <span class="thumb">
+            <img
+                src="tutorials/skewb/57e09360-722e-4b47-9a97-dc32ab4d8fdf.png"
+                alt="Step 4"
+            >
+        </span>
+
+        <span class="labels"
+              data-en="Remaining Side Centers"
+              data-ar="المراكز الجانبية المتبقية">
+            Remaining Side Centers
+        </span>
+    </a>
+
 </div>
 
- 
+
 <header>
 
-  <h1>Skewb</h1>
+    <h1
+        data-en="Skewb"
+        data-ar="سكويب">
+        Skewb
+    </h1>
 
-  <p>A corner-turning puzzle where each cut slices through the center of the cube at an angle.</p>
+    <p
+        data-en="A corner-turning puzzle where each cut slices through the center of the cube at an angle."
+        data-ar="لغز يعتمد على تدوير الزوايا، حيث يمر كل قطع عبر مركز المكعب بزاوية.">
+        A corner-turning puzzle where each cut slices through the center of the cube at an angle.
+    </p>
 
 </header>
 
+
 <div class="introduction">
 
-  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
-  <p>The Sledgehammer  (R' L R L'):</p>
+    <p>
+        <span
+            data-en="Before starting, make sure you know the basic "
+            data-ar="قبل البدء، تأكد من معرفتك بـ">
+            Before starting, make sure you know the basic
+        </span>
 
-  <img src="tutorials/skewb/f2217ab4-cc27-42ba-8efd-c8fc826e7ce5.png" alt="">
+        <span>
+            <a href="algorithms.html"
+               data-en="move notation"
+               data-ar="ترميز الحركات">
+                move notation
+            </a>
+        </span>
 
-  <p>Right Down → Left Down → Right Up → Left Up</p>
+        <span
+            data-en=":"
+            data-ar=" الأساسي:">
+            :
+        </span>
+    </p>
+
+
+    <p>
+        <span
+            data-en="The Sledgehammer"
+            data-ar="حركة Sledgehammer">
+            The Sledgehammer
+        </span>
+
+        <span class="algorithm">
+            (R' L R L')
+        </span>
+
+        <span>:</span>
+    </p>
+
+
+    <img
+        src="tutorials/skewb/f2217ab4-cc27-42ba-8efd-c8fc826e7ce5.png"
+        alt=""
+    >
+
+
+    <p
+        data-en="Right Down → Left Down → Right Up → Left Up"
+        data-ar="يمين لأسفل ← يسار لأسفل ← يمين لأعلى ← يسار لأعلى">
+        Right Down → Left Down → Right Up → Left Up
+    </p>
 
 </div>
 
+
 <main>
 
-  <section id="s1">
+    <!-- STEP 1 -->
+    <section id="s1">
 
-    <h2>Step 1 — White Side</h2>
-    <p>Locate the White center piece and bring the 4 white corner pieces up around it so their side colors match each other (forming a complete colored outer layer intuitively):</p>
+        <h2
+            data-en="Step 1 — White Side"
+            data-ar="الخطوة ١ — الجانب الأبيض">
+            Step 1 — White Side
+        </h2>
 
-    <ul>
 
-      <li>Easy insertion</li>
+        <p
+            data-en="Locate the White center piece and bring the 4 white corner pieces up around it so their side colors match each other (forming a complete colored outer layer intuitively):"
+            data-ar="حدد قطعة المركز البيضاء، ثم ارفع قطع الزوايا البيضاء الـ ٤ حولها بحيث تتطابق ألوان جوانبها مع بعضها البعض (لتكوين طبقة خارجية ملونة كاملة بشكل حدسي):">
+            Locate the White center piece and bring the 4 white corner pieces up around it so their side colors match each other (forming a complete colored outer layer intuitively):
+        </p>
 
-      <p>If a white corner is on the bottom layer, rotate it into the top slot.</p>
 
-      <li>Flipped corner</li>
+        <ul>
 
-      <p>If a corner piece isn't oriented correctly, rotate it out of place on the bottom layer to change its orientation, then bring it up.</p>
+            <li
+                data-en="Easy insertion"
+                data-ar="الإدخال السهل">
+                Easy insertion
+            </li>
 
-      <li>Facing down</li>
+            <p
+                data-en="If a white corner is on the bottom layer, rotate it into the top slot."
+                data-ar="إذا كانت زاوية بيضاء في الطبقة السفلية، قم بتدويرها إلى المكان العلوي.">
+                If a white corner is on the bottom layer, rotate it into the top slot.
+            </p>
 
-      <p>If white is on the bottom facing straight down, move it to the side first before bringing it up.</p>
 
-    </ul>
+            <li
+                data-en="Flipped corner"
+                data-ar="زاوية مقلوبة">
+                Flipped corner
+            </li>
 
-  </section>
+            <p
+                data-en="If a corner piece isn't oriented correctly, rotate it out of place on the bottom layer to change its orientation, then bring it up."
+                data-ar="إذا لم تكن قطعة الزاوية موجهة بشكل صحيح، أخرجها من مكانها في الطبقة السفلية لتغيير اتجاهها، ثم ارفعها إلى الأعلى.">
+                If a corner piece isn't oriented correctly, rotate it out of place on the bottom layer to change its orientation, then bring it up.
+            </p>
 
-  <section id="s2">
 
-    <h2>Step 2 — Yellow Corners</h2>
+            <li
+                data-en="Facing down"
+                data-ar="مواجهة للأسفل">
+                Facing down
+            </li>
 
-    <p>Turn the cube upside down so the completed White layer is on the bottom. Look at the 4 yellow corner pieces on top.</p>
+            <p
+                data-en="If white is on the bottom facing straight down, move it to the side first before bringing it up."
+                data-ar="إذا كان اللون الأبيض في الأسفل ومواجهًا للأسفل مباشرة، انقله إلى الجانب أولًا قبل رفعه إلى الأعلى.">
+                If white is on the bottom facing straight down, move it to the side first before bringing it up.
+            </p>
 
-    <ul>
+        </ul>
 
-      <li>Case A (2 corners facing up, 2 facing out)</li>
+    </section>
 
-      <img src="tutorials/skewb/4139177b-329c-44a3-af32-b8b349499265.png" alt="">
 
-      <p>Hold the cube so one unsolved yellow corner faces Front and the other faces Left. Do the Sledgehammer once. This brings you to Case B.</p>
+    <!-- STEP 2 -->
+    <section id="s2">
 
-      <li>Case B (0 yellow corners facing up - "Headlights" case)</li>
+        <h2
+            data-en="Step 2 — Yellow Corners"
+            data-ar="الخطوة ٢ — الزوايا الصفراء">
+            Step 2 — Yellow Corners
+        </h2>
 
-      <img src="tutorials/skewb/e30d7eb6-07a6-4f32-8bd8-09280aac59ee.png" alt="">
 
-      <p>Hold the cube so the two matching yellow corner stickers are on the Right. Do the Sledgehammer once. All 4 yellow corners will now point up!</p>
+        <p
+            data-en="Turn the cube upside down so the completed White layer is on the bottom. Look at the 4 yellow corner pieces on top."
+            data-ar="اقلب المكعب رأسًا على عقب بحيث تصبح الطبقة البيضاء المكتملة في الأسفل. انظر إلى قطع الزوايا الصفراء الـ ٤ في الأعلى.">
+            Turn the cube upside down so the completed White layer is on the bottom. Look at the 4 yellow corner pieces on top.
+        </p>
 
-    </ul>
 
-  </section>
+        <ul>
 
-  <section id="s3">
+            <li
+                data-en="Case A (2 corners facing up, 2 facing out)"
+                data-ar="الحالة أ (زاويتان تواجهان الأعلى، وزاويتان تواجهان الخارج)">
+                Case A (2 corners facing up, 2 facing out)
+            </li>
 
-    <h2>Step 3 — Yellow Center</h2>
 
-    <p>With White on the bottom and all 4 Yellow corners pointing up:</p>
+            <img
+                src="tutorials/skewb/4139177b-329c-44a3-af32-b8b349499265.png"
+                alt=""
+            >
 
-    <ul>
 
-      <li>Hold the Yellow center so it is facing the Back.</li>
-      <li>Do the Sledgehammer once.</li>
-      <li>Rotate the whole cube 180° horizontally.</li>
-      <li>Do the Sledgehammer once more.</li>
-      
-      <p>The Yellow center is now fully solved on top!</p>
+            <p
+                data-en="Hold the cube so one unsolved yellow corner faces Front and the other faces Left. Do the Sledgehammer once. This brings you to Case B."
+                data-ar="أمسك المكعب بحيث تواجه إحدى الزوايا الصفراء غير المحلولة الأمام، وتواجه الأخرى اليسار. نفّذ حركة Sledgehammer مرة واحدة. سينقلك هذا إلى الحالة ب.">
+                Hold the cube so one unsolved yellow corner faces Front and the other faces Left. Do the Sledgehammer once. This brings you to Case B.
+            </p>
 
-    </ul>
 
-  </section>
+            <li
+                data-en='Case B (0 yellow corners facing up - "Headlights" case)'
+                data-ar='الحالة ب (٠ زوايا صفراء تواجه الأعلى - حالة "المصابيح الأمامية")'>
+                Case B (0 yellow corners facing up - "Headlights" case)
+            </li>
 
-  <section id="s4">
 
-    <h2>Step 4 — Remaining Side Centers</h2>
+            <img
+                src="tutorials/skewb/e30d7eb6-07a6-4f32-8bd8-09280aac59ee.png"
+                alt=""
+            >
 
-    <p>With White on the left and Yellow on the right, only 3 or 4 centers are left to solve.</p>
-    <p></p>
 
-    <ul>
+            <p
+                data-en="Hold the cube so the two matching yellow corner stickers are on the Right. Do the Sledgehammer once. All 4 yellow corners will now point up!"
+                data-ar="أمسك المكعب بحيث تكون ملصقتا الزاويتين الصفراوين المتطابقتين على اليمين. نفّذ حركة Sledgehammer مرة واحدة. ستتجه الزوايا الصفراء الـ ٤ الآن إلى الأعلى!">
+                Hold the cube so the two matching yellow corner stickers are on the Right. Do the Sledgehammer once. All 4 yellow corners will now point up!
+            </p>
 
-      <li>3 Unsolved Centers</li>
+        </ul>
 
-      <p>Hold the cube so the face with opposite colors (e.g., Red center on Orange face / Green center on Blue face) is in the Front.</p>
-      <p>Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once.</p>
+    </section>
 
-      <li>4 Unsolved Centers</li>
 
-      <p>Hold any unsolved center in front. Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once. This will reduce it to the 3-center case above!</p>
+    <!-- STEP 3 -->
+    <section id="s3">
 
-    </ul>
+        <h2
+            data-en="Step 3 — Yellow Center"
+            data-ar="الخطوة ٣ — المركز الأصفر">
+            Step 3 — Yellow Center
+        </h2>
 
-  </section>
+
+        <p
+            data-en="With White on the bottom and all 4 Yellow corners pointing up:"
+            data-ar="مع وجود الأبيض في الأسفل وجميع الزوايا الصفراء الـ ٤ متجهة إلى الأعلى:">
+            With White on the bottom and all 4 Yellow corners pointing up:
+        </p>
+
+
+        <ul>
+
+            <li
+                data-en="Hold the Yellow center so it is facing the Back."
+                data-ar="أمسك المركز الأصفر بحيث يكون مواجهًا للخلف.">
+                Hold the Yellow center so it is facing the Back.
+            </li>
+
+
+            <li
+                data-en="Do the Sledgehammer once."
+                data-ar="نفّذ حركة Sledgehammer مرة واحدة.">
+                Do the Sledgehammer once.
+            </li>
+
+
+            <li
+                data-en="Rotate the whole cube 180° horizontally."
+                data-ar="أدر المكعب بالكامل ١٨٠° أفقيًا.">
+                Rotate the whole cube 180° horizontally.
+            </li>
+
+
+            <li
+                data-en="Do the Sledgehammer once more."
+                data-ar="نفّذ حركة Sledgehammer مرة أخرى.">
+                Do the Sledgehammer once more.
+            </li>
+
+
+            <p
+                data-en="The Yellow center is now fully solved on top!"
+                data-ar="المركز الأصفر الآن محلول بالكامل في الأعلى!">
+                The Yellow center is now fully solved on top!
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- STEP 4 -->
+    <section id="s4">
+
+        <h2
+            data-en="Step 4 — Remaining Side Centers"
+            data-ar="الخطوة ٤ — المراكز الجانبية المتبقية">
+            Step 4 — Remaining Side Centers
+        </h2>
+
+
+        <p
+            data-en="With White on the left and Yellow on the right, only 3 or 4 centers are left to solve."
+            data-ar="مع وجود الأبيض على اليسار والأصفر على اليمين، يتبقى فقط ٣ أو ٤ مراكز لحلها.">
+            With White on the left and Yellow on the right, only 3 or 4 centers are left to solve.
+        </p>
+
+
+        <p></p>
+
+
+        <ul>
+
+            <li
+                data-en="3 Unsolved Centers"
+                data-ar="٣ مراكز غير محلولة">
+                3 Unsolved Centers
+            </li>
+
+
+            <p
+                data-en="Hold the cube so the face with opposite colors (e.g., Red center on Orange face / Green center on Blue face) is in the Front."
+                data-ar="أمسك المكعب بحيث يكون الوجه ذو الألوان المتقابلة (مثلًا: المركز الأحمر على وجه برتقالي / المركز الأخضر على وجه أزرق) في الأمام.">
+                Hold the cube so the face with opposite colors (e.g., Red center on Orange face / Green center on Blue face) is in the Front.
+            </p>
+
+
+            <p
+                data-en="Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once."
+                data-ar="نفّذ حركة Sledgehammer مرة واحدة → أدر ١٨٠° → نفّذ حركة Sledgehammer مرة واحدة.">
+                Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once.
+            </p>
+
+
+            <li
+                data-en="4 Unsolved Centers"
+                data-ar="٤ مراكز غير محلولة">
+                4 Unsolved Centers
+            </li>
+
+
+            <p
+                data-en="Hold any unsolved center in front. Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once. This will reduce it to the 3-center case above!"
+                data-ar="أمسك أي مركز غير محلول في الأمام. نفّذ حركة Sledgehammer مرة واحدة → أدر ١٨٠° → نفّذ حركة Sledgehammer مرة واحدة. سيؤدي ذلك إلى تحويلها إلى حالة الـ ٣ مراكز المذكورة أعلاه!">
+                Hold any unsolved center in front. Do the Sledgehammer once → Rotate 180° → Do the Sledgehammer once. This will reduce it to the 3-center case above!
+            </p>
+
+        </ul>
+
+    </section>
 
 </main>
 
+
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-    </footer>    
 
-        <script>
-  const links = document.querySelectorAll('.timeline-nav a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+    <p
+        data-en="© 2026 Skewbicle. All rights reserved."
+        data-ar="© ٢٠٢٦ Skewbicle. جميع الحقوق محفوظة.">
+        © 2026 Skewbicle. All rights reserved.
+    </p>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = sections.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        links.forEach((l, i) => l.classList.toggle('active', i === idx));
-      }
+    <a
+        href="mailto:skewbicle@gmail.com"
+        data-en="Contact Us"
+        data-ar="تواصل معنا">
+        Contact Us
+    </a>
+
+</footer>
+
+
+<script>
+    /*
+     * Timeline navigation
+     */
+    const links = document.querySelectorAll('.timeline-nav a');
+
+    const sections = [...links].map(l =>
+        document.querySelector(l.getAttribute('href'))
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const idx = sections.indexOf(entry.target);
+
+            if (entry.isIntersecting) {
+                links.forEach((l, i) =>
+                    l.classList.toggle('active', i === idx)
+                );
+            }
+        });
+    }, {
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
     });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-  sections.forEach(s => observer.observe(s));
+    sections.forEach(s => observer.observe(s));
 
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
+
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+
+            document
+                .querySelector(link.getAttribute('href'))
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+        });
     });
-  });
+
+
+    /*
+     * Language system
+     */
+    const languageSwitcher =
+        document.getElementById('languageSwitcher');
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+        document.documentElement.dir =
+            language === 'ar' ? 'rtl' : 'ltr';
+
+        document.querySelectorAll('[data-en][data-ar]')
+            .forEach(element => {
+
+                const text =
+                    language === 'ar'
+                        ? element.getAttribute('data-ar')
+                        : element.getAttribute('data-en');
+
+                if (text !== null) {
+                    element.textContent = text;
+                }
+            });
+
+        languageSwitcher.value = language;
+
+        localStorage.setItem(
+            'skewbicle-language',
+            language
+        );
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem('skewbicle-language') || 'en';
+
+    setLanguage(savedLanguage);
+
+
+    languageSwitcher.addEventListener('change', () => {
+        setLanguage(languageSwitcher.value);
+    });
 </script>
 
 </body>
