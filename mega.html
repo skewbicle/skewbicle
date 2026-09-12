@@ -1,236 +1,906 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to solve a Megaminx step by step with Skewbicle's tutorial and solving instructions.">
-    <link rel="canonical" href="https://skewbicle.github.io/skewbicle/mega.html">
+
+    <meta
+        name="description"
+        content="Learn how to solve a Megaminx step by step with Skewbicle's tutorial and solving instructions."
+    >
+
+    <link
+        rel="canonical"
+        href="https://skewbicle.github.io/skewbicle/mega.html"
+    >
+
     <title>Megaminx Tutorial</title>
-    <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
+
+    <link
+        rel="icon"
+        href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png"
+    >
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-switcher {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: white;
+        }
+
+        .language-switcher option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        html[dir="rtl"] nav {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .nav-links {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] footer {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] body {
+            direction: rtl;
+        }
+
+        /*
+         * RTL tutorial layout
+         */
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+            left: auto;
+            right: 28px;
+        }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+        /*
+         * Algorithms and cube notation always stay LTR
+         */
+        .algorithm,
+        .notation,
+        .algo {
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: left;
+        }
+
+        @media (max-width: 1024px) {
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 10px;
+            }
+
+            .language-switcher {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
+
+<nav>
+    <ul class="nav-links">
+        <li>
+            <a
+                href="index.html"
+                data-en="Home"
+                data-ar="الرئيسية"
+            >
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="timer.html"
+                data-en="Timer"
+                data-ar="المؤقت"
+            >
+                Timer
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="simulator.html"
+                data-en="Simulator"
+                data-ar="المحاكي"
+            >
+                Simulator
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="algorithms.html"
+                data-en="Algorithms"
+                data-ar="الخوارزميات"
+            >
+                Algorithms
+            </a>
+        </li>
+    </ul>
+
+    <select
+        id="languageSwitcher"
+        class="language-switcher"
+        aria-label="Language"
+    >
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
 </nav>
 
+
 <div class="timeline-nav" id="timelineNav">
-  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/megaminx/2711c0b0-0e0f-4ee2-ba02-b45fa876ffdb.png" alt="Step 1"></span><span class="labels">White Star</span></a>
-  <a href="#s2"><span class="thumb"><img src="tutorials/megaminx/df957222-106f-4863-8c02-7b239e519088.png" alt="Step 2"></span><span class="labels">First 2 Layers</span></a>
-  <a href="#s3"><span class="thumb"><img src="tutorials/megaminx/f209862c-dddd-4a29-8ffc-fd292db02f03.png" alt="Step 3"></span><span class="labels">Second 2 Layers</span></a>
-  <a href="#s4"><span class="thumb"><img src="tutorials/megaminx/65c18259-c51a-460e-935e-87a049279905.png" alt="Step 4"></span><span class="labels">Grey Star</span></a>
-  <a href="#s5"><span class="thumb"><img src="tutorials/megaminx/66ac3e9c-cc34-4381-bb50-45f2df969e57.png" alt="Step 5"></span><span class="labels">Grey Edges</span></a>
-  <a href="#s6"><span class="thumb"><img src="tutorials/megaminx/6218b801-dcf3-4fd9-bf4d-b1b9f5553f7b.png" alt="Step 6"></span><span class="labels">Grey Face</span></a>
-  <a href="#s7"><span class="thumb"><img src="tutorials/megaminx/8327cc12-9838-45f1-88c2-e7ae04b52ee9.png" alt="Step 7"></span><span class="labels">Grey Corners</span></a>
+
+    <a href="#s1" class="active">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/2711c0b0-0e0f-4ee2-ba02-b45fa876ffdb.png"
+                alt="Step 1"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="White Star"
+            data-ar="النجمة البيضاء"
+        >
+            White Star
+        </span>
+    </a>
+
+
+    <a href="#s2">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/df957222-106f-4863-8c02-7b239e519088.png"
+                alt="Step 2"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="First 2 Layers"
+            data-ar="الطبقتان الأوليان"
+        >
+            First 2 Layers
+        </span>
+    </a>
+
+
+    <a href="#s3">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/f209862c-dddd-4a29-8ffc-fd292db02f03.png"
+                alt="Step 3"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Second 2 Layers"
+            data-ar="الطبقتان الثانية"
+        >
+            Second 2 Layers
+        </span>
+    </a>
+
+
+    <a href="#s4">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/65c18259-c51a-460e-935e-87a049279905.png"
+                alt="Step 4"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Grey Star"
+            data-ar="النجمة الرمادية"
+        >
+            Grey Star
+        </span>
+    </a>
+
+
+    <a href="#s5">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/66ac3e9c-cc34-4381-bb50-45f2df969e57.png"
+                alt="Step 5"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Grey Edges"
+            data-ar="الحواف الرمادية"
+        >
+            Grey Edges
+        </span>
+    </a>
+
+
+    <a href="#s6">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/6218b801-dcf3-4fd9-bf4d-b1b9f5553f7b.png"
+                alt="Step 6"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Grey Face"
+            data-ar="الوجه الرمادي"
+        >
+            Grey Face
+        </span>
+    </a>
+
+
+    <a href="#s7">
+        <span class="thumb">
+            <img
+                src="tutorials/megaminx/8327cc12-9838-45f1-88c2-e7ae04b52ee9.png"
+                alt="Step 7"
+            >
+        </span>
+
+        <span
+            class="labels"
+            data-en="Grey Corners"
+            data-ar="الزوايا الرمادية"
+        >
+            Grey Corners
+        </span>
+    </a>
+
 </div>
 
- 
+
 <header>
 
-  <h1>Megaminx</h1>
+    <h1
+        data-en="Megaminx"
+        data-ar="ميجامينكس"
+    >
+        Megaminx
+    </h1>
 
-  <p>A 12-sided, dodecahedron-shaped puzzle solved similarly to a standard 3x3 Rubik's cube.</p>
+    <p
+        data-en="A 12-sided, dodecahedron-shaped puzzle solved similarly to a standard 3x3 Rubik's cube."
+        data-ar="لغز ذو ١٢ جانبًا على شكل اثني عشر وجهًا، ويُحل بطريقة مشابهة لمكعب روبيك القياسي ٣x٣."
+    >
+        A 12-sided, dodecahedron-shaped puzzle solved similarly to a standard 3x3 Rubik's cube.
+    </p>
 
 </header>
 
+
 <div class="introduction">
 
-  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
+    <p>
+        <span
+            data-en="Before starting, make sure you know the basic "
+            data-ar="قبل البدء، تأكد من معرفتك بـ "
+        >
+            Before starting, make sure you know the basic
+        </span>
 
-<ul>
-  <li>
-    R / R': Right side clockwise / counter-clockwise
-  </li>
+        <span>
+            <a
+                href="algorithms.html"
+                data-en="move notation"
+                data-ar="ترميز الحركات"
+            >
+                move notation
+            </a>
+        </span>
 
-  <li>
-    U / U': Top layer clockwise / counter-clockwise
-  </li>
-  
-  <li>
-    L / L': Left side clockwise / counter-clockwise
-  </li>
+        <span
+            data-en=":"
+            data-ar=" الأساسي:"
+        >
+            :
+        </span>
+    </p>
 
-  <li>
-    F / F': Front layer clockwise / counter-clockwise
-  </li>
 
-  <li>
-    D / D': Bottom layer clockwise / counter-clockwise
-  </li>
+    <ul>
 
-  <li>
-    Forward Trigger (Extract Piece): R U R'
-  </li>
-  
-  <li>
-    Backward Trigger (Insert Piece): R U' R' 
-  </li>
+        <li
+            data-en="R / R': Right side clockwise / counter-clockwise"
+            data-ar="R / R': الجانب الأيمن مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            R / R': Right side clockwise / counter-clockwise
+        </li>
 
-</ul>
+        <li
+            data-en="U / U': Top layer clockwise / counter-clockwise"
+            data-ar="U / U': الطبقة العلوية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            U / U': Top layer clockwise / counter-clockwise
+        </li>
+
+        <li
+            data-en="L / L': Left side clockwise / counter-clockwise"
+            data-ar="L / L': الجانب الأيسر مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            L / L': Left side clockwise / counter-clockwise
+        </li>
+
+        <li
+            data-en="F / F': Front layer clockwise / counter-clockwise"
+            data-ar="F / F': الطبقة الأمامية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            F / F': Front layer clockwise / counter-clockwise
+        </li>
+
+        <li
+            data-en="D / D': Bottom layer clockwise / counter-clockwise"
+            data-ar="D / D': الطبقة السفلية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            D / D': Bottom layer clockwise / counter-clockwise
+        </li>
+
+        <li
+            data-en="Forward Trigger (Extract Piece): R U R'"
+            data-ar="الحركة الأمامية (إخراج القطعة): R U R'"
+        >
+            Forward Trigger (Extract Piece):
+            <span class="algorithm">R U R'</span>
+        </li>
+
+        <li
+            data-en="Backward Trigger (Insert Piece): R U' R'"
+            data-ar="الحركة الخلفية (إدخال القطعة): R U' R'"
+        >
+            Backward Trigger (Insert Piece):
+            <span class="algorithm">R U' R'</span>
+        </li>
+
+    </ul>
 
 </div>
 
+
 <main>
 
-  <section id="s1">
+    <!-- STEP 1 -->
+    <section id="s1">
 
-    <h2>Step 1 — White Star</h2>
+        <h2
+            data-en="Step 1 — White Star"
+            data-ar="الخطوة ١ — النجمة البيضاء"
+        >
+            Step 1 — White Star
+        </h2>
 
-    <p>Solve the 5 white edge pieces around the white center piece (just like building the white cross on a 3x3). Make sure the side colors of the 5 edges line up with their matching adjacent centers (Blue, Red, Green, Purple, Yellow).</p>
+        <p
+            data-en="Solve the 5 white edge pieces around the white center piece (just like building the white cross on a 3x3). Make sure the side colors of the 5 edges line up with their matching adjacent centers (Blue, Red, Green, Purple, Yellow)."
+            data-ar="حل قطع الحواف البيضاء الخمس حول القطعة المركزية البيضاء (تمامًا مثل بناء الصليب الأبيض على مكعب ٣x٣). تأكد من أن ألوان جوانب الحواف الخمس تتطابق مع المراكز المجاورة لها (الأزرق، الأحمر، الأخضر، البنفسجي، الأصفر)."
+        >
+            Solve the 5 white edge pieces around the white center piece (just like building the white cross on a 3x3). Make sure the side colors of the 5 edges line up with their matching adjacent centers (Blue, Red, Green, Purple, Yellow).
+        </p>
 
-    <img src="tutorials/megaminx/2711c0b0-0e0f-4ee2-ba02-b45fa876ffdb.png" alt="">
+        <img
+            src="tutorials/megaminx/2711c0b0-0e0f-4ee2-ba02-b45fa876ffdb.png"
+            alt=""
+        >
 
-  </section>
+    </section>
 
-  <section id="s2">
 
-    <h2>Step 2 — First 2 Layers</h2>
+    <!-- STEP 2 -->
+    <section id="s2">
 
-    <p>Complete the white face and its bottom ring by placing the 5 white corner pieces and their matching side edges. You can insert corners then edges using beginner moves, or pair them up using standard 3x3 F2L pairs.</p>
+        <h2
+            data-en="Step 2 — First 2 Layers"
+            data-ar="الخطوة ٢ — الطبقتان الأوليان"
+        >
+            Step 2 — First 2 Layers
+        </h2>
 
-  </section>
+        <p
+            data-en="Complete the white face and its bottom ring by placing the 5 white corner pieces and their matching side edges. You can insert corners then edges using beginner moves, or pair them up using standard 3x3 F2L pairs."
+            data-ar="أكمل الوجه الأبيض والحلقة السفلية الخاصة به من خلال وضع قطع الزوايا البيضاء الخمس والحواف الجانبية المطابقة لها. يمكنك إدخال الزوايا ثم الحواف باستخدام حركات للمبتدئين، أو جمعها معًا باستخدام أزواج F2L القياسية لمكعب ٣x٣."
+        >
+            Complete the white face and its bottom ring by placing the 5 white corner pieces and their matching side edges. You can insert corners then edges using beginner moves, or pair them up using standard 3x3 F2L pairs.
+        </p>
 
-  <section id="s3">
+    </section>
 
-    <h2>Step 3 — Second 2 Layers</h2>
-    
-    <ul>
 
-      <li>Build Side Stars & S2L (Yellow, Blue, Red)</li>
+    <!-- STEP 3 -->
+    <section id="s3">
 
-      <p>Work around the middle ring to build the Second Two Layers (S2L):</p>
-      <p>1-Solve the Yellow Star edges without breaking your White F2L, then insert the Yellow corner/edge slots.</p>
-      <p>2-Rotate right to the Blue center, solve its star edges, and complete its F2L slots.</p>
-      <p>3-Rotate right to the Red center, solve its star edges, and complete its F2L slots.</p>
+        <h2
+            data-en="Step 3 — Second 2 Layers"
+            data-ar="الخطوة ٣ — الطبقتان الثانية"
+        >
+            Step 3 — Second 2 Layers
+        </h2>
 
-      <li>Solve the Final S2L Slots (Green & Purple)</li>
+        <ul>
 
-      <p>Space gets tight when solving the final two side colors:</p>
-      <p>1-Build the Green Star edge.</p>
-      <p>2-When inserting the remaining slots, temporarily move the green star edge into the open top face, pair up your corner/edge in the top layer, insert it, and restore your star edge back to its home center.</p>
+            <li
+                data-en="Build Side Stars & S2L (Yellow, Blue, Red)"
+                data-ar="بناء النجوم الجانبية و S2L (الأصفر، الأزرق، الأحمر)"
+            >
+                Build Side Stars & S2L (Yellow, Blue, Red)
+            </li>
 
-    </ul>
+            <p
+                data-en="Work around the middle ring to build the Second Two Layers (S2L):"
+                data-ar="اعمل حول الحلقة الوسطى لبناء الطبقتين الثانية (S2L):"
+            >
+                Work around the middle ring to build the Second Two Layers (S2L):
+            </p>
 
-  </section>
+            <p
+                data-en="1-Solve the Yellow Star edges without breaking your White F2L, then insert the Yellow corner/edge slots."
+                data-ar="١-حل حواف النجمة الصفراء دون إفساد F2L الأبيض، ثم أدخل أماكن زوايا/حواف اللون الأصفر."
+            >
+                1-Solve the Yellow Star edges without breaking your White F2L, then insert the Yellow corner/edge slots.
+            </p>
 
-  <section id="s4">
+            <p
+                data-en="2-Rotate right to the Blue center, solve its star edges, and complete its F2L slots."
+                data-ar="٢-دُر إلى اليمين نحو المركز الأزرق، وحل حواف نجمته، وأكمل أماكن F2L الخاصة به."
+            >
+                2-Rotate right to the Blue center, solve its star edges, and complete its F2L slots.
+            </p>
 
-    <h2>Step 4 — Grey Star</h2>
+            <p
+                data-en="3-Rotate right to the Red center, solve its star edges, and complete its F2L slots."
+                data-ar="٣-دُر إلى اليمين نحو المركز الأحمر، وحل حواف نجمته، وأكمل أماكن F2L الخاصة به."
+            >
+                3-Rotate right to the Red center, solve its star edges, and complete its F2L slots.
+            </p>
 
-      <p>Flip all 5 grey edge pieces on the top face so grey points UP:</p>
 
-      <img src="tutorials/megaminx/358688fd-8a28-4815-9731-a768cc34c589.png" alt="">
+            <li
+                data-en="Solve the Final S2L Slots (Green & Purple)"
+                data-ar="حل أماكن S2L الأخيرة (الأخضر والبنفسجي)"
+            >
+                Solve the Final S2L Slots (Green & Purple)
+            </li>
 
-    <ul>
+            <p
+                data-en="Space gets tight when solving the final two side colors:"
+                data-ar="تصبح المساحة ضيقة عند حل اللونين الجانبيين الأخيرين:"
+            >
+                Space gets tight when solving the final two side colors:
+            </p>
 
-      <li>Case 1</li>
+            <p
+                data-en="1-Build the Green Star edge."
+                data-ar="١-ابنِ حافة النجمة الخضراء."
+            >
+                1-Build the Green Star edge.
+            </p>
 
-      <img src="tutorials/megaminx/34e7fdd3-46d3-4bb6-a365-55155e2495c0.png" alt="">
+            <p
+                data-en="2-When inserting the remaining slots, temporarily move the green star edge into the open top face, pair up your corner/edge in the top layer, insert it, and restore your star edge back to its home center."
+                data-ar="٢-عند إدخال الأماكن المتبقية، انقل حافة النجمة الخضراء مؤقتًا إلى الوجه العلوي المفتوح، واجمع الزاوية والحافة في الطبقة العلوية، ثم أدخلهما وأعد حافة النجمة إلى مركزها الأصلي."
+            >
+                2-When inserting the remaining slots, temporarily move the green star edge into the open top face, pair up your corner/edge in the top layer, insert it, and restore your star edge back to its home center.
+            </p>
 
-      <p>F U R U' R' F'</p>
+        </ul>
 
-      <li>Case 2</li>
+    </section>
 
-      <img src="tutorials/megaminx/5c3f7355-255f-495f-be72-29ab0781a07b.png" alt="">
-      
-      <p>F R U R' U' F'</p>
 
-      <li>Case 3</li>
+    <!-- STEP 4 -->
+    <section id="s4">
 
-      <img src="tutorials/megaminx/4186a255-7a37-4508-8f61-db3cfd46ddd9.png" alt="">
-      
-      <p>F R U R' U' F' (This leads to case 2)</p>
+        <h2
+            data-en="Step 4 — Grey Star"
+            data-ar="الخطوة ٤ — النجمة الرمادية"
+        >
+            Step 4 — Grey Star
+        </h2>
 
-    </ul>
+        <p
+            data-en="Flip all 5 grey edge pieces on the top face so grey points UP:"
+            data-ar="اقلب قطع الحواف الرمادية الخمس على الوجه العلوي بحيث يشير اللون الرمادي إلى الأعلى:"
+        >
+            Flip all 5 grey edge pieces on the top face so grey points UP:
+        </p>
 
-  </section>
+        <img
+            src="tutorials/megaminx/358688fd-8a28-4815-9731-a768cc34c589.png"
+            alt=""
+        >
 
-  <section id="s5">
+        <ul>
 
-    <h2>Step 5 — Grey Edges</h2>
+            <li
+                data-en="Case 1"
+                data-ar="الحالة ١"
+            >
+                Case 1
+            </li>
 
-    <p>Rotate the top layer to see how many grey edges align with their side colors:</p>
+            <img
+                src="tutorials/megaminx/34e7fdd3-46d3-4bb6-a365-55155e2495c0.png"
+                alt=""
+            >
 
-    <li>Two adjacent matching edges</li>
+            <p class="algorithm">
+                F U R U' R' F'
+            </p>
 
-    <p>Hold on Front & Left: R U R' U R U2' R'</p>
 
-    <li>Two opposite or one matching edge</li>
+            <li
+                data-en="Case 2"
+                data-ar="الحالة ٢"
+            >
+                Case 2
+            </li>
 
-    <p>Rotate top face so only 1 edge aligns, face that edge, and run the algorithm once or twice until 2 adjacent edges match. Then hold them Front/Left and run it again.</p>
+            <img
+                src="tutorials/megaminx/5c3f7355-255f-495f-be72-29ab0781a07b.png"
+                alt=""
+            >
 
-  </section>
+            <p class="algorithm">
+                F R U R' U' F'
+            </p>
 
-  <section id="s6">
 
-    <h2>Step 6 — Grey Face</h2>
+            <li
+                data-en="Case 3"
+                data-ar="الحالة ٣"
+            >
+                Case 3
+            </li>
 
-    <li>Orient Corners (Grey Up)</li>
+            <img
+                src="tutorials/megaminx/4186a255-7a37-4508-8f61-db3cfd46ddd9.png"
+                alt=""
+            >
 
-    <img src="tutorials/megaminx/381fd67f-032e-48ce-b324-46c1a1909dfd.png" alt="">
+            <p class="algorithm">
+                F R U R' U' F'
+                <span
+                    data-en=" (This leads to case 2)"
+                    data-ar=" (يؤدي هذا إلى الحالة ٢)"
+                >
+                    (This leads to case 2)
+                </span>
+            </p>
 
-    <p>Turn the cube upside down (Grey on bottom). Bring an unsolved corner to the bottom-right and repeat R U R' U' until grey faces down. Turn only the bottom face (D) to bring the next unsolved corner to the bottom-right and repeat (similar to step 7 in the 3x3)</p>
+        </ul>
 
-  </section>
+    </section>
 
-  <section id="s7">
 
-    <h2>Step 7 — Grey Corners</h2>
+    <!-- STEP 5 -->
+    <section id="s5">
 
-    <li>Position Corners</li>
+        <h2
+            data-en="Step 5 — Grey Edges"
+            data-ar="الخطوة ٥ — الحواف الرمادية"
+        >
+            Step 5 — Grey Edges
+        </h2>
 
-    <p>Keep Grey on the bottom. Alternate two 3-move triggers:</p>
-    <p>1-Extract an unsolved corner with Forward Trigger.</p>
-    <p>2-Turn bottom layer (D) to line up its matching target slot.</p>
-    <p>3-Insert it using Backward Trigger. Repeat until all 5 corners drop into place and the Megaminx is solved!</p>
+        <p
+            data-en="Rotate the top layer to see how many grey edges align with their side colors:"
+            data-ar="قم بتدوير الطبقة العلوية لمعرفة عدد الحواف الرمادية التي تتطابق مع ألوان جوانبها:"
+        >
+            Rotate the top layer to see how many grey edges align with their side colors:
+        </p>
 
-  </section>
+        <li
+            data-en="Two adjacent matching edges"
+            data-ar="حافتان متطابقتان متجاورتان"
+        >
+            Two adjacent matching edges
+        </li>
+
+        <p>
+            <span
+                data-en="Hold on Front & Left: "
+                data-ar="أمسكهما في الأمام واليسار: "
+            >
+                Hold on Front & Left:
+            </span>
+
+            <span class="algorithm">
+                R U R' U R U2' R'
+            </span>
+        </p>
+
+        <li
+            data-en="Two opposite or one matching edge"
+            data-ar="حافتان متقابلتان أو حافة واحدة متطابقة"
+        >
+            Two opposite or one matching edge
+        </li>
+
+        <p
+            data-en="Rotate top face so only 1 edge aligns, face that edge, and run the algorithm once or twice until 2 adjacent edges match. Then hold them Front/Left and run it again."
+            data-ar="قم بتدوير الوجه العلوي بحيث تتطابق حافة واحدة فقط، واجعل تلك الحافة في مواجهتك، ونفّذ الخوارزمية مرة أو مرتين حتى تتطابق حافتان متجاورتان. ثم أمسكهما في الأمام/اليسار ونفّذها مرة أخرى."
+        >
+            Rotate top face so only 1 edge aligns, face that edge, and run the algorithm once or twice until 2 adjacent edges match. Then hold them Front/Left and run it again.
+        </p>
+
+    </section>
+
+
+    <!-- STEP 6 -->
+    <section id="s6">
+
+        <h2
+            data-en="Step 6 — Grey Face"
+            data-ar="الخطوة ٦ — الوجه الرمادي"
+        >
+            Step 6 — Grey Face
+        </h2>
+
+        <li
+            data-en="Orient Corners (Grey Up)"
+            data-ar="توجيه الزوايا (الرمادي للأعلى)"
+        >
+            Orient Corners (Grey Up)
+        </li>
+
+        <img
+            src="tutorials/megaminx/381fd67f-032e-48ce-b324-46c1a1909dfd.png"
+            alt=""
+        >
+
+        <p
+            data-en="Turn the cube upside down (Grey on bottom). Bring an unsolved corner to the bottom-right and repeat R U R' U' until grey faces down. Turn only the bottom face (D) to bring the next unsolved corner to the bottom-right and repeat (similar to step 7 in the 3x3)"
+            data-ar="اقلب المكعب رأسًا على عقب (الرمادي في الأسفل). أحضر زاوية غير محلولة إلى أسفل اليمين وكرر R U R' U' حتى يصبح اللون الرمادي متجهًا إلى الأسفل. أدر الوجه السفلي فقط (D) لإحضار الزاوية التالية غير المحلولة إلى أسفل اليمين وكرر ذلك (مشابه للخطوة ٧ في مكعب ٣x٣)."
+        >
+            Turn the cube upside down (Grey on bottom). Bring an unsolved corner to the bottom-right and repeat R U R' U' until grey faces down. Turn only the bottom face (D) to bring the next unsolved corner to the bottom-right and repeat (similar to step 7 in the 3x3)
+        </p>
+
+    </section>
+
+
+    <!-- STEP 7 -->
+    <section id="s7">
+
+        <h2
+            data-en="Step 7 — Grey Corners"
+            data-ar="الخطوة ٧ — الزوايا الرمادية"
+        >
+            Step 7 — Grey Corners
+        </h2>
+
+        <li
+            data-en="Position Corners"
+            data-ar="ترتيب الزوايا"
+        >
+            Position Corners
+        </li>
+
+        <p
+            data-en="Keep Grey on the bottom. Alternate two 3-move triggers:"
+            data-ar="أبقِ اللون الرمادي في الأسفل. بدّل بين حركتيْن مكوّنتيْن من ٣ حركات:"
+        >
+            Keep Grey on the bottom. Alternate two 3-move triggers:
+        </p>
+
+        <p
+            data-en="1-Extract an unsolved corner with Forward Trigger."
+            data-ar="١-أخرج زاوية غير محلولة باستخدام الحركة الأمامية."
+        >
+            1-Extract an unsolved corner with Forward Trigger.
+        </p>
+
+        <p
+            data-en="2-Turn bottom layer (D) to line up its matching target slot."
+            data-ar="٢-أدر الطبقة السفلية (D) لمحاذاة مكانها المستهدف المطابق."
+        >
+            2-Turn bottom layer (D) to line up its matching target slot.
+        </p>
+
+        <p
+            data-en="3-Insert it using Backward Trigger. Repeat until all 5 corners drop into place and the Megaminx is solved!"
+            data-ar="٣-أدخلها باستخدام الحركة الخلفية. كرر ذلك حتى تستقر الزوايا الخمس جميعها في أماكنها ويُحل الميجامينكس!"
+        >
+            3-Insert it using Backward Trigger. Repeat until all 5 corners drop into place and the Megaminx is solved!
+        </p>
+
+    </section>
 
 </main>
 
+
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>  
-    
-    <script>
-  const links = document.querySelectorAll('.timeline-nav a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = sections.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        links.forEach((l, i) => l.classList.toggle('active', i === idx));
-      }
+    <p
+        data-en="© 2026 Skewbicle. All rights reserved."
+        data-ar="© ٢٠٢٦ Skewbicle. جميع الحقوق محفوظة."
+    >
+        © 2026 Skewbicle. All rights reserved.
+    </p>
+
+    <a
+        href="mailto:skewbicle@gmail.com"
+        data-en="Contact Us"
+        data-ar="تواصل معنا"
+    >
+        Contact Us
+    </a>
+
+</footer>
+
+
+<script>
+    /*
+     * Timeline navigation
+     */
+    const links = document.querySelectorAll('.timeline-nav a');
+
+    const sections = [...links].map(l =>
+        document.querySelector(l.getAttribute('href'))
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+
+            const idx = sections.indexOf(entry.target);
+
+            if (entry.isIntersecting) {
+                links.forEach((l, i) =>
+                    l.classList.toggle('active', i === idx)
+                );
+            }
+
+        });
+    }, {
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
     });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-  sections.forEach(s => observer.observe(s));
+    sections.forEach(s => observer.observe(s));
 
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
+
+    links.forEach(link => {
+
+        link.addEventListener('click', e => {
+
+            e.preventDefault();
+
+            document
+                .querySelector(link.getAttribute('href'))
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+        });
+
     });
-  });
+
+
+    /*
+     * Language system
+     */
+    const languageSwitcher =
+        document.getElementById('languageSwitcher');
+
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        document.documentElement.dir =
+            language === 'ar' ? 'rtl' : 'ltr';
+
+
+        document
+            .querySelectorAll('[data-en][data-ar]')
+            .forEach(element => {
+
+                const text =
+                    language === 'ar'
+                        ? element.getAttribute('data-ar')
+                        : element.getAttribute('data-en');
+
+                if (text !== null) {
+                    element.textContent = text;
+                }
+
+            });
+
+
+        languageSwitcher.value = language;
+
+
+        localStorage.setItem(
+            'skewbicle-language',
+            language
+        );
+
+    }
+
+
+    const savedLanguage =
+        localStorage.getItem('skewbicle-language') || 'en';
+
+
+    setLanguage(savedLanguage);
+
+
+    languageSwitcher.addEventListener(
+        'change',
+        () => {
+            setLanguage(languageSwitcher.value);
+        }
+    );
 </script>
 
-    
 </body>
 </html>
