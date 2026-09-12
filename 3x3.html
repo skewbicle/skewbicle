@@ -1,383 +1,1235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVGS5PM6ZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-MVGS5PM6ZN');
-</script>
+      gtag('config', 'G-MVGS5PM6ZN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn how to solve a 3x3 Rubik's Cube step by step with this beginner-friendly tutorial, from the white cross through the final layer.">
+
+    <meta
+        name="description"
+        content="Learn how to solve a 3x3 Rubik's Cube step by step with this beginner-friendly tutorial, from the white cross through the final layer."
+    >
+
     <link rel="canonical" href="https://skewbicle.github.io/skewbicle/3x3.html">
     <title>3x3 Tutorial</title>
+
     <link rel="icon" href="New folder/3b23a8e9-5a1f-4432-8ca2-7c2d75a1dc50.png">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /*
+         * Arabic tutorial layout
+         * Mirrors the English layout so the timeline/content
+         * moves to the opposite side.
+         */
+
+        html[dir="rtl"] main {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .introduction {
+            margin-left: 0;
+            margin-right: 250px;
+        }
+
+        html[dir="rtl"] .timeline-nav {
+            direction: rtl;
+            left: auto;
+            right: 28px;
+        }
+
+        html[dir="rtl"] .labels {
+            left: auto;
+            right: 50px;
+        }
+
+        /*
+         * Cube notation and algorithms must always remain LTR.
+         */
+        .notation,
+        .algorithm {
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: left;
+        }
+
+        /*
+         * Keep algorithm text inside normal paragraphs LTR as well.
+         */
+        .algo {
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+
+        @media (max-width: 1024px) {
+            html[dir="rtl"] main {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+
+            html[dir="rtl"] .introduction {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-switcher {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: white;
+        }
+
+        .language-switcher option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        html[dir="rtl"] nav {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .nav-links {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] footer {
+            direction: rtl;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 10px;
+            }
+
+            .language-switcher {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <nav>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="timer.html">Timer</a></li>
-    <li><a href="simulator.html">Simulator</a></li>
-    <li><a href="algorithms.html">Algorithms</a></li>
-  </ul>
+<nav>
+    <ul class="nav-links">
+        <li>
+            <a
+                href="index.html"
+                data-en="Home"
+                data-ar="الرئيسية"
+            >Home</a>
+        </li>
+
+        <li>
+            <a
+                href="timer.html"
+                data-en="Timer"
+                data-ar="المؤقت"
+            >Timer</a>
+        </li>
+
+        <li>
+            <a
+                href="simulator.html"
+                data-en="Simulator"
+                data-ar="المحاكي"
+            >Simulator</a>
+        </li>
+
+        <li>
+            <a
+                href="algorithms.html"
+                data-en="Algorithms"
+                data-ar="الخوارزميات"
+            >Algorithms</a>
+        </li>
+    </ul>
+
+    <select id="languageSwitcher" class="language-switcher" aria-label="Language">
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇸🇦 العربية</option>
+    </select>
 </nav>
- 
+
+
+<!-- =========================
+     TIMELINE
+========================= -->
+
 <div class="timeline-nav" id="timelineNav">
-  <a href="#s1" class="active"><span class="thumb"><img src="tutorials/3X3/download (8).png" alt="Step 1"></span><span class="labels">White Cross</span></a>
-  <a href="#s2"><span class="thumb"><img src="tutorials/3X3/download (9).png" alt="Step 2"></span><span class="labels">First Layer</span></a>
-  <a href="#s3"><span class="thumb"><img src="tutorials/3X3/download (7).png" alt="Step 3"></span><span class="labels">Second Layer</span></a>
-  <a href="#s4"><span class="thumb"><img src="tutorials/3X3/download (3).png" alt="Step 4"></span><span class="labels">Yellow Cross</span></a>
-  <a href="#s5"><span class="thumb"><img src="tutorials/3X3/download (4).png" alt="Step 5"></span><span class="labels">Yellow Edges</span></a>
-  <a href="#s6"><span class="thumb"><img src="tutorials/3X3/download (5).png" alt="Step 6"></span><span class="labels">Yellow Corners</span></a>
-  <a href="#s7"><span class="thumb"><img src="tutorials/3X3/download (6).png" alt="Step 7"></span><span class="labels">Orient the Last Layer</span></a>
+
+    <a href="#s1" class="active">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (8).png" alt="Step 1">
+        </span>
+
+        <span
+            class="labels"
+            data-en="White Cross"
+            data-ar="الصليب الأبيض"
+        >White Cross</span>
+    </a>
+
+    <a href="#s2">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (9).png" alt="Step 2">
+        </span>
+
+        <span
+            class="labels"
+            data-en="First Layer"
+            data-ar="الطبقة الأولى"
+        >First Layer</span>
+    </a>
+
+    <a href="#s3">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (7).png" alt="Step 3">
+        </span>
+
+        <span
+            class="labels"
+            data-en="Second Layer"
+            data-ar="الطبقة الثانية"
+        >Second Layer</span>
+    </a>
+
+    <a href="#s4">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (3).png" alt="Step 4">
+        </span>
+
+        <span
+            class="labels"
+            data-en="Yellow Cross"
+            data-ar="الصليب الأصفر"
+        >Yellow Cross</span>
+    </a>
+
+    <a href="#s5">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (4).png" alt="Step 5">
+        </span>
+
+        <span
+            class="labels"
+            data-en="Yellow Edges"
+            data-ar="حواف الطبقة الصفراء"
+        >Yellow Edges</span>
+    </a>
+
+    <a href="#s6">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (5).png" alt="Step 6">
+        </span>
+
+        <span
+            class="labels"
+            data-en="Yellow Corners"
+            data-ar="زوايا الطبقة الصفراء"
+        >Yellow Corners</span>
+    </a>
+
+    <a href="#s7">
+        <span class="thumb">
+            <img src="tutorials/3X3/download (6).png" alt="Step 7">
+        </span>
+
+        <span
+            class="labels"
+            data-en="Orient the Last Layer"
+            data-ar="توجيه الطبقة الأخيرة"
+        >Orient the Last Layer</span>
+    </a>
+
 </div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
-<h1>3x3 (Rubik's Cube)</h1>
-<p>The iconic original puzzle invented by Ernő Rubik in 1974. It features 6 fixed centers, 12 edges, and 8 corners.</p>
+    <h1
+        data-en="3x3 (Rubik's Cube)"
+        data-ar="3x3 (مكعب روبيك)"
+    >3x3 (Rubik's Cube)</h1>
+
+    <p
+        data-en="The iconic original puzzle invented by Ernő Rubik in 1974. It features 6 fixed centers, 12 edges, and 8 corners."
+        data-ar="اللغز الأصلي الشهير الذي اخترعه إرنو روبيك عام 1974. يتكوّن من 6 مراكز ثابتة، و12 حافة، و8 زوايا."
+    >
+        The iconic original puzzle invented by Ernő Rubik in 1974.
+        It features 6 fixed centers, 12 edges, and 8 corners.
+    </p>
 </header>
 
+
+<!-- =========================
+     INTRODUCTION
+========================= -->
+
 <div class="introduction">
-  <p>Before starting, make sure you know the basic <span><a href="algorithms.html">move notation</a></span>:</p>
 
-<ul>
-  <li>
-    R / R': Right side clockwise / counter-clockwise
-  </li>
+    <p
+        data-en="Before starting, make sure you know the basic move notation:"
+        data-ar="قبل البدء، تأكد من أنك تعرف رموز الحركات الأساسية:"
+    >
+        Before starting, make sure you know the basic
+        <span>
+            <a href="algorithms.html">move notation</a>
+        </span>:
+    </p>
 
-  <li>
-    U / U': Top layer clockwise / counter-clockwise
-  </li>
-  
-  <li>
-    L / L': Left side clockwise / counter-clockwise
-  </li>
+    <ul>
 
-  <li>
-    F / F': Front layer clockwise / counter-clockwise
-  </li>
+        <li
+            data-en="R / R': Right side clockwise / counter-clockwise"
+            data-ar="R / R': الجانب الأيمن مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            R / R': Right side clockwise / counter-clockwise
+        </li>
 
-  <li>
-    D / D': Bottom layer clockwise / counter-clockwise
-  </li>
+        <li
+            data-en="U / U': Top layer clockwise / counter-clockwise"
+            data-ar="U / U': الطبقة العلوية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            U / U': Top layer clockwise / counter-clockwise
+        </li>
 
-</ul>
+        <li
+            data-en="L / L': Left side clockwise / counter-clockwise"
+            data-ar="L / L': الجانب الأيسر مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            L / L': Left side clockwise / counter-clockwise
+        </li>
 
-<p>The Right-Hand Trigger (Sexy Move):</p>
+        <li
+            data-en="F / F': Front layer clockwise / counter-clockwise"
+            data-ar="F / F': الطبقة الأمامية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            F / F': Front layer clockwise / counter-clockwise
+        </li>
 
-<img src="tutorials/3X3/7a8d43f2-4de8-4c3c-8bd1-f697ff84353a.png" alt="SexyMove">
+        <li
+            data-en="D / D': Bottom layer clockwise / counter-clockwise"
+            data-ar="D / D': الطبقة السفلية مع عقارب الساعة / عكس عقارب الساعة"
+        >
+            D / D': Bottom layer clockwise / counter-clockwise
+        </li>
 
-<p>The Left-Hand Trigger:</p>
+    </ul>
 
-<img src="tutorials/3X3/7c3d509b-6978-4b42-83cb-48e9ad3c6d8a.png" alt="LeftSexy">
+
+    <p
+        data-en="The Right-Hand Trigger (Sexy Move):"
+        data-ar="الحركة الأساسية باليد اليمنى (Sexy Move):"
+    >
+        The Right-Hand Trigger (Sexy Move):
+    </p>
+
+    <img
+        src="tutorials/3X3/7a8d43f2-4de8-4c3c-8bd1-f697ff84353a.png"
+        alt="SexyMove"
+    >
+
+
+    <p
+        data-en="The Left-Hand Trigger:"
+        data-ar="الحركة الأساسية باليد اليسرى:"
+    >
+        The Left-Hand Trigger:
+    </p>
+
+    <img
+        src="tutorials/3X3/7c3d509b-6978-4b42-83cb-48e9ad3c6d8a.png"
+        alt="LeftSexy"
+    >
 
 </div>
+
+
+<!-- =========================
+     MAIN TUTORIAL
+========================= -->
 
 <main>
 
-  <section id="s1">
-
-    <h2>Step 1 — White Cross</h2>
-
-<p>Hold the cube with Yellow on the bottom (and White on top).</p>
-
-<ul>
-
-  <li>Find a white edge</li>
-
-  <p>Look around the cube for an edge piece with white on it.</p>
-
-  <img src="tutorials/3X3/download (1).png" alt="WhiteEdge">
-
-  <li>Match its side color</li>
-
-  <p>Rotate the face containing that edge until its non-white side color matches the center piece next to it.</p>
-
-  <img src="tutorials/3X3/download (2).png" alt="BlueEdge">
-
-  <li>Bring white to the bottom</li>
-
-  <p>Turn that matching side face to bring the white sticker up into the top layer next to the white center.</p>
-
-  <img src="tutorials/3X3/download (10).png" alt="stickerDown">
-
-  <li>Handle flipped edges  </li>
-
-  <img src="tutorials/3X3/download (11).png" alt="flipped">
-
-  <p>If the white sticker ends up pointing sideways on the top face instead of up, turn that front face once (F), bring the top layer over (U'), use the right side to align it (R), and restore your top layer (U).</p>
-
-  <img src="tutorials/3X3/download (12).png" alt="">
-  <img src="tutorials/3X3/download (13).png" alt="">
-  <img src="tutorials/3X3/download (14).png" alt="">
-  <img src="tutorials/3X3/download (15).png" alt="">
-  <img src="tutorials/3X3/download (16).png" alt="">
-
-  <li>Repeat for all 4 edges</li>
-
-  <p>Repeat this for all four white edges until you have a completed white cross on the top with all side colors matching their centers.</p>
-
-</ul>
-
-  </section>
-
-  <section id="s2">
-
-    <h2>Step 2 — First Layer</h2>
-
-    <p>Put the white cross on the bottom.</p>
-
-    <ul>
-
-      <li>Locate a white corner</li>
-
-      <p>Look in the top layer for a corner piece with white on it.</p>
-
-      <li>Position above target spot</li>
-
-      <p>Turn the U layer to place the corner directly above the spot where it needs to go.</p>
-
-      <img src="tutorials/3X3/download (17).png" alt="">
-
-      <li>Insert using the Right-Hand Trigger</li>
-
-      <p>Hold the destination spot in the front-right-bottom position and repeat: R U R' U' Repeat 1 to 5 times until the corner is inserted with white facing down and side colors matching. Repeat for all 4 corners.</p>
-
-    </ul>
-
-  </section>
-
-  <section id="s3">
-
-    <h2>Step 3 — Second Layer</h2>
-
-    <p>With the white layer complete on the bottom, find edges in the top layer that do not have yellow on them.</p>
-
-    <ul>
-
-      <li>Make a 'T' shape</li>
-
-      <p>Pick a non-yellow edge in the top layer. Look at its front color and turn the U layer until it forms a matching T shape with the center piece below it.</p>
-
-      <img src="tutorials/3X3/download (18).png" alt="">
-      <img src="tutorials/3X3/download (22).png" alt="">
-
-      <li>Determine direction</li>
-
-      <p>Look at the top color of the edge. Check if it needs to move into the front-right slot or the front-left slot.</p>
-
-      <img src="tutorials/3X3/download (20).png" alt="">
-      <img src="tutorials/3X3/download (21).png" alt="">
-
-      <li>Insert the edge</li>
-
-      <p>if it needs to move into the front-right slot:</p>
-      <p>Turn top layer away (U).</p>
-
-      <img src="tutorials/3X3/download (19).png" alt="">
-      <img src="tutorials/3X3/download (23).png" alt="">
-
-      <p>Run Right Trigger (R U R' U'), and rotate the whole cube right to face the target slot.</p>
-
-      <img src="tutorials/3X3/download (24).png" alt="">
-      <img src="tutorials/3X3/download (25).png" alt="">
-
-      <p>Run Left Trigger (L' U' L U).</p>
-
-      <img src="tutorials/3X3/download (26).png" alt="">
-
-      <p>if it needs to move into the front-left slot:</p>
-      <p>Turn top layer away (U').</p>
-
-      <img src="tutorials/3X3/download (27).png" alt="">
-      <img src="tutorials/3X3/download (28).png" alt="">
-
-      <p>Run Left Trigger (L' U' L U), and rotate the whole cube right to face the target slot.</p>
-
-      <img src="tutorials/3X3/download (29).png" alt="">
-      <img src="tutorials/3X3/download (30).png" alt="">
-
-      <p>Run Right Trigger (R U R' U').</p>
-
-      <img src="tutorials/3X3/download (31).png" alt="">
-
-      <li>Repeat</li>
-
-      <p>Do this for all 4 middle-layer edges.</p>
-
-    </ul>
-
-  </section>
-
-  <section id="s4">
-
-    <h2>Step 4 — Yellow Cross</h2>
-
-    <p>Look at the yellow top face. Ignore the corners for now and match one of these pattern cases:</p>
-
-    <ul>
-
-      <li>Dot</li>
-
-      <img src="tutorials/3X3/download (32).png" alt="">
-
-      <p>Hold anywhere and run: F (R U R' U') F' → gives you the Line.</p>
-
-      <li>"L" Shape</li>
-
-      <img src="tutorials/3X3/download (33).png" alt="">
-
-      <p>Hold the "L" in the top-left (12 o'clock and 9 o'clock) and run: F (R U R' U') F'.</p>
-
-      <li>Line</li>
-
-      <img src="tutorials/3X3/download (34).png" alt="">
-
-      <p>Hold horizontally (3 o'clock and 9 o'clock) and run: F (R U R' U') F'.</p>
-
-      <li>Cross</li>
-
-      <img src="tutorials/3X3/download (3).png" alt="">
-
-      <p>Skip to Step 5!</p>
-
-    </ul>
-
-  </section>
-
-  <section id="s5">
-
-    <h2>Step 5 — Yellow Edges</h2>
-
-    <p>Turn the top layer (U) to see how many yellow edges match the side center colors.</p>
-
-    <ul>
-
-      
-
-      <li>2 Adjacent matches</li>
-
-      <img src="tutorials/3X3/download (35).png" alt="">
-
-      <p>Hold one matching edge at the Back and one on the Right.</p>
-
-      <li>2 Opposite matches</li>
-
-      <img src="tutorials/3X3/download (36).png" alt="">
-
-      <p>Hold from anywhere.</p>
-
-      <p>Then do the following algorithm:</p>
-
-      <img src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png" id="S5">
-
-      <p>(After executing, turn U once to align all 4 edges with their matching centers if you can only align 2 edges, then repeat this step.)</p>
-
-      <li>All 4 match</li>
-
-      <img src="tutorials/3X3/download (4).png" alt="">
-
-      <p>Skip to Step 6!</p>
-
-    </ul>
-
-  </section>
-
-  <section id="s6">
-
-    <h2>Step 6 — Yellow Corners</h2>
-
-    <p>Look at the top corners to see how many are in the correct position (matching the colors of the three surrounding centers, regardless of orientation).</p>
-
-    <img src="tutorials/3X3/download (37).png" alt="">
-
-    <ul>
-
-      <li>If there is 1 correct corner, hold the matching corner in the front-right-top position.</li>
-
-      <li>If there are 0 correct corners, hold from anywhere.</li>
-
-    </ul>
-
-    <p>Then do the following algorithm:</p>
-
-    <img src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png" id="S5">
-
-  </section>
-
-  <section id="s7">
-
-    <h2>Step 7 — Orient the Last Layer</h2>
-
-    <p>Now all corners are in their correct spots, but some yellow stickers point to the sides.</p>
-    <ul>
-
-      <li>Flip the cube upside down</li>
-
-      <p>Flip the cube so the solved white layer is now on top, and the unsolved yellow layer is on the bottom.</p>
-
-      <img src="tutorials/3X3/download (38).png" alt="">
-
-      <li>Target an unsolved corner</li>
-
-      <p>Rotate the bottom layer (D) until an unsolved yellow corner sits in the bottom-right position.</p>
-
-      <li>Orient the corner</li>
-
-      <p>Execute the Right-Hand Trigger until yellow points down: R U R' U'</p>
-      <p>(Takes 2 or 4 repeats. Do not forget the final U' move!)</p>
-
-      <li>Bring the next corner</li>
-
-      <p>DO NOT rotate the whole cube. Turn only the bottom layer (D / D') to move the next unsolved yellow piece to the bottom-right spot. Repeat R U R' U'.</p>
-
-      <li>Finish the solve</li>
-
-      <p>Once all yellow stickers face down, turn the bottom layer to align the final colors!</p>
-
-
-    </ul>
-
-  </section>
+    <!-- =========================
+         STEP 1
+    ========================== -->
+
+    <section id="s1">
+
+        <h2
+            data-en="Step 1 — White Cross"
+            data-ar="الخطوة 1 — الصليب الأبيض"
+        >
+            Step 1 — White Cross
+        </h2>
+
+        <p
+            data-en="Hold the cube with Yellow on the bottom (and White on top)."
+            data-ar="أمسك المكعب بحيث يكون اللون الأصفر في الأسفل (والأبيض في الأعلى)."
+        >
+            Hold the cube with Yellow on the bottom (and White on top).
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Find a white edge"
+                data-ar="ابحث عن حافة بيضاء"
+            >
+                Find a white edge
+            </li>
+
+            <p
+                data-en="Look around the cube for an edge piece with white on it."
+                data-ar="ابحث حول المكعب عن قطعة حافة تحتوي على اللون الأبيض."
+            >
+                Look around the cube for an edge piece with white on it.
+            </p>
+
+            <img
+                src="tutorials/3X3/download (1).png"
+                alt="WhiteEdge"
+            >
+
+
+            <li
+                data-en="Match its side color"
+                data-ar="طابق لون جانبها"
+            >
+                Match its side color
+            </li>
+
+            <p
+                data-en="Rotate the face containing that edge until its non-white side color matches the center piece next to it."
+                data-ar="قم بتدوير الوجه الذي يحتوي على تلك الحافة حتى يتطابق لون جانبها غير الأبيض مع قطعة المركز المجاورة."
+            >
+                Rotate the face containing that edge until its non-white side color matches the center piece next to it.
+            </p>
+
+            <img
+                src="tutorials/3X3/download (2).png"
+                alt="BlueEdge"
+            >
+
+
+            <li
+                data-en="Bring white to the bottom"
+                data-ar="اجلب اللون الأبيض إلى الأسفل"
+            >
+                Bring white to the bottom
+            </li>
+
+            <p
+                data-en="Turn that matching side face to bring the white sticker up into the top layer next to the white center."
+                data-ar="قم بتدوير ذلك الوجه المتطابق لجلب الملصق الأبيض إلى الطبقة العلوية بجانب المركز الأبيض."
+            >
+                Turn that matching side face to bring the white sticker up into the top layer next to the white center.
+            </p>
+
+            <img
+                src="tutorials/3X3/download (10).png"
+                alt="stickerDown"
+            >
+
+
+            <li
+                data-en="Handle flipped edges"
+                data-ar="تعامل مع الحواف المقلوبة"
+            >
+                Handle flipped edges
+            </li>
+
+            <img
+                src="tutorials/3X3/download (11).png"
+                alt="flipped"
+            >
+
+            <p
+                data-en="If the white sticker ends up pointing sideways on the top face instead of up, turn that front face once (F), bring the top layer over (U'), use the right side to align it (R), and restore your top layer (U)."
+                data-ar="إذا أصبح الملصق الأبيض متجهًا إلى الجانب على الوجه العلوي بدلًا من الأعلى، قم بتدوير الوجه الأمامي مرة واحدة (F)، ثم حرّك الطبقة العلوية (U')، واستخدم الجانب الأيمن لمحاذاته (R)، ثم أعد الطبقة العلوية (U)."
+            >
+                If the white sticker ends up pointing sideways on the top face instead of up, turn that front face once (F), bring the top layer over (U'), use the right side to align it (R), and restore your top layer (U).
+            </p>
+
+            <img src="tutorials/3X3/download (12).png" alt="">
+            <img src="tutorials/3X3/download (13).png" alt="">
+            <img src="tutorials/3X3/download (14).png" alt="">
+            <img src="tutorials/3X3/download (15).png" alt="">
+            <img src="tutorials/3X3/download (16).png" alt="">
+
+
+            <li
+                data-en="Repeat for all 4 edges"
+                data-ar="كرر العملية لجميع الحواف الأربع"
+            >
+                Repeat for all 4 edges
+            </li>
+
+            <p
+                data-en="Repeat this for all four white edges until you have a completed white cross on the top with all side colors matching their centers."
+                data-ar="كرر هذه العملية لجميع الحواف البيضاء الأربع حتى تحصل على صليب أبيض مكتمل في الأعلى مع تطابق جميع الألوان الجانبية مع مراكزها."
+            >
+                Repeat this for all four white edges until you have a completed white cross on the top with all side colors matching their centers.
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         STEP 2
+    ========================== -->
+
+    <section id="s2">
+
+        <h2
+            data-en="Step 2 — First Layer"
+            data-ar="الخطوة 2 — الطبقة الأولى"
+        >
+            Step 2 — First Layer
+        </h2>
+
+        <p
+            data-en="Put the white cross on the bottom."
+            data-ar="ضع الصليب الأبيض في الأسفل."
+        >
+            Put the white cross on the bottom.
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Locate a white corner"
+                data-ar="حدد موقع زاوية بيضاء"
+            >
+                Locate a white corner
+            </li>
+
+            <p
+                data-en="Look in the top layer for a corner piece with white on it."
+                data-ar="ابحث في الطبقة العلوية عن قطعة زاوية تحتوي على اللون الأبيض."
+            >
+                Look in the top layer for a corner piece with white on it.
+            </p>
+
+
+            <li
+                data-en="Position above target spot"
+                data-ar="ضعها فوق مكانها المستهدف"
+            >
+                Position above target spot
+            </li>
+
+            <p
+                data-en="Turn the U layer to place the corner directly above the spot where it needs to go."
+                data-ar="قم بتدوير طبقة U لوضع الزاوية مباشرة فوق المكان الذي يجب أن تدخل فيه."
+            >
+                Turn the U layer to place the corner directly above the spot where it needs to go.
+            </p>
+
+            <img src="tutorials/3X3/download (17).png" alt="">
+
+
+            <li
+                data-en="Insert using the Right-Hand Trigger"
+                data-ar="أدخلها باستخدام الحركة الأساسية باليد اليمنى"
+            >
+                Insert using the Right-Hand Trigger
+            </li>
+
+            <p
+                data-en="Hold the destination spot in the front-right-bottom position and repeat: R U R' U' Repeat 1 to 5 times until the corner is inserted with white facing down and side colors matching. Repeat for all 4 corners."
+                data-ar="ضع المكان المستهدف في الموضع الأمامي-الأيمن-السفلي وكرر: R U R' U'. كرر الحركة من مرة إلى 5 مرات حتى تدخل الزاوية ويصبح الأبيض متجهًا إلى الأسفل وتتطابق الألوان الجانبية. كرر ذلك لجميع الزوايا الأربع."
+            >
+                Hold the destination spot in the front-right-bottom position and repeat:
+                <span class="algorithm">R U R' U'</span>
+                Repeat 1 to 5 times until the corner is inserted with white facing down and side colors matching. Repeat for all 4 corners.
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         STEP 3
+    ========================== -->
+
+    <section id="s3">
+
+        <h2
+            data-en="Step 3 — Second Layer"
+            data-ar="الخطوة 3 — الطبقة الثانية"
+        >
+            Step 3 — Second Layer
+        </h2>
+
+        <p
+            data-en="With the white layer complete on the bottom, find edges in the top layer that do not have yellow on them."
+            data-ar="بعد إكمال الطبقة البيضاء في الأسفل، ابحث عن الحواف في الطبقة العلوية التي لا تحتوي على اللون الأصفر."
+        >
+            With the white layer complete on the bottom, find edges in the top layer that do not have yellow on them.
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Make a 'T' shape"
+                data-ar="كوّن شكل 'T'"
+            >
+                Make a 'T' shape
+            </li>
+
+            <p
+                data-en="Pick a non-yellow edge in the top layer. Look at its front color and turn the U layer until it forms a matching T shape with the center piece below it."
+                data-ar="اختر حافة غير صفراء في الطبقة العلوية. انظر إلى لونها الأمامي وقم بتدوير طبقة U حتى تشكل شكل T متطابقًا مع قطعة المركز الموجودة أسفلها."
+            >
+                Pick a non-yellow edge in the top layer. Look at its front color and turn the U layer until it forms a matching T shape with the center piece below it.
+            </p>
+
+            <img src="tutorials/3X3/download (18).png" alt="">
+            <img src="tutorials/3X3/download (22).png" alt="">
+
+
+            <li
+                data-en="Determine direction"
+                data-ar="حدد الاتجاه"
+            >
+                Determine direction
+            </li>
+
+            <p
+                data-en="Look at the top color of the edge. Check if it needs to move into the front-right slot or the front-left slot."
+                data-ar="انظر إلى اللون العلوي للحافة. تحقق مما إذا كانت تحتاج إلى الانتقال إلى المكان الأمامي-الأيمن أو الأمامي-الأيسر."
+            >
+                Look at the top color of the edge. Check if it needs to move into the front-right slot or the front-left slot.
+            </p>
+
+            <img src="tutorials/3X3/download (20).png" alt="">
+            <img src="tutorials/3X3/download (21).png" alt="">
+
+
+            <li
+                data-en="Insert the edge"
+                data-ar="أدخل الحافة"
+            >
+                Insert the edge
+            </li>
+
+            <p
+                data-en="if it needs to move into the front-right slot:"
+                data-ar="إذا كانت تحتاج إلى الانتقال إلى المكان الأمامي-الأيمن:"
+            >
+                if it needs to move into the front-right slot:
+            </p>
+
+            <p
+                data-en="Turn top layer away (U)."
+                data-ar="أدر الطبقة العلوية بعيدًا (U)."
+            >
+                Turn top layer away (U).
+            </p>
+
+            <img src="tutorials/3X3/download (19).png" alt="">
+            <img src="tutorials/3X3/download (23).png" alt="">
+
+
+            <p
+                data-en="Run Right Trigger (R U R' U'), and rotate the whole cube right to face the target slot."
+                data-ar="نفّذ الحركة اليمنى (R U R' U')، ثم أدر المكعب بالكامل إلى اليمين لمواجهة المكان المستهدف."
+            >
+                Run Right Trigger
+                <span class="algorithm">(R U R' U')</span>,
+                and rotate the whole cube right to face the target slot.
+            </p>
+
+            <img src="tutorials/3X3/download (24).png" alt="">
+            <img src="tutorials/3X3/download (25).png" alt="">
+
+
+            <p
+                data-en="Run Left Trigger (L' U' L U)."
+                data-ar="نفّذ الحركة اليسرى (L' U' L U)."
+            >
+                Run Left Trigger
+                <span class="algorithm">(L' U' L U)</span>.
+            </p>
+
+            <img src="tutorials/3X3/download (26).png" alt="">
+
+
+            <p
+                data-en="if it needs to move into the front-left slot:"
+                data-ar="إذا كانت تحتاج إلى الانتقال إلى المكان الأمامي-الأيسر:"
+            >
+                if it needs to move into the front-left slot:
+            </p>
+
+            <p
+                data-en="Turn top layer away (U')."
+                data-ar="أدر الطبقة العلوية بعيدًا (U')."
+            >
+                Turn top layer away (U').
+            </p>
+
+            <img src="tutorials/3X3/download (27).png" alt="">
+            <img src="tutorials/3X3/download (28).png" alt="">
+
+
+            <p
+                data-en="Run Left Trigger (L' U' L U), and rotate the whole cube right to face the target slot."
+                data-ar="نفّذ الحركة اليسرى (L' U' L U)، ثم أدر المكعب بالكامل إلى اليمين لمواجهة المكان المستهدف."
+            >
+                Run Left Trigger
+                <span class="algorithm">(L' U' L U)</span>,
+                and rotate the whole cube right to face the target slot.
+            </p>
+
+            <img src="tutorials/3X3/download (29).png" alt="">
+            <img src="tutorials/3X3/download (30).png" alt="">
+
+
+            <p
+                data-en="Run Right Trigger (R U R' U')."
+                data-ar="نفّذ الحركة اليمنى (R U R' U')."
+            >
+                Run Right Trigger
+                <span class="algorithm">(R U R' U')</span>.
+            </p>
+
+            <img src="tutorials/3X3/download (31).png" alt="">
+
+
+            <li
+                data-en="Repeat"
+                data-ar="كرر"
+            >
+                Repeat
+            </li>
+
+            <p
+                data-en="Do this for all 4 middle-layer edges."
+                data-ar="كرر هذه العملية لجميع حواف الطبقة الوسطى الأربع."
+            >
+                Do this for all 4 middle-layer edges.
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         STEP 4
+    ========================== -->
+
+    <section id="s4">
+
+        <h2
+            data-en="Step 4 — Yellow Cross"
+            data-ar="الخطوة 4 — الصليب الأصفر"
+        >
+            Step 4 — Yellow Cross
+        </h2>
+
+        <p
+            data-en="Look at the yellow top face. Ignore the corners for now and match one of these pattern cases:"
+            data-ar="انظر إلى الوجه العلوي الأصفر. تجاهل الزوايا الآن وطابق إحدى حالات الأنماط التالية:"
+        >
+            Look at the yellow top face. Ignore the corners for now and match one of these pattern cases:
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Dot"
+                data-ar="نقطة"
+            >
+                Dot
+            </li>
+
+            <img src="tutorials/3X3/download (32).png" alt="">
+
+            <p
+                data-en="Hold anywhere and run: F (R U R' U') F' → gives you the Line."
+                data-ar="أمسك المكعب بأي اتجاه ونفّذ: F (R U R' U') F' ← لتحصل على الخط."
+            >
+                Hold anywhere and run:
+                <span class="algorithm">F (R U R' U') F'</span>
+                → gives you the Line.
+            </p>
+
+
+            <li
+                data-en="&quot;L&quot; Shape"
+                data-ar="شكل &quot;L&quot;"
+            >
+                "L" Shape
+            </li>
+
+            <img src="tutorials/3X3/download (33).png" alt="">
+
+            <p
+                data-en="Hold the &quot;L&quot; in the top-left (12 o'clock and 9 o'clock) and run: F (R U R' U') F'."
+                data-ar="ضع شكل &quot;L&quot; في الزاوية العلوية اليسرى (عند الساعة 12 والساعة 9) ثم نفّذ: F (R U R' U') F'."
+            >
+                Hold the "L" in the top-left (12 o'clock and 9 o'clock) and run:
+                <span class="algorithm">F (R U R' U') F'</span>.
+            </p>
+
+
+            <li
+                data-en="Line"
+                data-ar="خط"
+            >
+                Line
+            </li>
+
+            <img src="tutorials/3X3/download (34).png" alt="">
+
+            <p
+                data-en="Hold horizontally (3 o'clock and 9 o'clock) and run: F (R U R' U') F'."
+                data-ar="ضع الخط بشكل أفقي (عند الساعة 3 والساعة 9) ثم نفّذ: F (R U R' U') F'."
+            >
+                Hold horizontally (3 o'clock and 9 o'clock) and run:
+                <span class="algorithm">F (R U R' U') F'</span>.
+            </p>
+
+
+            <li
+                data-en="Cross"
+                data-ar="صليب"
+            >
+                Cross
+            </li>
+
+            <img src="tutorials/3X3/download (3).png" alt="">
+
+            <p
+                data-en="Skip to Step 5!"
+                data-ar="انتقل إلى الخطوة 5!"
+            >
+                Skip to Step 5!
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         STEP 5
+    ========================== -->
+
+    <section id="s5">
+
+        <h2
+            data-en="Step 5 — Yellow Edges"
+            data-ar="الخطوة 5 — حواف الطبقة الصفراء"
+        >
+            Step 5 — Yellow Edges
+        </h2>
+
+        <p
+            data-en="Turn the top layer (U) to see how many yellow edges match the side center colors."
+            data-ar="قم بتدوير الطبقة العلوية (U) لمعرفة عدد الحواف الصفراء التي تتطابق مع ألوان المراكز الجانبية."
+        >
+            Turn the top layer (U) to see how many yellow edges match the side center colors.
+        </p>
+
+        <ul>
+
+            <li
+                data-en="2 Adjacent matches"
+                data-ar="تطابقان متجاوران"
+            >
+                2 Adjacent matches
+            </li>
+
+            <img src="tutorials/3X3/download (35).png" alt="">
+
+            <p
+                data-en="Hold one matching edge at the Back and one on the Right."
+                data-ar="ضع إحدى الحواف المتطابقة في الخلف والأخرى على اليمين."
+            >
+                Hold one matching edge at the Back and one on the Right.
+            </p>
+
+
+            <li
+                data-en="2 Opposite matches"
+                data-ar="تطابقان متقابلان"
+            >
+                2 Opposite matches
+            </li>
+
+            <img src="tutorials/3X3/download (36).png" alt="">
+
+            <p
+                data-en="Hold from anywhere."
+                data-ar="أمسك المكعب بأي اتجاه."
+            >
+                Hold from anywhere.
+            </p>
+
+            <p
+                data-en="Then do the following algorithm:"
+                data-ar="ثم نفّذ الخوارزمية التالية:"
+            >
+                Then do the following algorithm:
+            </p>
+
+            <img
+                src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png"
+                id="S5"
+            >
+
+            <p
+                data-en="After executing, turn U once to align all 4 edges with their matching centers if you can only align 2 edges, then repeat this step."
+                data-ar="بعد التنفيذ، أدر U مرة واحدة لمحاذاة الحواف الأربع مع مراكزها المتطابقة. إذا تمكنت من محاذاة حافتين فقط، كرر هذه الخطوة."
+            >
+                (After executing, turn U once to align all 4 edges with their matching centers if you can only align 2 edges, then repeat this step.)
+            </p>
+
+
+            <li
+                data-en="All 4 match"
+                data-ar="الأربع حواف متطابقة"
+            >
+                All 4 match
+            </li>
+
+            <img src="tutorials/3X3/download (4).png" alt="">
+
+            <p
+                data-en="Skip to Step 6!"
+                data-ar="انتقل إلى الخطوة 6!"
+            >
+                Skip to Step 6!
+            </p>
+
+        </ul>
+
+    </section>
+
+
+    <!-- =========================
+         STEP 6
+    ========================== -->
+
+    <section id="s6">
+
+        <h2
+            data-en="Step 6 — Yellow Corners"
+            data-ar="الخطوة 6 — زوايا الطبقة الصفراء"
+        >
+            Step 6 — Yellow Corners
+        </h2>
+
+        <p
+            data-en="Look at the top corners to see how many are in the correct position (matching the colors of the three surrounding centers, regardless of orientation)."
+            data-ar="انظر إلى الزوايا العلوية لمعرفة عدد الزوايا الموجودة في الموضع الصحيح (أي تتطابق ألوانها مع ألوان المراكز الثلاثة المحيطة بها بغض النظر عن اتجاهها)."
+        >
+            Look at the top corners to see how many are in the correct position (matching the colors of the three surrounding centers, regardless of orientation).
+        </p>
+
+        <img src="tutorials/3X3/download (37).png" alt="">
+
+        <ul>
+
+            <li
+                data-en="If there is 1 correct corner, hold the matching corner in the front-right-top position."
+                data-ar="إذا كانت هناك زاوية واحدة صحيحة، ضع الزاوية المتطابقة في الموضع الأمامي-الأيمن-العلوي."
+            >
+                If there is 1 correct corner, hold the matching corner in the front-right-top position.
+            </li>
+
+            <li
+                data-en="If there are 0 correct corners, hold from anywhere."
+                data-ar="إذا لم تكن هناك أي زاوية صحيحة، أمسك المكعب بأي اتجاه."
+            >
+                If there are 0 correct corners, hold from anywhere.
+            </li>
+
+        </ul>
+
+        <p
+            data-en="Then do the following algorithm:"
+            data-ar="ثم نفّذ الخوارزمية التالية:"
+        >
+            Then do the following algorithm:
+        </p>
+
+        <img
+            src="tutorials/3X3/658631f5-422d-49ad-bb70-792193ebcdfd.png"
+            id="S5"
+        >
+
+    </section>
+
+
+    <!-- =========================
+         STEP 7
+    ========================== -->
+
+    <section id="s7">
+
+        <h2
+            data-en="Step 7 — Orient the Last Layer"
+            data-ar="الخطوة 7 — توجيه الطبقة الأخيرة"
+        >
+            Step 7 — Orient the Last Layer
+        </h2>
+
+        <p
+            data-en="Now all corners are in their correct spots, but some yellow stickers point to the sides."
+            data-ar="الآن أصبحت جميع الزوايا في أماكنها الصحيحة، لكن بعض الملصقات الصفراء تكون متجهة نحو الجوانب."
+        >
+            Now all corners are in their correct spots, but some yellow stickers point to the sides.
+        </p>
+
+        <ul>
+
+            <li
+                data-en="Flip the cube upside down"
+                data-ar="اقلب المكعب رأسًا على عقب"
+            >
+                Flip the cube upside down
+            </li>
+
+            <p
+                data-en="Flip the cube so the solved white layer is now on top, and the unsolved yellow layer is on the bottom."
+                data-ar="اقلب المكعب بحيث تصبح الطبقة البيضاء المحلولة في الأعلى، والطبقة الصفراء غير المحلولة في الأسفل."
+            >
+                Flip the cube so the solved white layer is now on top, and the unsolved yellow layer is on the bottom.
+            </p>
+
+            <img src="tutorials/3X3/download (38).png" alt="">
+
+
+            <li
+                data-en="Target an unsolved corner"
+                data-ar="استهدف زاوية غير محلولة"
+            >
+                Target an unsolved corner
+            </li>
+
+            <p
+                data-en="Rotate the bottom layer (D) until an unsolved yellow corner sits in the bottom-right position."
+                data-ar="قم بتدوير الطبقة السفلية (D) حتى تصبح زاوية صفراء غير محلولة في الموضع السفلي-الأيمن."
+            >
+                Rotate the bottom layer (D) until an unsolved yellow corner sits in the bottom-right position.
+            </p>
+
+
+            <li
+                data-en="Orient the corner"
+                data-ar="وجّه الزاوية"
+            >
+                Orient the corner
+            </li>
+
+            <p
+                data-en="Execute the Right-Hand Trigger until yellow points down: R U R' U'"
+                data-ar="نفّذ الحركة الأساسية باليد اليمنى حتى يصبح اللون الأصفر متجهًا إلى الأسفل: R U R' U'"
+            >
+                Execute the Right-Hand Trigger until yellow points down:
+                <span class="algorithm">R U R' U'</span>
+            </p>
+
+            <p
+                data-en="(Takes 2 or 4 repeats. Do not forget the final U' move!)"
+                data-ar="(تحتاج إلى تكرارها مرتين أو أربع مرات. لا تنسَ حركة U' الأخيرة!)"
+            >
+                (Takes 2 or 4 repeats. Do not forget the final U' move!)
+            </p>
+
+
+            <li
+                data-en="Bring the next corner"
+                data-ar="أحضر الزاوية التالية"
+            >
+                Bring the next corner
+            </li>
+
+            <p
+                data-en="DO NOT rotate the whole cube. Turn only the bottom layer (D / D') to move the next unsolved yellow piece to the bottom-right spot. Repeat R U R' U'."
+                data-ar="لا تقم بتدوير المكعب بالكامل. أدر الطبقة السفلية فقط (D / D') لنقل قطعة صفراء غير محلولة إلى الموضع السفلي-الأيمن. كرر R U R' U'."
+            >
+                DO NOT rotate the whole cube. Turn only the bottom layer
+                <span class="algorithm">(D / D')</span>
+                to move the next unsolved yellow piece to the bottom-right spot. Repeat
+                <span class="algorithm">R U R' U'</span>.
+            </p>
+
+
+            <li
+                data-en="Finish the solve"
+                data-ar="أكمل الحل"
+            >
+                Finish the solve
+            </li>
+
+            <p
+                data-en="Once all yellow stickers face down, turn the bottom layer to align the final colors!"
+                data-ar="بمجرد أن تصبح جميع الملصقات الصفراء متجهة إلى الأسفل، أدر الطبقة السفلية لمحاذاة الألوان النهائية!"
+            >
+                Once all yellow stickers face down, turn the bottom layer to align the final colors!
+            </p>
+
+        </ul>
+
+    </section>
 
 </main>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  <p>&copy; 2026 Skewbicle. All rights reserved.</p>
-  <a href="mailto:skewbicle@gmail.com">Contact Us</a>
-</footer>    
+
+    <p
+        data-en="© 2026 Skewbicle. All rights reserved."
+        data-ar="© 2026 Skewbicle. جميع الحقوق محفوظة."
+    >
+        © 2026 Skewbicle. All rights reserved.
+    </p>
+
+    <a
+        href="mailto:skewbicle@gmail.com"
+        data-en="Contact Us"
+        data-ar="تواصل معنا"
+    >
+        Contact Us
+    </a>
+
+</footer>
+
+
+<!-- =========================
+     TIMELINE SCRIPT
+========================= -->
 
 <script>
-  const links = document.querySelectorAll('.timeline-nav a');
-  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+    const links = document.querySelectorAll('.timeline-nav a');
+    const sections = [...links].map(l =>
+        document.querySelector(l.getAttribute('href'))
+    );
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = sections.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        links.forEach((l, i) => l.classList.toggle('active', i === idx));
-      }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const idx = sections.indexOf(entry.target);
+
+            if (entry.isIntersecting) {
+                links.forEach((l, i) =>
+                    l.classList.toggle('active', i === idx)
+                );
+            }
+        });
+    }, {
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
     });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-  sections.forEach(s => observer.observe(s));
+    sections.forEach(s => observer.observe(s));
 
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+
+            document
+                .querySelector(link.getAttribute('href'))
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+        });
     });
-  });
+
+
+    /* =========================
+       LANGUAGE SYSTEM
+    ========================= */
+
+    const languageSwitcher =
+        document.getElementById('languageSwitcher');
+
+    function setLanguage(language) {
+
+        document.documentElement.lang = language;
+
+        if (language === 'ar') {
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.dir = 'ltr';
+        }
+
+        document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+
+            const text =
+                language === 'ar'
+                    ? element.getAttribute('data-ar')
+                    : element.getAttribute('data-en');
+
+            if (text !== null) {
+                element.textContent = text;
+            }
+        });
+
+        languageSwitcher.value = language;
+
+        localStorage.setItem(
+            'skewbicle-language',
+            language
+        );
+    }
+
+
+    languageSwitcher.addEventListener('change', function () {
+        setLanguage(this.value);
+    });
+
+
+    const savedLanguage =
+        localStorage.getItem('skewbicle-language') || 'en';
+
+    setLanguage(savedLanguage);
 </script>
+
 
 </body>
 </html>
